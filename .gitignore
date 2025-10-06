@@ -1,0 +1,4 @@
+# IDE specific directory
+.idea
+# best practice if everybody individually installs the virtual environment
+.venv
