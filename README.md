@@ -48,9 +48,11 @@ Example: `Juri/fea_menu_imp`
 6. push to non-main branch 
 
 # Commits
-1. 2025-10-06/19:30, first initial commit
+1. Juri: 2025-10-06/19:30, first initial commit
    - file structure
    - installation of required packages
    - added `.gitignore` file for jetbrains .idea directory and virtual environment
      - apparently it is best if everybody creates their own virtual environment
      - adding instructions how to create the virtual environment and the required packages tmrw
+2. Juri: 2025-10-06/19:40, added .gitkeep files to add empty directories to git
+   - can be removed once actual files exist in those directories
