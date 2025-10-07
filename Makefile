@@ -59,10 +59,10 @@ clean-all: clean clean-doc
 
 # ---------------------------------------------------------
 # Work with static code linters.
-#
+# `guess` changed to `program`
 pylint:
 	@$(call MESSAGE,$@)
-	-cd guess && $(PYTHON) -m pylint *.py
+	-cd program && $(PYTHON) -m pylint *.py
 
 flake8:
 	@$(call MESSAGE,$@)
