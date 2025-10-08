@@ -1,0 +1,78 @@
+@startuml
+'https://plantuml.com/class-diagram
+class DiceHand{
+	..Attributes..
+	+ all_rolls : List<int>
+	+ game_rolls : List<int>
+	+ turn_rolls : List<int>
+	==Methods==
+	+ add_rolls_to_total(List<int> game_rolls) : void
+	+ add_rolls_to_game(List<int> turn_rolls) : void
+}
+
+class Player{
+	..Attributes..
+	+ username : String
+	- {static}player_ID : int
+	+ total_score : int
+	+ dice_hand : DiceHand
+	==Methods==
+	+ roll_dice()
+    + change_usr_name(String new_usr_name)
+}
+
+class Dice{
+    ..Attributes..
+    - {static} __STRING_DICE_FACE
+    ==Methods==
+    + {static} roll_dice() : int
+    + {static} get_dice_face(int roll) : String
+}
+
+class HighScore{
+	..Attributes..
+	+ chart : Dictionary<player_ID, Player>
+	==Methods==
+	+ get_chart() : String
+}
+
+class Menu{
+	..Attributes..
+	+ game_rules : String
+	+ player1 : Player
+	==Methods==
+	+ play_game()
+	+ change_usrname(String old_usrname, String new_usrname)
+	+ get_scoreboard() : String
+	+ get_rules() : String
+}
+
+class Computer{
+	.. Attributes..
+	+ computer_name : String
+	- computer_ID : int
+	+ difficulty : String/int
+	==Methods==
+	+ select_difficulty(String/int new_difficulty)
+	+ change_computer_name(String new_name)
+}
+class Game{
+	..Attributes..
+	- {static} __GOAL = 100
+	+ participants : List<Player/Computer>
+	==Methods==
+	- turn(Player player)
+	- turn(Computer computer)
+	+ start_game(List<Player/Computer> participants)
+	+ speedrun_game()
+	+ quit_game()
+	+ restart_game()
+}
+Player --> Game : plays
+Player --> Dice : rolls
+Player --> DiceHand : has
+HighScore --> Player : keeps track
+HighScore --> Computer : keeps track
+Player --> Computer : chooses difficulty/plays against
+
+@enduml

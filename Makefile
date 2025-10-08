@@ -161,3 +161,8 @@ metrics: radon-cc radon-mi radon-raw radon-hal cohesion
 bandit:
 	@$(call MESSAGE,$@)
 	bandit --recursive guess
+# ---------------------------------------------------------
+# own cmds
+pytest:
+	@$(call MESSAGE,$@)
+	-cd tests && pytest dice_unit_tests.py

@@ -56,9 +56,14 @@ Example: `Juri/fea_menu_imp`
      - adding instructions how to create the virtual environment and the required packages tmrw
 2. Juri: 2025-10-06/19:40, added .gitkeep files to add empty directories to git
    - can be removed once actual files exist in those directories
-3. Juri: 2025-10ö07/23:15, commit for tmrw's unit testing, added dice class, changed directory name in command in the makefile
+3. Juri: 2025-10:07/23:15, commit for tmrw's unit testing, added dice class, changed directory name in command in the makefile
    - added dice class
      - tried to make it static, we shouldn't need a new dice for every new game
    - changed a command in the makefile (was a directory reference)
      - `guess` --> `program`
    - linted the class, tried solving the linting errors; couldn't solve them :(
+4. Juri: 2025-10-08/16:30, unit tests, fully linted dice.py, uml class diagrams, and flow chart
+   - unit test with pytest
+   - fully linted dice.py
+   - flow chart of a turn in game
+   - marked program and tests directories as python packages
