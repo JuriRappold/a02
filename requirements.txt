@@ -21,3 +21,4 @@ coverage
 pdoc3
 sphinx
 sphinx-rtd-theme # for ReadTheDocs local build
+pytest~=8.4.2
