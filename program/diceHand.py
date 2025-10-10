@@ -19,7 +19,9 @@ class DiceHand:
         adds the rolls of an entire turn to the list of rolls of the game for an individual player
         :return: NaN
         """
-        self.game_rolls.append(self.turn_rolls) #!!!appends list as list item!!
+        #self.game_rolls.append(self.turn_rolls)#!!!appends list as list item!!
+        for r in self.turn_rolls:
+            self.game_rolls.append(r)
         self.turn_rolls = []
 
     def add_roll(self, roll):
@@ -31,3 +33,15 @@ class DiceHand:
         if isinstance(roll, int):
             self.turn_rolls.append(roll)
         raise TypeError("Roll not an int; Check where Obj<DiceHand>.add_roll(roll) is called (Probably in Player)")
+
+    def sum_game_rolls(self):
+        sum = 0
+        for r in self.game_rolls:
+            sum+=r
+        return sum
+
+    def sum_turn_rolls(self):
+        sum = 0
+        for r in self.turn_rolls:
+            sum += r
+        return sum
