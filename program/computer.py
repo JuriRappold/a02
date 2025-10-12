@@ -29,20 +29,28 @@ class Computer:
             sum += roll#self.dice_hand.sum_turn_rolls() #call to dice_hand.sum_turn
         return sum
 
-    def four_scoring_turns(self, sum): # middle mode;
-        while sum < 25:
-            self.roll_dice()
-        bound_hold = (100-sum)/3
-        while sum < bound_hold:
-            self.roll_dice()
-        bound_hold = (100 - sum) / 2
-        while sum < bound_hold:
-            self.roll_dice()
-        # self.roll_dice() until the end
-        while sum < 100:
-            self.roll_dice()
+    def four_scoring_turns(self): # middle mode;
+        # while sum < 25:
+        #     self.roll_dice()
+        # bound_hold = (100-sum)/3
+        # while sum < bound_hold:
+        #     self.roll_dice()
+        # bound_hold = (100 - sum) / 2
+        # while sum < bound_hold:
+        #     self.roll_dice()
+        # # self.roll_dice() until the end
+        # while sum < 100:
+        #     self.roll_dice()
+        sum = 0
+        if self.score < 25:
+            while (self.score + sum) <25:
+                roll = self.roll_dice()
+                self.dice_hand.add_roll(roll)
+                sum += roll
+        # elif (100-self.score)/3:
+        #     while (self.score +sum) <
 
-    def keep_or_race(self, player_score):
+    def keep_or_race(self, player_score): #hard mode
         sum = 0
         if (player_score or self.score) < 71:
             while 21 + (player_score-self.score)/8:
