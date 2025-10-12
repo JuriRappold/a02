@@ -105,3 +105,19 @@ class game:
             if participant.total_score >= self.GOAL:
                 return participant
         return None
+
+    def get_participants(self):
+        """
+        Get the list of all participants in the game.
+
+        :return: list of Player and/or Computer objects
+        """
+        return self.participants
+
+    def add_participant(self, participant):
+        """
+        Add a new participant to the game.
+
+        :param participant: Player or Computer object to add
+        """
+        self.participants.append(participant)
