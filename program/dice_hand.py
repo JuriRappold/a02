@@ -34,7 +34,8 @@ class DiceHand: #change class name to Dice_Hand???
         """
         if isinstance(roll, int):
             self.turn_rolls.append(roll)
-        raise TypeError("Roll not an int; Check dice_hand .add_roll() calls")
+        else: raise TypeError("Roll not an int; Check dice_hand .add_roll() calls")
+        #print(f"type in add_roll(): {type(roll)}")
 
     def sum_game_rolls(self):
         """

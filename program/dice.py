@@ -22,7 +22,7 @@ class Dice:
         """
         :return: random integer between 1 and 6 (inclusive of both ends)
         """
-        return random.randint(1,6)
+        return int(random.randint(1,6))
 
 
     @staticmethod
