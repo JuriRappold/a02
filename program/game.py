@@ -36,5 +36,26 @@ class game:
 
         :param player: the player or computer taking their turn
         """
-
         pass
+
+    def game(self, participants):
+        """
+        Main game loop that manages the entire game flow.
+
+        Runs the game with the given participants (players and/or computers),
+        alternating turns until one participant reaches the GOAL score.
+        Returns the winner when the game concludes.
+
+        :param participants: list of Player and/or Computer objects
+        :return: the winning participant
+        """
+        self.participants = participants
+        game_over = False
+
+        while not game_over:
+            for participant in self.participants:
+                self.turn(participant)
+                if participant.total_score >= self.GOAL:
+                    game_over = True
+                    return participant
+        return None
