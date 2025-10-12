@@ -80,3 +80,13 @@ class game:
         prepares for a new game or exit. Does not save progress.
         """
         self.participants = []
+
+    def restart_game(self):
+        """
+        Reset the current game and start fresh.
+
+        Resets all participant scores to zero while keeping the same
+        participants, allowing for a new game with the same players/computers.
+        """
+        for participant in self.participants:
+            participant.total_score = 0
