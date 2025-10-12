@@ -56,3 +56,10 @@ class DiceHand: #change class name to Dice_Hand???
         for r in self.turn_rolls:
             sum_rolls += r
         return sum_rolls
+
+    def reset_turn_list(self):
+        """
+        resets the turn list, in case somebody rolled a one
+        :return:
+        """
+        self.turn_rolls = []
