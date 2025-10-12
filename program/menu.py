@@ -79,3 +79,31 @@ class menu:
                 self.player1.change_usr_name(new_username)
                 return True
         return False
+
+    def get_scoreboard(self):
+        """
+        Get the current scoreboard as a formatted string.
+
+        Displays player name, current score, and progress toward the goal.
+        Shows a visual representation of the player's progress using
+        Unicode block characters.
+
+        :return: formatted scoreboard string
+        """
+        if self.player1 is None:
+            return "No player registered yet!"
+
+        score = self.player1.total_score
+        # Each block represents 10 points (max 10 blocks for 100 points)
+        filled_blocks = score // 10
+        empty_blocks = 10 - filled_blocks
+        progress_bar = '█' * filled_blocks + '░' * empty_blocks
+
+        scoreboard = f"""
+        === SCOREBOARD ===
+
+        Player: {self.player1.username}
+        Score: {score} / 100
+        Progress: {progress_bar}
+        """
+        return scoreboard
