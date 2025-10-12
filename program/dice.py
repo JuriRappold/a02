@@ -4,10 +4,13 @@ dice modul, see class description for function
 
 import random
 
+
 class Dice:
+
     '''
     static Dice class, only really need the roll dice method;
-    could be a static class? --> "easiest" way would just be a python file with functions
+    could be a static class? --> "easiest" way would just be a python file
+    with functions
     done it the "Java" way, source:
     https://stackoverflow.com/questions/30556857/creating-a-static-class-with-no-instances
     '''
@@ -22,8 +25,7 @@ class Dice:
         """
         :return: random integer between 1 and 6 (inclusive of both ends)
         """
-        return random.randint(1,6)
-
+        return random.randint(1, 6)
 
     @staticmethod
     def get_dice_face(roll):
