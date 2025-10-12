@@ -123,3 +123,19 @@ class menu:
         # 3. Run the game loop
         # 4. Display winner
         pass
+
+    def set_player(self, player):
+        """
+        Set the main player for the game.
+
+        :param player: Player object to set as player1
+        """
+        self.player1 = player
+
+    def get_player(self):
+        """
+        Get the current player.
+
+        :return: Player object or None if not set
+        """
+        return self.player1
