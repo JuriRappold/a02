@@ -59,3 +59,15 @@ class game:
                     game_over = True
                     return participant
         return None
+
+    def speedrun_game(self):
+        """
+        Cheat mode for rapid game completion and testing.
+
+        Automatically advances the game quickly by either setting player
+        scores to near-winning values or simulating rapid turns.
+        Useful for testing end-game scenarios without playing through.
+        """
+        if len(self.participants) > 0:
+            # Set first participant's score to just below goal for quick win
+            self.participants[0].total_score = self.GOAL - 10
