@@ -25,3 +25,16 @@ class game:
         with the default goal of 100 points.
         """
         self.participants = []
+
+    def turn(self, player):
+        """
+        Execute a turn for the given player or computer.
+
+        Manages the rolling phase for a player's turn, allowing them to
+        roll multiple times or hold. If a 1 is rolled, the turn ends and
+        no points are scored for that turn.
+
+        :param player: the player or computer taking their turn
+        """
+
+        pass
