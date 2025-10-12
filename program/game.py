@@ -12,9 +12,10 @@ class game:
 
     The game class manages the game flow, coordinates player/computer turns,
     tracks participants, and determines when a player reaches the goal score
-    to win the game.
+    to win the game. The first participant to reach 100 points wins.
     """
 
+    # Win condition - first to reach 100 points
     GOAL = 100
 
     def __init__(self):
