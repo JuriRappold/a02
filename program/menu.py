@@ -207,3 +207,21 @@ class menu:
             return 1 <= choice_int <= 5
         except ValueError:
             return False
+
+    def display_error_message(self, message):
+        """
+        Display an error message to the user.
+
+        :param message: error message to display
+        :return: formatted error message string
+        """
+        return f"\n  ❌ ERROR: {message}\n"
+
+    def display_success_message(self, message):
+        """
+        Display a success message to the user.
+
+        :param message: success message to display
+        :return: formatted success message string
+        """
+        return f"\n  ✅ SUCCESS: {message}\n"
