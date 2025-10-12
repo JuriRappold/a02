@@ -33,21 +33,27 @@ class menu:
         :return: formatted string containing the game rules
         """
         rules = """
-        === PIG DICE GAME RULES ===
+        ========================================================
+                    PIG DICE GAME RULES
+        ========================================================
 
-        OBJECTIVE: Be the first player to reach 100 points!
+        OBJECTIVE:
+          Be the first player to reach 100 points!
 
         GAMEPLAY:
-        - On your turn, roll the dice as many times as you want
-        - Each roll adds to your turn total
-        - You can choose to 'hold' and add your turn total to your score
-        - BUT if you roll a 1, you lose all points for that turn!
+          • Roll the dice as many times as you want
+          • Each roll adds to your turn total
+          • Choose 'HOLD' to bank your points
+          • BUT... rolling a 1 loses ALL turn points!
 
         STRATEGY:
-        - Risk vs Reward: Keep rolling for more points or hold to secure them?
-        - The choice is yours!
+          Risk vs Reward - When do you hold?
+          The more you roll, the bigger the risk!
 
-        WIN CONDITION: First to 100 points wins!
+        WIN CONDITION:
+          First to 100 points wins!
+
+        ========================================================
         """
         return rules
 
@@ -100,11 +106,16 @@ class menu:
         progress_bar = '█' * filled_blocks + '░' * empty_blocks
 
         scoreboard = f"""
-        === SCOREBOARD ===
+        ========================================================
+                         SCOREBOARD
+        ========================================================
 
         Player: {self.player1.username}
-        Score: {score} / 100
-        Progress: {progress_bar}
+        Score:  {score} / 100
+
+        Progress: [{progress_bar}]
+
+        ========================================================
         """
         return scoreboard
 
@@ -139,3 +150,47 @@ class menu:
         :return: Player object or None if not set
         """
         return self.player1
+
+    def display_welcome(self):
+        """
+        Display welcome message for the game.
+
+        Shows an ASCII art welcome screen and brief game introduction.
+
+        :return: formatted welcome message string
+        """
+        welcome = """
+        ========================================================
+
+                 WELCOME TO PIG DICE GAME!
+
+                 Roll the dice, take your chances!
+                 First to 100 points wins!
+
+                 Good luck and have fun!
+
+        ========================================================
+        """
+        return welcome
+
+    def display_menu_options(self):
+        """
+        Display main menu options to the player.
+
+        :return: formatted menu options string
+        """
+        options = """
+        ========================================
+                    MAIN MENU
+        ========================================
+
+          1. Play Game
+          2. View Rules
+          3. View Scoreboard
+          4. Change Username
+          5. Quit
+
+        ========================================
+
+        Enter your choice: """
+        return options
