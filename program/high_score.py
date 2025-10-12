@@ -23,10 +23,14 @@ class HighScore:
         ╠════════════════════════════╣
         '''
 
-        lines = map(lambda score: f"║ {score[0]:>2}. {score[1][0]:<14} │ {score[1][1]:>5} ║\n        ", enumerate(scores.items(), 1))
+        #make sorted list pretty 
+        table += "".join(map(lambda score: f"║ {score[0]:>2}. {score[1][0]:<14} │ {score[1][1]:>5} ║\n        ", enumerate(scores.items(), 1)))
+        # "".join ->append to table lines that lambda generated
+        # score: / enumerate(scores.items(), 1))) -> score is enumerate(scores.items(), 1)))
+        # f"║ {score[0]:>2}. {score[1][0]:<14} │ {score[1][1]:>5} ║\n        ", -> fstring which makes it pretty
+        # umerate(scores.items(), 1))) -> creates dictionary with dictionary in it [rank[name,score]] 
+
         
-        for line in lines:
-            table += line
 
         table += '╚════════════════════════════╝'
 
@@ -35,5 +39,5 @@ class HighScore:
         return table
     
 if __name__ == "__main__":
-    scores = HighScore({1:28, 2:19})
+    scores = HighScore({"Minmi":28, "RuX":19})
     scores.get_chart()
