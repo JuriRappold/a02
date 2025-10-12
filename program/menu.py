@@ -194,3 +194,16 @@ class menu:
 
         Enter your choice: """
         return options
+
+    def validate_menu_choice(self, choice):
+        """
+        Validate if the menu choice is valid.
+
+        :param choice: user input choice (string)
+        :return: True if choice is valid (1-5), False otherwise
+        """
+        try:
+            choice_int = int(choice)
+            return 1 <= choice_int <= 5
+        except ValueError:
+            return False
