@@ -107,3 +107,19 @@ class menu:
         Progress: {progress_bar}
         """
         return scoreboard
+
+    def play_game(self):
+        """
+        Start and manage the main game flow.
+
+        Creates a new game instance, sets up participants, and runs
+        the game loop until completion. Displays the winner and final
+        scores when the game ends.
+        """
+        # Placeholder for game logic - will be implemented with Game class
+        # This method will:
+        # 1. Create a Game instance
+        # 2. Add participants (player1 and possibly computer)
+        # 3. Run the game loop
+        # 4. Display winner
+        pass
