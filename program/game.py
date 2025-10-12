@@ -71,3 +71,12 @@ class game:
         if len(self.participants) > 0:
             # Set first participant's score to just below goal for quick win
             self.participants[0].total_score = self.GOAL - 10
+
+    def quit_game(self):
+        """
+        Terminate the current game session.
+
+        Ends the current game, clears the participants list, and
+        prepares for a new game or exit. Does not save progress.
+        """
+        self.participants = []
