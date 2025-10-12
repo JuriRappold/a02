@@ -61,3 +61,21 @@ class menu:
         :return: string containing the game rules
         """
         return self.game_rules
+
+    def change_username(self, old_username, new_username):
+        """
+        Change a player's username.
+
+        Validates that the old username matches the current player's name,
+        then updates it to the new username. The player's ID is also
+        regenerated based on the new username.
+
+        :param old_username: current username to verify
+        :param new_username: new username to set
+        :return: True if successful, False if old username doesn't match
+        """
+        if self.player1 is not None:
+            if self.player1.username == old_username:
+                self.player1.change_usr_name(new_username)
+                return True
+        return False
