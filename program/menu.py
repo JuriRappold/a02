@@ -3,7 +3,8 @@ menu module for pig dice game
 
 This module contains the menu class which provides the user interface
 for the pig dice game, including game setup, player management, and
-displaying game information.
+displaying game information. The menu acts as the main interaction
+point between the player and the game.
 """
 
 
