@@ -91,3 +91,17 @@ class game:
         """
         for participant in self.participants:
             participant.total_score = 0
+
+    def check_winner(self):
+        """
+        Check if any participant has reached the winning score.
+
+        Iterates through all participants and returns the first one
+        that has reached or exceeded the GOAL score.
+
+        :return: winning participant or None if no winner yet
+        """
+        for participant in self.participants:
+            if participant.total_score >= self.GOAL:
+                return participant
+        return None
