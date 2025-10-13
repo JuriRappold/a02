@@ -81,6 +81,7 @@ class Computer:
                 roll = self.roll_dice()
                 if roll == 1:
                     roll_is_one = True
+                    turn = 0
                 else:
                     self.dice_hand.add_roll(roll)
                     turn+=roll
@@ -89,6 +90,7 @@ class Computer:
                 roll = self.roll_dice()
                 if roll == 1:
                     roll_is_one = True
+                    turn = 0
                 else:
                     self.dice_hand.add_roll(roll)
                     turn += roll
