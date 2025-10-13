@@ -10,7 +10,6 @@ class Computer:
         self.score = 0
         self.turn_number = 0 #number of scoring turns
 
-
     def select_difficulty(self, new_difficulty):
         if new_difficulty == "easy" or new_difficulty==1:
            self.difficulty = (1, "easy")
@@ -95,4 +94,15 @@ class Computer:
                 else:
                     self.dice_hand.add_roll(roll)
                     turn += roll
+        return turn
+
+    def take_turn(self, player_score = 0):
+        turn = 0
+        match self.difficulty[0]:
+            case 1:
+                turn = self.hold_at_twenty()
+            case 2:
+                turn = self.scoring_turn()
+            case 3:
+                turn = self.keep_or_race(player_score)
         return turn
