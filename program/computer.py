@@ -76,11 +76,17 @@ class Computer:
         if (player_score or self.score) < 71:
             while not roll_is_one and 21 + (player_score-self.score)/8:
                 roll = self.roll_dice()
-                self.dice_hand.add_roll(roll)
-                turn+=roll
+                if roll == 1:
+                    roll_is_one = True
+                else:
+                    self.dice_hand.add_roll(roll)
+                    turn+=roll
         else:
-            while (self.score + turn) < 100:
+            while not roll_is_one and (self.score + turn) < 100:
                 roll = self.roll_dice()
-                self.dice_hand.add_roll(roll)
-                turn += roll
+                if roll == 1:
+                    roll_is_one = True
+                else:
+                    self.dice_hand.add_roll(roll)
+                    turn += roll
         return turn
