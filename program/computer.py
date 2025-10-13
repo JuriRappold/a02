@@ -23,7 +23,10 @@ class Computer:
         return f"Difficulty changed to: {self.difficulty[1]}"
 
     def change_computer_name(self, new_name):
-        pass
+        if not new_name == "":
+            self.computer_name = new_name
+        else:
+            return "Name is invalid or/and null"
 
     def roll_dice(self):
         return Dice.roll_dice()
