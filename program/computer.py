@@ -47,6 +47,7 @@ class Computer:
         return turn
 
     def scoring_turn(self):
+        #setup
         turn = 0
         if self.turn_number == 0:
             bound = 25
@@ -54,16 +55,18 @@ class Computer:
             bound = (100-self.score)/self.turn_number
         roll_is_one = False
 
-
+        #turn
         while not roll_is_one and turn < bound:
             roll = Dice.roll_dice()
             if roll == 1:
                 roll_is_one = True
-                turn = 0  # maybe
+                turn = 0
                 self.dice_hand.reset_turn_list()
             else:
                 turn += roll
                 self.dice_hand.add_roll(roll)
+
+        #end of turn logic
         if not roll_is_one:
             self.turn_number+=1
             self.dice_hand.add_turn_rolls()
