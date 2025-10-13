@@ -4,7 +4,7 @@ from dice_hand import DiceHand
 class Computer:
     def __init__(self, computer_name, difficulty):
         self.computer_name = computer_name
-        self.difficulty = difficulty
+        self.difficulty = difficulty #has to be a tuple
         self.id = hash(computer_name+difficulty)
         self.dice_hand = DiceHand() #create dice_hand obj once class is integrated
         self.score = 0
@@ -12,7 +12,15 @@ class Computer:
 
 
     def select_difficulty(self, new_difficulty):
-        pass
+        if new_difficulty == "easy" or new_difficulty==1:
+           self.difficulty = (1, "easy")
+        elif new_difficulty == "normal" or new_difficulty==2:
+            self.difficulty = (2, "normal")
+        elif new_difficulty == "hard" or new_difficulty == 3:
+            self.difficulty = (3, "hard")
+        else:
+            return "Invalid Difficulty Option"
+        return f"Difficulty changed to: {self.difficulty[1]}"
 
     def change_computer_name(self, new_name):
         pass

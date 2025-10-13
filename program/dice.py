@@ -1,5 +1,5 @@
 """
-dice modul, see class description for function
+dice module, see class description for function
 """
 
 import random
