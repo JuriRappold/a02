@@ -1,27 +1,27 @@
-"""
-computer module
-"""
+"""computer module."""
 
-from dice import Dice
-from dice_hand import DiceHand
+from program.dice import Dice
+from program.dice_hand import DiceHand
 
 
 class Computer:
     """
-    computer player class with three different difficulty modes
+    computer player class with three different difficulty modes.
     methods:
-        __init__(computer_name, difficulty),
-        select_difficulty(new_difficulty),
-        change_computer_name(new_name),
-        roll_dice()-->static,
-        hold_at_twenty() --> easy mode,
-        scoring_turn() --> normal mode,
-        keep_or_race(player_score) --> hard mode,
-        take_turn(player_score) --> should be only call really outside the class
+    __init__(computer_name, difficulty),
+    select_difficulty(new_difficulty),
+    change_computer_name(new_name),
+    roll_dice()-->static,
+    hold_at_twenty() --> easy mode,
+    scoring_turn() --> normal mode,
+    keep_or_race(player_score) --> hard mode,
+    take_turn(player_score) -->
+    should be only call really outside the class
     """
 
+
     def __init__(self, computer_name, difficulty):
-        """Constructor"""
+        """computer Constructor."""
         self.computer_name = computer_name
         self.difficulty = difficulty  # has to be a tuple
         self.id = hash(computer_name + difficulty)
