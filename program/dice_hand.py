@@ -2,18 +2,20 @@
 module for class DiceHand
 """
 
-class DiceHand: #change class name to Dice_Hand???
+
+class DiceHand:  # change class name to Dice_Hand???
     """
     keeps track of every roll a player makes over the entire game
     """
+
     # Attributes
-    #game_rolls = []
-    #turn_rolls = []
+    # game_rolls = []
+    # turn_rolls = []
 
     # Methods
     def __init__(self):
         # declare attributes here, not above?
-        self.game_rolls =[]
+        self.game_rolls = []
         self.turn_rolls = []
 
     def add_turn_rolls(self):
@@ -21,7 +23,7 @@ class DiceHand: #change class name to Dice_Hand???
         adds the rolls of an entire turn to the list of rolls of the game for an individual player
         :return: NaN
         """
-        #self.game_rolls.append(self.turn_rolls)#!!!appends list as list item!!
+        # self.game_rolls.append(self.turn_rolls)#!!!appends list as list item!!
         for r in self.turn_rolls:
             self.game_rolls.append(r)
         self.turn_rolls = []
@@ -34,8 +36,9 @@ class DiceHand: #change class name to Dice_Hand???
         """
         if isinstance(roll, int):
             self.turn_rolls.append(roll)
-        else: raise TypeError("Roll not an int; Check dice_hand .add_roll() calls")
-        #print(f"type in add_roll(): {type(roll)}")
+        else:
+            raise TypeError("Roll not an int; Check dice_hand .add_roll() calls")
+        # print(f"type in add_roll(): {type(roll)}")
 
     def sum_game_rolls(self):
         """
@@ -44,7 +47,7 @@ class DiceHand: #change class name to Dice_Hand???
         """
         sum_rolls = 0
         for r in self.game_rolls:
-            sum_rolls+=r
+            sum_rolls += r
         return sum_rolls
 
     def sum_turn_rolls(self):

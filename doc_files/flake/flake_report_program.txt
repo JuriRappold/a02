@@ -1,0 +1,112 @@
+program/computer.py:1:1: D200 One-line docstring should fit on one line with quotes
+program/computer.py:1:1: D400 First line should end with a period
+program/computer.py:7:1: H601 class has low (31.25%) cohesion
+program/computer.py:7:1: E302 expected 2 blank lines, found 1
+program/computer.py:8:1: D205 1 blank line required between summary line and description
+program/computer.py:8:1: D208 Docstring is over-indented
+program/computer.py:8:1: D400 First line should end with a period
+program/computer.py:18:80: E501 line too long (84 > 79 characters)
+program/computer.py:22:1: D400 First line should end with a period
+program/computer.py:22:1: D401 First line should be in imperative mood; try rephrasing
+program/computer.py:24:37: E261 at least two spaces before inline comment
+program/computer.py:24:38: E262 inline comment should start with '# '
+program/computer.py:26:36: E261 at least two spaces before inline comment
+program/computer.py:26:37: E262 inline comment should start with '# '
+program/computer.py:26:80: E501 line too long (82 > 79 characters)
+program/computer.py:28:29: E261 at least two spaces before inline comment
+program/computer.py:28:30: E262 inline comment should start with '# '
+program/computer.py:31:1: D210 No whitespaces allowed surrounding docstring text
+program/computer.py:31:1: D400 First line should end with a period
+program/computer.py:31:1: D401 First line should be in imperative mood
+program/computer.py:31:1: D403 First word of the first line should be properly capitalized
+program/computer.py:32:41: E231 missing whitespace after ':'
+program/computer.py:32:42: E261 at least two spaces before inline comment
+program/computer.py:32:42: E262 inline comment should start with '# '
+program/computer.py:43:1: D400 First line should end with a period
+program/computer.py:43:1: D401 First line should be in imperative mood
+program/computer.py:43:1: D403 First word of the first line should be properly capitalized
+program/computer.py:51:1: D400 First line should end with a period
+program/computer.py:51:1: D401 First line should be in imperative mood
+program/computer.py:51:1: D403 First word of the first line should be properly capitalized
+program/computer.py:54:29: E231 missing whitespace after ':'
+program/computer.py:54:30: E261 at least two spaces before inline comment
+program/computer.py:54:30: E262 inline comment should start with '# '
+program/computer.py:55:1: D205 1 blank line required between summary line and description
+program/computer.py:55:1: D400 First line should end with a period
+program/computer.py:64:39: E225 missing whitespace around operator
+program/computer.py:75:27: E231 missing whitespace after ':'
+program/computer.py:75:28: E261 at least two spaces before inline comment
+program/computer.py:75:28: E262 inline comment should start with '# '
+program/computer.py:76:1: D205 1 blank line required between summary line and description
+program/computer.py:76:1: D400 First line should end with a period
+program/computer.py:85:9: E265 block comment should start with '# '
+program/computer.py:88:13: E265 block comment should start with '# '
+program/computer.py:89:13: E265 block comment should start with '# '
+program/computer.py:95:9: E265 block comment should start with '# '
+program/computer.py:106:9: E265 block comment should start with '# '
+program/computer.py:108:29: E225 missing whitespace around operator
+program/computer.py:112:42: E261 at least two spaces before inline comment
+program/computer.py:112:43: E262 inline comment should start with '# '
+program/computer.py:113:1: D205 1 blank line required between summary line and description
+program/computer.py:113:1: D400 First line should end with a period
+program/computer.py:113:1: D403 First word of the first line should be properly capitalized
+program/computer.py:124:71: E231 missing whitespace after ':'
+program/computer.py:124:72: E261 at least two spaces before inline comment
+program/computer.py:124:72: E262 inline comment should start with '# '
+program/computer.py:124:80: E501 line too long (86 > 79 characters)
+program/computer.py:132:25: E225 missing whitespace around operator
+program/computer.py:144:37: E251 unexpected spaces around keyword / parameter equals
+program/computer.py:144:39: E251 unexpected spaces around keyword / parameter equals
+program/computer.py:145:1: D205 1 blank line required between summary line and description
+program/computer.py:145:1: D400 First line should end with a period
+program/computer.py:145:1: D403 First word of the first line should be properly capitalized
+program/dice.py:1:1: D200 One-line docstring should fit on one line with quotes
+program/dice.py:1:1: D400 First line should end with a period
+program/dice.py:7:1: H601 class has low (0.00%) cohesion
+program/dice.py:7:1: E302 expected 2 blank lines, found 1
+program/dice.py:8:1: D204 1 blank line required after class docstring
+program/dice.py:8:1: D205 1 blank line required between summary line and description
+program/dice.py:8:1: D400 First line should end with a period
+program/dice.py:10:80: E501 line too long (89 > 79 characters)
+program/dice.py:22:1: D200 One-line docstring should fit on one line with quotes
+program/dice.py:22:1: D400 First line should end with a period
+program/dice.py:25:36: E231 missing whitespace after ','
+program/dice.py:28:5: E303 too many blank lines (2)
+program/dice.py:30:1: D205 1 blank line required between summary line and description
+program/dice.py:30:1: D400 First line should end with a period
+program/dice_hand.py:1:1: D200 One-line docstring should fit on one line with quotes
+program/dice_hand.py:1:1: D400 First line should end with a period
+program/dice_hand.py:5:1: E302 expected 2 blank lines, found 1
+program/dice_hand.py:5:16: E261 at least two spaces before inline comment
+program/dice_hand.py:5:17: E262 inline comment should start with '# '
+program/dice_hand.py:6:1: D200 One-line docstring should fit on one line with quotes
+program/dice_hand.py:6:1: D204 1 blank line required after class docstring
+program/dice_hand.py:6:1: D400 First line should end with a period
+program/dice_hand.py:10:5: E265 block comment should start with '# '
+program/dice_hand.py:11:5: E265 block comment should start with '# '
+program/dice_hand.py:14:1: D107 Missing docstring in __init__
+program/dice_hand.py:16:26: E225 missing whitespace around operator
+program/dice_hand.py:20:1: D205 1 blank line required between summary line and description
+program/dice_hand.py:20:1: D400 First line should end with a period
+program/dice_hand.py:20:1: D401 First line should be in imperative mood
+program/dice_hand.py:20:1: D403 First word of the first line should be properly capitalized
+program/dice_hand.py:21:80: E501 line too long (98 > 79 characters)
+program/dice_hand.py:24:9: E265 block comment should start with '# '
+program/dice_hand.py:30:1: D205 1 blank line required between summary line and description
+program/dice_hand.py:30:1: D400 First line should end with a period
+program/dice_hand.py:30:1: D401 First line should be in imperative mood
+program/dice_hand.py:30:1: D403 First word of the first line should be properly capitalized
+program/dice_hand.py:37:13: E701 multiple statements on one line (colon)
+program/dice_hand.py:37:80: E501 line too long (83 > 79 characters)
+program/dice_hand.py:38:9: E265 block comment should start with '# '
+program/dice_hand.py:41:1: D205 1 blank line required between summary line and description
+program/dice_hand.py:41:1: D400 First line should end with a period
+program/dice_hand.py:41:1: D403 First word of the first line should be properly capitalized
+program/dice_hand.py:47:22: E225 missing whitespace around operator
+program/dice_hand.py:51:1: D205 1 blank line required between summary line and description
+program/dice_hand.py:51:1: D400 First line should end with a period
+program/dice_hand.py:51:1: D403 First word of the first line should be properly capitalized
+program/dice_hand.py:61:1: D205 1 blank line required between summary line and description
+program/dice_hand.py:61:1: D400 First line should end with a period
+program/dice_hand.py:61:1: D401 First line should be in imperative mood
+program/dice_hand.py:61:1: D403 First word of the first line should be properly capitalized

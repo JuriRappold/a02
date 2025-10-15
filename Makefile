@@ -62,11 +62,13 @@ clean-all: clean clean-doc
 # `guess` changed to `program`
 pylint:
 	@$(call MESSAGE,$@)
-	-cd program && $(PYTHON) -m pylint *.py
+	$(PYTHON) -m pylint program/*.py > doc_files/pylint/pylint_report_program.txt 2>&1
+	$(PYTHON) -m pylint tests/*.py > doc_files/pylint/pylint_report_tests.txt 2>&1
 
 flake8:
 	@$(call MESSAGE,$@)
-	-flake8
+	-flake8 program/ > doc_files/flake/flake_report_program.txt 2>&1
+	-flake8 tests/ > doc_files/flake/flake_report_tests.txt 2>&1
 
 lint: flake8 pylint
 
@@ -90,7 +92,7 @@ unittest:
 
 coverage:
 	@$(call MESSAGE,$@)
-	coverage run -m unittest discover
+	coverage run -m pytest tests/dice_unit_tests.py
 	coverage html
 	coverage report -m
 
