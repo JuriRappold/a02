@@ -88,7 +88,7 @@ codestyle: black
 #
 unittest:
 	@$(call MESSAGE,$@)
-	 $(PYTHON) -m unittest discover
+	 $(PYTHON) -m pytest tests/dice_unit_tests.py
 
 coverage:
 	@$(call MESSAGE,$@)
@@ -98,7 +98,7 @@ coverage:
 
 coverage-xml:
 	@$(call MESSAGE,$@)
-	coverage run -m unittest discover
+	coverage run -m pytest tests/dice_unit_tests.py
 	coverage xml
 
 test: lint coverage
@@ -135,23 +135,23 @@ doc: pdoc pyreverse #pydoc sphinx
 #
 radon-cc:
 	@$(call MESSAGE,$@)
-	radon cc --show-complexity --average guess
+	radon cc --show-complexity --average program
 
 radon-mi:
 	@$(call MESSAGE,$@)
-	radon mi --show guess
+	radon mi --show program
 
 radon-raw:
 	@$(call MESSAGE,$@)
-	radon raw guess
+	radon raw program
 
 radon-hal:
 	@$(call MESSAGE,$@)
-	radon hal guess
+	radon hal program
 
 cohesion:
 	@$(call MESSAGE,$@)
-	cohesion --directory guess
+	cohesion --directory program
 
 metrics: radon-cc radon-mi radon-raw radon-hal cohesion
 
@@ -162,7 +162,7 @@ metrics: radon-cc radon-mi radon-raw radon-hal cohesion
 #
 bandit:
 	@$(call MESSAGE,$@)
-	bandit --recursive guess
+	bandit --recursive program
 # ---------------------------------------------------------
 # own cmds
 pytest:
