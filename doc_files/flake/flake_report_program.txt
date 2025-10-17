@@ -1,0 +1,13 @@
+program/__init__.py:1:1: D104 Missing docstring in public package
+program/dice.py:1:1: D200 One-line docstring should fit on one line with quotes
+program/dice.py:1:1: D400 First line should end with a period
+program/dice.py:8:1: H601 class has low (0.00%) cohesion
+program/dice.py:10:1: D211 No blank lines allowed before class docstring
+program/dice.py:10:1: D204 1 blank line required after class docstring
+program/dice.py:10:1: D205 1 blank line required between summary line and description
+program/dice.py:10:1: D300 Use """triple double quotes"""
+program/dice.py:10:1: D400 First line should end with a period
+program/dice.py:25:1: D200 One-line docstring should fit on one line with quotes
+program/dice.py:25:1: D400 First line should end with a period
+program/dice.py:32:1: D205 1 blank line required between summary line and description
+program/dice.py:32:1: D400 First line should end with a period
