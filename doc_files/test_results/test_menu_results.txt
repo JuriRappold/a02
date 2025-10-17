@@ -1,0 +1,193 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.6, pytest-8.4.2, pluggy-1.6.0
+rootdir: C:\Users\JURA0016\Documents\a02
+plugins: mock-3.15.1
+collected 15 items
+
+tests\test_menu.py ..F.FFFFFFFFFFF                                       [100%]
+
+================================== FAILURES ===================================
+_________________________ test_change_usrName_newNull _________________________
+
+    def test_change_usrName_newNull():
+        mockPlayer = MockPlayer("Mocker", 28)
+    
+        menuTest = menu()
+        menuTest.set_player(mockPlayer)
+>       assert menuTest.change_username("Mocker", None) == False
+E       AssertionError: assert True == False
+E        +  where True = change_username('Mocker', None)
+E        +    where change_username = <program.menu.menu object at 0x000001FC9E779400>.change_username
+
+tests\test_menu.py:26: AssertionError
+_______________________ test_change_usrName_escapeChar ________________________
+
+    def test_change_usrName_escapeChar():
+        mockPlayer = MockPlayer("Mocker", 28)
+    
+        menuTest = menu()
+        menuTest.set_player(mockPlayer)
+>       assert menuTest.change_username("Mocker", "Escape\nCharacter")==False
+E       AssertionError: assert True == False
+E        +  where True = change_username('Mocker', 'Escape\nCharacter')
+E        +    where change_username = <program.menu.menu object at 0x000001FC9E779D60>.change_username
+
+tests\test_menu.py:39: AssertionError
+_________________________ test_change_usrName_player __________________________
+
+    def test_change_usrName_player():
+        mockPlayer = MockPlayer("Mocker", 28)
+    
+        menuTest = menu()
+        menuTest.set_player(mockPlayer)
+>       assert menuTest.change_username(mockPlayer.username, MockPlayer("Username", 42)) == False
+E       AssertionError: assert True == False
+E        +  where True = change_username('Mocker', <tests.mock_player.MockPlayer object at 0x000001FCA0267530>)
+E        +    where change_username = <program.menu.menu object at 0x000001FCA02672C0>.change_username
+E        +    and   'Mocker' = <tests.mock_player.MockPlayer object at 0x000001FCA0267050>.username
+E        +    and   <tests.mock_player.MockPlayer object at 0x000001FCA0267530> = MockPlayer('Username', 42)
+
+tests\test_menu.py:46: AssertionError
+____________________________ test_set_player_None _____________________________
+
+    def test_set_player_None():
+        menuTest = menu()
+    
+>       assert menuTest.set_player(None) == False
+E       assert None == False
+E        +  where None = set_player(None)
+E        +    where set_player = <program.menu.menu object at 0x000001FCA0267860>.set_player
+
+tests\test_menu.py:53: AssertionError
+__________________________ test_set_player_primitive __________________________
+
+    def test_set_player_primitive():
+        menuTest = menu()
+        primitiveTypes = ["I'm a player!", 42, 3.20]
+        for primitive in primitiveTypes:
+>           assert menuTest.set_player(primitive) == False
+E           assert None == False
+E            +  where None = set_player("I'm a player!")
+E            +    where set_player = <program.menu.menu object at 0x000001FCA0267FE0>.set_player
+
+tests\test_menu.py:59: AssertionError
+____________________________ test_set_player_list _____________________________
+
+    def test_set_player_list():
+        menuTest = menu()
+        primitiveTypes = ["I'm a player!", 42, 3.20]
+>       assert menuTest.set_player(primitiveTypes) == False
+E       assert None == False
+E        +  where None = set_player(["I'm a player!", 42, 3.2])
+E        +    where set_player = <program.menu.menu object at 0x000001FCA02651F0>.set_player
+
+tests\test_menu.py:64: AssertionError
+___________________________ test_set_player_player ____________________________
+
+    def test_set_player_player():
+        menuTest = menu()
+        mockPlayer = MockPlayer("Mocker", 28)
+    
+>       assert menuTest.set_player(mockPlayer) == True
+E       assert None == True
+E        +  where None = set_player(<tests.mock_player.MockPlayer object at 0x000001FCA02661B0>)
+E        +    where set_player = <program.menu.menu object at 0x000001FCA0266090>.set_player
+
+tests\test_menu.py:70: AssertionError
+___________________________ test_validate_menu_null ___________________________
+
+    def test_validate_menu_null():
+        menuTest = menu()
+        with pytest.raises(ValueError, match="False"):
+>           menuTest.validate_menu_choice(None)
+
+tests\test_menu.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <program.menu.menu object at 0x000001FCA0266B40>, choice = None
+
+    def validate_menu_choice(self, choice):
+        """
+        Validate if the menu choice is valid.
+    
+        :param choice: user input choice (string)
+        :return: True if choice is valid (1-5), False otherwise
+        """
+        # probably just have choice_int = int(choice) \n return 1 <= choice_int <= 5 --> is a boolean expression
+        # also pretty sure it won't throw an error
+        try:
+>           choice_int = int(choice)
+                         ^^^^^^^^^^^
+E           TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+
+program\menu.py:209: TypeError
+__________________________ test_validate_menu_negNum __________________________
+
+    def test_validate_menu_negNum():
+        menuTest = menu()
+>       with pytest.raises(ValueError, match="False"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests\test_menu.py:82: Failed
+__________________________ test_validate_menu_float ___________________________
+
+    def test_validate_menu_float():
+        menuTest = menu()
+>       with pytest.raises(ValueError, match="False"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests\test_menu.py:87: Failed
+__________________________ test_validate_menu_string __________________________
+
+    def test_validate_menu_string():
+        menuTest = menu()
+>       with pytest.raises(ValueError, match="False"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests\test_menu.py:92: Failed
+__________________________ test_validate_menu_player __________________________
+
+    def test_validate_menu_player():
+        menuTest = menu()
+        mockPlayer = MockPlayer("Mocker", 28)
+        with pytest.raises(ValueError, match="False"):
+>           menuTest.validate_menu_choice(mockPlayer)
+
+tests\test_menu.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <program.menu.menu object at 0x000001FCA0ADB410>
+choice = <tests.mock_player.MockPlayer object at 0x000001FCA0ADB680>
+
+    def validate_menu_choice(self, choice):
+        """
+        Validate if the menu choice is valid.
+    
+        :param choice: user input choice (string)
+        :return: True if choice is valid (1-5), False otherwise
+        """
+        # probably just have choice_int = int(choice) \n return 1 <= choice_int <= 5 --> is a boolean expression
+        # also pretty sure it won't throw an error
+        try:
+>           choice_int = int(choice)
+                         ^^^^^^^^^^^
+E           TypeError: int() argument must be a string, a bytes-like object or a real number, not 'MockPlayer'
+
+program\menu.py:209: TypeError
+=========================== short test summary info ===========================
+FAILED tests/test_menu.py::test_change_usrName_newNull - AssertionError: asse...
+FAILED tests/test_menu.py::test_change_usrName_escapeChar - AssertionError: a...
+FAILED tests/test_menu.py::test_change_usrName_player - AssertionError: asser...
+FAILED tests/test_menu.py::test_set_player_None - assert None == False
+FAILED tests/test_menu.py::test_set_player_primitive - assert None == False
+FAILED tests/test_menu.py::test_set_player_list - assert None == False
+FAILED tests/test_menu.py::test_set_player_player - assert None == True
+FAILED tests/test_menu.py::test_validate_menu_null - TypeError: int() argumen...
+FAILED tests/test_menu.py::test_validate_menu_negNum - Failed: DID NOT RAISE ...
+FAILED tests/test_menu.py::test_validate_menu_float - Failed: DID NOT RAISE <...
+FAILED tests/test_menu.py::test_validate_menu_string - Failed: DID NOT RAISE ...
+FAILED tests/test_menu.py::test_validate_menu_player - TypeError: int() argum...
+======================== 12 failed, 3 passed in 0.14s =========================

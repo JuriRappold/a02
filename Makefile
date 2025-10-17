@@ -168,4 +168,4 @@ bandit:
 # own cmds
 pytest:
 	@$(call MESSAGE,$@)
-	-cd tests && pytest menu_unit_tests.py
+	pytest tests/test_menu.py > doc_files/test_results/test_menu_results.txt
