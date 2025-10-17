@@ -17,7 +17,7 @@ _________________________ test_change_usrName_newNull _________________________
 >       assert menuTest.change_username("Mocker", None) == False
 E       AssertionError: assert True == False
 E        +  where True = change_username('Mocker', None)
-E        +    where change_username = <program.menu.menu object at 0x000001FC9E779400>.change_username
+E        +    where change_username = <program.menu.menu object at 0x0000022975BE68A0>.change_username
 
 tests\test_menu.py:26: AssertionError
 _______________________ test_change_usrName_escapeChar ________________________
@@ -30,7 +30,7 @@ _______________________ test_change_usrName_escapeChar ________________________
 >       assert menuTest.change_username("Mocker", "Escape\nCharacter")==False
 E       AssertionError: assert True == False
 E        +  where True = change_username('Mocker', 'Escape\nCharacter')
-E        +    where change_username = <program.menu.menu object at 0x000001FC9E779D60>.change_username
+E        +    where change_username = <program.menu.menu object at 0x0000022974130380>.change_username
 
 tests\test_menu.py:39: AssertionError
 _________________________ test_change_usrName_player __________________________
@@ -42,10 +42,10 @@ _________________________ test_change_usrName_player __________________________
         menuTest.set_player(mockPlayer)
 >       assert menuTest.change_username(mockPlayer.username, MockPlayer("Username", 42)) == False
 E       AssertionError: assert True == False
-E        +  where True = change_username('Mocker', <tests.mock_player.MockPlayer object at 0x000001FCA0267530>)
-E        +    where change_username = <program.menu.menu object at 0x000001FCA02672C0>.change_username
-E        +    and   'Mocker' = <tests.mock_player.MockPlayer object at 0x000001FCA0267050>.username
-E        +    and   <tests.mock_player.MockPlayer object at 0x000001FCA0267530> = MockPlayer('Username', 42)
+E        +  where True = change_username('Mocker', <tests.mock_player.MockPlayer object at 0x0000022975C57B00>)
+E        +    where change_username = <program.menu.menu object at 0x0000022975C57860>.change_username
+E        +    and   'Mocker' = <tests.mock_player.MockPlayer object at 0x0000022975C57620>.username
+E        +    and   <tests.mock_player.MockPlayer object at 0x0000022975C57B00> = MockPlayer('Username', 42)
 
 tests\test_menu.py:46: AssertionError
 ____________________________ test_set_player_None _____________________________
@@ -56,7 +56,7 @@ ____________________________ test_set_player_None _____________________________
 >       assert menuTest.set_player(None) == False
 E       assert None == False
 E        +  where None = set_player(None)
-E        +    where set_player = <program.menu.menu object at 0x000001FCA0267860>.set_player
+E        +    where set_player = <program.menu.menu object at 0x0000022975C57D40>.set_player
 
 tests\test_menu.py:53: AssertionError
 __________________________ test_set_player_primitive __________________________
@@ -68,7 +68,7 @@ __________________________ test_set_player_primitive __________________________
 >           assert menuTest.set_player(primitive) == False
 E           assert None == False
 E            +  where None = set_player("I'm a player!")
-E            +    where set_player = <program.menu.menu object at 0x000001FCA0267FE0>.set_player
+E            +    where set_player = <program.menu.menu object at 0x0000022975C55790>.set_player
 
 tests\test_menu.py:59: AssertionError
 ____________________________ test_set_player_list _____________________________
@@ -79,7 +79,7 @@ ____________________________ test_set_player_list _____________________________
 >       assert menuTest.set_player(primitiveTypes) == False
 E       assert None == False
 E        +  where None = set_player(["I'm a player!", 42, 3.2])
-E        +    where set_player = <program.menu.menu object at 0x000001FCA02651F0>.set_player
+E        +    where set_player = <program.menu.menu object at 0x0000022975C55760>.set_player
 
 tests\test_menu.py:64: AssertionError
 ___________________________ test_set_player_player ____________________________
@@ -90,8 +90,8 @@ ___________________________ test_set_player_player ____________________________
     
 >       assert menuTest.set_player(mockPlayer) == True
 E       assert None == True
-E        +  where None = set_player(<tests.mock_player.MockPlayer object at 0x000001FCA02661B0>)
-E        +    where set_player = <program.menu.menu object at 0x000001FCA0266090>.set_player
+E        +  where None = set_player(<tests.mock_player.MockPlayer object at 0x0000022975C56A50>)
+E        +    where set_player = <program.menu.menu object at 0x0000022975C569F0>.set_player
 
 tests\test_menu.py:70: AssertionError
 ___________________________ test_validate_menu_null ___________________________
@@ -104,7 +104,7 @@ ___________________________ test_validate_menu_null ___________________________
 tests\test_menu.py:78: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
-self = <program.menu.menu object at 0x000001FCA0266B40>, choice = None
+self = <program.menu.menu object at 0x0000022975C57260>, choice = None
 
     def validate_menu_choice(self, choice):
         """
@@ -159,8 +159,8 @@ __________________________ test_validate_menu_player __________________________
 tests\test_menu.py:99: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
-self = <program.menu.menu object at 0x000001FCA0ADB410>
-choice = <tests.mock_player.MockPlayer object at 0x000001FCA0ADB680>
+self = <program.menu.menu object at 0x0000022975CDB980>
+choice = <tests.mock_player.MockPlayer object at 0x0000022975CDBBF0>
 
     def validate_menu_choice(self, choice):
         """
@@ -190,4 +190,4 @@ FAILED tests/test_menu.py::test_validate_menu_negNum - Failed: DID NOT RAISE ...
 FAILED tests/test_menu.py::test_validate_menu_float - Failed: DID NOT RAISE <...
 FAILED tests/test_menu.py::test_validate_menu_string - Failed: DID NOT RAISE ...
 FAILED tests/test_menu.py::test_validate_menu_player - TypeError: int() argum...
-======================== 12 failed, 3 passed in 0.14s =========================
+======================== 12 failed, 3 passed in 0.13s =========================

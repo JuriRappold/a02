@@ -89,17 +89,17 @@ codestyle: black
 #
 unittest:
 	@$(call MESSAGE,$@)
-	 $(PYTHON) -m tests/menu_unit_tests.py
+	 $(PYTHON) -m pytest tests/test_menu.py
 
 coverage:
 	@$(call MESSAGE,$@)
-	coverage run -m tests/menu_unit_tests.py
+	coverage run -m pytest tests/test_menu.py
 	coverage html
 	coverage report -m
 
 coverage-xml:
 	@$(call MESSAGE,$@)
-	coverage run -m pytest tests/menu_unit_tests.py
+	coverage run -m pytest tests/test_menu.py
 	coverage xml
 
 test: lint coverage
