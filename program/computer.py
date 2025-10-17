@@ -27,7 +27,7 @@ class Computer:
         self.id = hash(computer_name + difficulty)
         self.dice_hand = DiceHand()  # create dice_hand obj once class is integrated
         self.score = 0
-        self.turn_number = 0  # number of scoring turns
+        self.turn_number = 4  # number of scoring turns needed
 
     def select_difficulty(self, new_difficulty):
         """selecting new difficulty;"""
@@ -86,7 +86,7 @@ class Computer:
         """
         # setup
         turn = 0
-        if self.turn_number == 0:
+        if self.turn_number == 4:
             # incorrect logic, should be 4, see docstring
             # double check
             bound = 25
@@ -107,7 +107,7 @@ class Computer:
 
         # end of turn logic
         if not roll_is_one:
-            self.turn_number += 1
+            self.turn_number -= 1
             self.dice_hand.add_turn_rolls()
         return turn
 
