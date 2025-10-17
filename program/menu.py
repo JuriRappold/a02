@@ -7,7 +7,6 @@ displaying game information. The menu acts as the main interaction
 point between the player and the game.
 """
 
-
 class menu:
     """
     Manages the user interface and menu system for pig dice game.
@@ -180,6 +179,7 @@ class menu:
 
         :return: formatted menu options string
         """
+        #missing changing difficulty for computer
         options = """
         ========================================
                     MAIN MENU
@@ -203,11 +203,14 @@ class menu:
         :param choice: user input choice (string)
         :return: True if choice is valid (1-5), False otherwise
         """
+        # probably just have choice_int = int(choice) \n return 1 <= choice_int <= 5 --> is a boolean expression
+        # also pretty sure it won't throw an error
         try:
             choice_int = int(choice)
             return 1 <= choice_int <= 5
         except ValueError:
-            return False
+            # for testing purposes turned into a string, ide warned of a syntax error...
+            return "False"
 
     def display_error_message(self, message):
         """
