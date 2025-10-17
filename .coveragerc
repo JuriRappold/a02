@@ -1,0 +1,16 @@
+[run]
+branch = True
+source = program
+data_file = doc_files/coverage/.coverage
+
+[report]
+show_missing = True
+
+[html]
+directory = doc_files/coverage/report/html
+
+[xml]
+output = doc_files/coverage/report/coverage.xml
+
+[json]
+output = doc_files/coverage/report/coverage.json
