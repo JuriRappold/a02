@@ -2,6 +2,14 @@ from program.high_score import HighScore
 import pytest
 
 
+def test_init_creates_instance():
+    """Test that __init__ creates a HighScore instance with chart"""
+    test_chart = {"Rob": 28, "Moth": 19}
+    scores = HighScore(test_chart)
+    assert scores.chart == test_chart
+    assert isinstance(scores, HighScore)
+
+
 def test_get_chart_returns_string():
     """Test that get_chart returns a string"""
     scores = HighScore({"Rob": 28, "Moth": 19})
@@ -47,10 +55,10 @@ def test_get_chart_input_big_dictionary():
 
 
 def test_sort_dict_input_unsorted():
-    """Test that sort_chart sorts properly"""
+    """Test that sort_dict sorts properly by value in descending order"""
     test_dict = {1: 15, 4: 19, 2: 18}
     res = HighScore.sort_dict(test_dict)
-    exp = {1: 15, 2: 18, 4: 19}
+    exp = {4: 19, 2: 18, 1: 15}
     assert res == exp
 
 
@@ -62,8 +70,8 @@ def test_sort_dict_input_int():
 
 
 def test_sort_dict_input_None():
-    """Test that sort_chart can handle None"""
-    res = HighScore.sort_dict(5)
+    """Test that sort_dict can handle None"""
+    res = HighScore.sort_dict(None)
     exp = {}
     assert res == exp
 
@@ -76,7 +84,37 @@ def test_sort_dict_input_list():
 
 
 def test_sort_dict_input_tuple():
-    """Test that sort_chart can handle tuple"""
+    """Test that sort_dict can handle tuple"""
     res = HighScore.sort_dict((1, 4, 3, "f"))
     exp = {}
+    assert res == exp
+
+
+def test_get_chart_contains_leaderboard_header():
+    """Test that get_chart includes LEADERBOARD header"""
+    scores = HighScore({"Alice": 50})
+    res = scores.get_chart()
+    assert "LEADERBOARD" in res
+
+
+def test_get_chart_formats_correctly():
+    """Test that get_chart contains proper formatting characters"""
+    scores = HighScore({"Player1": 100})
+    res = scores.get_chart()
+    assert "║" in res
+    assert "╔" in res or "=" in res
+
+
+def test_sort_dict_empty_dictionary():
+    """Test that sort_dict handles empty dictionary"""
+    res = HighScore.sort_dict({})
+    exp = {}
+    assert res == exp
+
+
+def test_sort_dict_already_sorted():
+    """Test that sort_dict handles already sorted dictionary"""
+    test_dict = {1: 100, 2: 50, 3: 25}
+    res = HighScore.sort_dict(test_dict)
+    exp = {1: 100, 2: 50, 3: 25}
     assert res == exp
