@@ -1,5 +1,5 @@
-from dice import Dice
-#from dice_hand import DiceHand
+from program.dice import Dice
+# from dice_hand import DiceHand
 
 class Player:
     _next_id = 0
@@ -25,15 +25,14 @@ class Player:
         else: raise TypeError("name should be string!")
 
     def get_username(self):
-        return self._username
+        return self.__username
 
     def get_total_score(self):
-        return self._total_score
+        return self.__total_score
 
     # for cheating purposes?
     def set_total_score(self, score):
-        self.total_score = score
-        pass
+        self.__total_score = score
 
     def set_dice_hand(dice_hand_list):
         # self.diceHand = dice_hand_list
