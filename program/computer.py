@@ -18,36 +18,60 @@ class Computer:
     take_turn(player_score) -->
     should be only call really outside the class
     """
-
+    __DIFFICULTIES = [(1, "easy"), (2, "normal"), (3, "hard")]
 
     def __init__(self, computer_name, difficulty):
         """computer Constructor."""
-        self.computer_name = computer_name
-        self.difficulty = difficulty  # has to be a tuple
-        self.id = hash(computer_name + difficulty)
-        self.dice_hand = DiceHand()  # create dice_hand obj once class is integrated
-        self.score = 0
-        self.turn_number = 4  # number of scoring turns needed
+        if computer_name is not None or difficulty is not None:
+            if isinstance(computer_name, str):#should take care of none-inputs and non-str inputs
+                self.computer_name = computer_name
+            # if isinstance(difficulty, str or int):
+            #     match difficulty:
+            #         case 1 | "easy" :
+            #             self.difficulty = 0
+            #         case 2 | "normal" :
+            #             self.difficulty = 1
+            #         case 3 | "hard":
+            #             self.difficulty = 2
+            if isinstance(difficulty, tuple):
+                match difficulty:
+                    case (1, "easy"):
+                        self.difficulty = 0
+                    case (2, "normal"):
+                        self.difficulty = 1
+                    case (3, "hard"):
+                        self.difficulty = 2
+
+                self.id = hash(computer_name + str(difficulty[0])) #can only hash a non-tuple
+                self.dice_hand = DiceHand()  # create dice_hand obj once class is integrated
+                self.score = 0
+                self.turn_number = 4  # number of scoring turns needed
+            raise TypeError(f"Parameter Issues: {type(computer_name)} or {type(difficulty)}")
+        raise TypeError(f"Parameter Issues: A Parameter is None")
 
     def select_difficulty(self, new_difficulty):
         """selecting new difficulty;"""
         if new_difficulty in ("easy", 1):  # from linting lol
-            self.difficulty = (1, "easy")
+            self.difficulty = 0
         elif new_difficulty in ("normal", 2):
-            self.difficulty = (2, "normal")
+            self.difficulty = 1
         elif new_difficulty in ("hard", 3):
-            self.difficulty = (3, "hard")
+            self.difficulty = 2
         else:
             return f"Invalid Difficulty Option: {new_difficulty}"
-        return f"Difficulty changed to: {self.difficulty[1]}"
+        return f"Difficulty changed to: {self.__DIFFICULTIES[self.difficulty]}"
 
     def change_computer_name(self, new_name):
         """changing the computer username, id remains the same"""
-        if not new_name == "":
+        if not new_name == "" or new_name is not None:
+            if isinstance(new_name, list or dict):
+                self.computer_name = ""
+                for item in new_name:
+                    self.computer_name += f"{str(item)}"
             self.computer_name = new_name
         else:
             return "Name is invalid or/and null"
-        return ""
+        return " "
 
     def roll_dice(self):
         """rolls the dice; make it static?"""
@@ -161,3 +185,5 @@ class Computer:
             case 3:
                 turn = self.keep_or_race(player_score)
         return turn
+
+

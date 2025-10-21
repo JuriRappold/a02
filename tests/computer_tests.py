@@ -159,14 +159,14 @@ def test_init_difficulty_invalid():
 # TEST CHANGE COMPUTER NAME
 def test_change_computer_name():
     """Test that change_computer_name() successfully updates computer_name."""
-    test_pc = Computer('Name1', 'easy')
+    test_pc = Computer('Name1', (1,'easy'))
     exp = 'Nephilim'
     test_pc.change_computer_name(exp)
     assert test_pc.computer_name == exp
 
 def test_change_name_same_id():
     """Test that changing computer_name does not alter the computer's unique ID."""
-    test_pc = Computer('Name1', 'easy')
+    test_pc = Computer('Name1', (1,'easy'))
     first_id = test_pc.id
     test_pc.change_computer_name('Cool new name')
     second_id = test_pc.id
@@ -176,7 +176,7 @@ def test_change_name_empty_value():
     """Test that empty string input does not overwrite the existing computer_name."""
     first_name = 'Name1'
     empty_name = ''
-    test_pc = Computer(first_name, 'easy')
+    test_pc = Computer(first_name, (1,'easy'))
     test_pc.change_computer_name(empty_name)
     assert test_pc.computer_name != empty_name
 
@@ -184,7 +184,7 @@ def test_change_name_dictionary_value():
     """check that computer_name can handle dictionary value"""
     first_name = 'Name1'
     dict_name = {1:4,6:2}
-    test_pc = Computer(first_name, 'easy')
+    test_pc = Computer(first_name, (1,'easy'))
     test_pc.change_computer_name(dict_name)
     print(test_pc.computer_name)
     assert type(test_pc.computer_name) == str
@@ -193,7 +193,7 @@ def test_change_name_list_value():
     """check that computer_name can handle list value"""
     first_name = 'Name1'
     list_name = [2,4,8,0]
-    test_pc = Computer(first_name, 'easy')
+    test_pc = Computer(first_name, (1,'easy'))
     test_pc.change_computer_name(list_name)
     assert type(test_pc.computer_name) == str
 
@@ -201,19 +201,19 @@ def test_change_name_None_value():
     """check that computer_name can handle None"""
     first_name = 'Name1'
     none_name = None
-    test_pc = Computer(first_name, 'easy')
+    test_pc = Computer(first_name, (1,'easy'))
     test_pc.change_computer_name(none_name)
     assert type(test_pc.computer_name) == str
 
 def test_roll_dice_type():
     """Test that roll_dice() returns an integer value."""
-    test_pc = Computer('Nephilim', 'easy')
+    test_pc = Computer('Nephilim', (1,'easy'))
     test_dice = test_pc.roll_dice()
     assert type(test_dice) == int
 
 def test_hold_at_twenty(monkeypatch):
     """force dice to always roll 5 -> stops after reaching >= 20"""
-    test_pc = Computer('Nephilim', 'easy')
+    test_pc = Computer('Nephilim', (1,'easy'))
     monkeypatch.setattr('program.computer.Dice.roll_dice', lambda: 5)
     result = test_pc.hold_at_twenty()
     assert result == 20  # 5+5+5+5
@@ -222,7 +222,7 @@ def test_hold_at_twenty_roll_one(monkeypatch):
     """Test that hold_at_twenty() stops rolling when total reaches or exceeds 20."""
     rolls = iter([4, 1])  # roll 4, then 1
     monkeypatch.setattr('program.computer.Dice.roll_dice', lambda: next(rolls))
-    test_pc = Computer('Nephilim', 'easy')
+    test_pc = Computer('Nephilim', (1,'easy'))
     result = test_pc.hold_at_twenty()
     assert result == 0  # resets after rolling 1
 

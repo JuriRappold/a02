@@ -1,4 +1,5 @@
 """unit tests for dice.py"""
+
 import pytest
 from program.dice import Dice
 
