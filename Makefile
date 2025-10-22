@@ -112,7 +112,7 @@ pydoc:
 	@$(call MESSAGE,$@)
 	install -d docs_gen/pydoc
 	$(PYTHON) -m pydoc -w program/*.py
-	mv *.html doc_gen/pydoc
+	mv *.html docs_gen/pydoc
 
 pdoc:
 	@$(call MESSAGE,$@)

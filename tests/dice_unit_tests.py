@@ -4,6 +4,7 @@ import pytest
 from program.dice import Dice
 
 
+
 def test_non_int0():
     """Non-integer parameter test --> parameter is a string."""
     with pytest.raises(TypeError, match="Roll is not an integer!"):

@@ -1,0 +1,14 @@
+************* Module tests.dice_unit_tests
+tests\dice_unit_tests.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests\dice_unit_tests.py:5:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests\dice_unit_tests.py:10:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests\dice_unit_tests.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests\dice_unit_tests.py:18:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests\dice_unit_tests.py:23:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests\dice_unit_tests.py:27:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests\dice_unit_tests.py:31:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests\dice_unit_tests.py:3:0: C0411: third party import "pytest" should be placed before first party import "program.dice.Dice"  (wrong-import-order)
+
+------------------------------------------------------------------
+Your code has been rated at 5.91/10 (previous run: 5.91/10, +0.00)
+
