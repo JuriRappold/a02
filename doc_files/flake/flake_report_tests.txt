@@ -1,17 +1,49 @@
 tests/__init__.py:1:1: D104 Missing docstring in public package
+tests/dice_hand_tests.py:1:1: D100 Missing docstring in public module
+tests/dice_hand_tests.py:6:1: D400 First line should end with a period
+tests/dice_hand_tests.py:6:1: D403 First word of the first line should be properly capitalized
+tests/dice_hand_tests.py:8:12: E721 do not compare types, for exact checks use `is` / `is not`, for instance checks use `isinstance()`
+tests/dice_hand_tests.py:12:1: D400 First line should end with a period
+tests/dice_hand_tests.py:12:1: D403 First word of the first line should be properly capitalized
+tests/dice_hand_tests.py:14:12: E721 do not compare types, for exact checks use `is` / `is not`, for instance checks use `isinstance()`
+tests/dice_hand_tests.py:20:12: E721 do not compare types, for exact checks use `is` / `is not`, for instance checks use `isinstance()`
+tests/dice_hand_tests.py:54:80: E501 line too long (80 > 79 characters)
+tests/dice_hand_tests.py:61:80: E501 line too long (80 > 79 characters)
+tests/dice_hand_tests.py:83:80: E501 line too long (81 > 79 characters)
+tests/dice_hand_tests.py:112:80: E501 line too long (83 > 79 characters)
+tests/dice_hand_tests.py:116:80: E501 line too long (81 > 79 characters)
+tests/dice_hand_tests.py:133:80: E501 line too long (83 > 79 characters)
 tests/dice_unit_tests.py:1:1: D100 Missing docstring in public module
-tests/dice_unit_tests.py:1:1: E265 block comment should start with '# '
-tests/dice_unit_tests.py:5:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:5:1: E302 expected 2 blank lines, found 1
-tests/dice_unit_tests.py:10:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:10:1: E302 expected 2 blank lines, found 1
-tests/dice_unit_tests.py:14:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:14:1: E302 expected 2 blank lines, found 1
-tests/dice_unit_tests.py:18:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:18:1: E302 expected 2 blank lines, found 1
-tests/dice_unit_tests.py:23:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:23:1: E302 expected 2 blank lines, found 1
-tests/dice_unit_tests.py:27:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:27:1: E302 expected 2 blank lines, found 1
-tests/dice_unit_tests.py:31:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:31:1: E302 expected 2 blank lines, found 1
+tests/dice_unit_tests.py:6:1: D103 Missing docstring in public function
+tests/dice_unit_tests.py:12:1: D103 Missing docstring in public function
+tests/dice_unit_tests.py:17:1: D103 Missing docstring in public function
+tests/dice_unit_tests.py:22:1: D103 Missing docstring in public function
+tests/dice_unit_tests.py:28:1: D103 Missing docstring in public function
+tests/dice_unit_tests.py:33:1: D103 Missing docstring in public function
+tests/dice_unit_tests.py:38:1: D103 Missing docstring in public function
+tests/test_player.py:1:1: D200 One-line docstring should fit on one line with quotes
+tests/test_player.py:1:1: D400 First line should end with a period
+tests/test_player.py:11:1: D400 First line should end with a period
+tests/test_player.py:17:1: D400 First line should end with a period
+tests/test_player.py:24:1: D400 First line should end with a period
+tests/test_player.py:30:1: D400 First line should end with a period
+tests/test_player.py:36:1: D400 First line should end with a period
+tests/test_player.py:42:1: D400 First line should end with a period
+tests/test_player.py:49:1: D400 First line should end with a period
+tests/test_player.py:56:1: D400 First line should end with a period
+tests/test_player.py:63:1: D400 First line should end with a period
+tests/test_player.py:70:1: D400 First line should end with a period
+tests/test_player.py:78:1: D400 First line should end with a period
+tests/test_player.py:86:1: D400 First line should end with a period
+tests/test_player.py:92:1: D400 First line should end with a period
+tests/test_player.py:100:1: D400 First line should end with a period
+tests/test_player.py:106:1: D400 First line should end with a period
+tests/test_player.py:113:1: D400 First line should end with a period
+tests/test_player.py:120:1: D400 First line should end with a period
+tests/test_player.py:127:1: D400 First line should end with a period
+tests/test_player.py:135:1: D400 First line should end with a period
+tests/test_player.py:142:1: D400 First line should end with a period
+tests/test_player.py:149:1: D400 First line should end with a period
+tests/test_player.py:158:1: D400 First line should end with a period
+tests/test_player.py:165:1: D400 First line should end with a period
+tests/test_player.py:178:1: D400 First line should end with a period

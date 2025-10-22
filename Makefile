@@ -89,7 +89,7 @@ codestyle: black
 #
 unittest:
 	@$(call MESSAGE,$@)
-	 $(PYTHON) -m tests/dice_unit_tests.py
+	 $(PYTHON) -m tests/dice_hand_tests.py
 
 coverage:
 	@$(call MESSAGE,$@)

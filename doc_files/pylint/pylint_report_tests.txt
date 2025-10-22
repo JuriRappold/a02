@@ -1,14 +1,24 @@
+************* Module tests.dice_hand_tests
+tests\dice_hand_tests.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests\dice_hand_tests.py:8:11: C0123: Use isinstance() rather than type() for a typecheck. (unidiomatic-typecheck)
+tests\dice_hand_tests.py:14:11: C0123: Use isinstance() rather than type() for a typecheck. (unidiomatic-typecheck)
+tests\dice_hand_tests.py:30:11: C1803: "test_dicehand.turn_rolls == []" can be simplified to "not test_dicehand.turn_rolls", if it is strictly a sequence, as an empty list is falsey (use-implicit-booleaness-not-comparison)
+tests\dice_hand_tests.py:64:0: C0103: Function name "test_add_roll_None_value" doesn't conform to snake_case naming style (invalid-name)
+tests\dice_hand_tests.py:104:41: W0613: Unused argument 'monkeypatch' (unused-argument)
+tests\dice_hand_tests.py:115:43: W0613: Unused argument 'monkeypatch' (unused-argument)
+tests\dice_hand_tests.py:126:44: W0613: Unused argument 'monkeypatch' (unused-argument)
+tests\dice_hand_tests.py:129:8: W0612: Unused variable 'i' (unused-variable)
 ************* Module tests.dice_unit_tests
 tests\dice_unit_tests.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-tests\dice_unit_tests.py:5:0: C0116: Missing function or method docstring (missing-function-docstring)
-tests\dice_unit_tests.py:10:0: C0116: Missing function or method docstring (missing-function-docstring)
-tests\dice_unit_tests.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
-tests\dice_unit_tests.py:18:0: C0116: Missing function or method docstring (missing-function-docstring)
-tests\dice_unit_tests.py:23:0: C0116: Missing function or method docstring (missing-function-docstring)
-tests\dice_unit_tests.py:27:0: C0116: Missing function or method docstring (missing-function-docstring)
-tests\dice_unit_tests.py:31:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests\dice_unit_tests.py:6:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests\dice_unit_tests.py:12:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests\dice_unit_tests.py:17:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests\dice_unit_tests.py:22:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests\dice_unit_tests.py:28:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests\dice_unit_tests.py:33:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests\dice_unit_tests.py:38:0: C0116: Missing function or method docstring (missing-function-docstring)
 tests\dice_unit_tests.py:3:0: C0411: third party import "pytest" should be placed before first party import "program.dice.Dice"  (wrong-import-order)
 
 ------------------------------------------------------------------
-Your code has been rated at 5.91/10 (previous run: 5.91/10, +0.00)
+Your code has been rated at 9.08/10 (previous run: 9.03/10, +0.05)
 
