@@ -164,7 +164,6 @@ class Computer:
                 turn = self.keep_or_race(player_score)
         return turn
 
-
     def check_valid_computer_name(self, computer_name):
         """checks if the computer_name is of a valid type.
          and returns a valid computer_name
@@ -202,7 +201,7 @@ class Computer:
        """
        listDiff = []
        for diff in self.__DIFFICULTIES:
-           listDiff.append(diff[0])
+           listDiff.append(diff[1])
 
        if isinstance(difficulty, int or float):#type(difficulty) == int or float:
            difficulty = int(difficulty)
@@ -213,7 +212,7 @@ class Computer:
 
        elif isinstance(difficulty, str):
            if difficulty not in listDiff:
-               raise ValueError("Value Error: value is a non-valid string")
+               raise ValueError("value is a non-valid string")
            else:
                match difficulty:
                    case "easy":
