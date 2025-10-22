@@ -14,42 +14,43 @@ def test_init_values():
 
 def test_init_class():
     """Test that creating a Computer instance returns a Computer object."""
-    test_pc = Computer('Nephilim', 'easy')
+    test_pc = Computer('Nephilim', (1,'easy'))
     assert type(test_pc) == Computer 
 
 def test_init_same_name_value():
     """Test that the provided computer_name is stored correctly in the instance."""
     name_exp = 'Nephilim'
-    test_pc = Computer(name_exp, 'easy')
+    test_pc = Computer(name_exp, (1,'easy'))
     assert  test_pc.computer_name == name_exp 
 
 def test_init_values_empty_value_computer_name():
     """Test that computer_name is not empty even when initialized with an empty string."""
-    test_pc = Computer('', 'easy')
+    test_pc = Computer('', (1,'easy'))
     assert test_pc.computer_name != ''
 
 
 def test_init_values_None_value_computer_name():
     """Test that computer_name becomes a string when initialized with None."""
-    test_pc = Computer(None, 'easy')
+    test_pc = Computer(None, (1,'easy'))
     assert type(test_pc.computer_name) == str
 
 
 def test_init_values_dict_value_computer_name():
     """Test that a dictionary input for computer_name is converted to a string."""
-    test_pc = Computer({4:5,8:2}, 'easy')
+    test_pc = Computer({4:5,8:2}, (1,'easy'))
     assert type(test_pc.computer_name) == str
 
 
 def test_init_values_list_value_computer_name():
     """Test that a list input for computer_name is handled properly."""
-    test_pc = Computer([4,7,9], 'easy')
+    test_pc = Computer([4,7,9], (1,'easy'))
     assert type(test_pc.computer_name) == str
 
 def test_init_values_list_value_difficulty():
     """Test that a list input for difficulty is handled properly"""
     test_pc = Computer('Nephilim', ['f',4])
-    assert type(test_pc.computer_name) == tuple
+    #assert type(test_pc.computer_name) == tuple
+    assert type(test_pc.difficulty) == tuple
 
 def test_init_same_difficulty_value():
     '''check that input difficulty value are actually stored inside'''
@@ -58,14 +59,14 @@ def test_init_same_difficulty_value():
     assert test_pc.difficulty == exp    
 
 def test_init_difficulty_is_tuple():
-    '''check that difficulty is a tuple'''
+    """check that difficulty is a tuple"""
     difficulty = ('easy',1)
     test_pc = Computer('Clayman', difficulty)
     assert  type(test_pc.difficulty) == tuple 
 
 
 def test_init_difficulty_dict_values():
-    '''check that difficulty can handle Dict value'''
+    """check that difficulty can handle Dict value"""
     difficulty = {4:5,6:2}
     test_pc = Computer('Clayman', difficulty)
     assert  type(test_pc.difficulty) != dict 
@@ -74,7 +75,8 @@ def test_init_difficulty_None_value():
     '''check that difficulty can handle None value'''
     difficulty = None
     test_pc = Computer('Clayman', difficulty)
-    assert  type(test_pc.difficulty) != None 
+    assert type(test_pc.difficulty) is not None
+
 
 def test_init_difficulty_str_value():
     '''check that difficulty can handle str value'''
@@ -151,9 +153,9 @@ def test_select_difficulty_invalid():
 
 def test_init_difficulty_invalid():
     """Test that select_difficulty() returns an error message for invalid difficulty input."""
-    with pytest.raises(ValueError):
-        test_pc = Computer("Nephilim", ("insane", 1))
-        msg = test_pc.select_difficulty("insane")
+    test_pc = Computer("Nephilim", (1, "easy"))
+    with pytest.raises(ValueError, match="Invalid Difficulty"):
+        test_pc.select_difficulty((4, "insane"))
 
 
 # TEST CHANGE COMPUTER NAME
@@ -207,7 +209,7 @@ def test_change_name_None_value():
 
 def test_roll_dice_type():
     """Test that roll_dice() returns an integer value."""
-    test_pc = Computer('Nephilim', (1,'easy'))
+    test_pc = Computer("Nephilim", (1,"easy"))
     test_dice = test_pc.roll_dice()
     assert type(test_dice) == int
 

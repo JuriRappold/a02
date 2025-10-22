@@ -19,59 +19,34 @@ class Computer:
     should be only call really outside the class
     """
     __DIFFICULTIES = [(1, "easy"), (2, "normal"), (3, "hard")]
+    __DEFAULT_NAME = "Harald (default)"
 
     def __init__(self, computer_name, difficulty):
         """computer Constructor."""
-        if computer_name is not None or difficulty is not None:
-            if isinstance(computer_name, str):#should take care of none-inputs and non-str inputs
-                self.computer_name = computer_name
-            # if isinstance(difficulty, str or int):
-            #     match difficulty:
-            #         case 1 | "easy" :
-            #             self.difficulty = 0
-            #         case 2 | "normal" :
-            #             self.difficulty = 1
-            #         case 3 | "hard":
-            #             self.difficulty = 2
-            if isinstance(difficulty, tuple):
-                match difficulty:
-                    case (1, "easy"):
-                        self.difficulty = 0
-                    case (2, "normal"):
-                        self.difficulty = 1
-                    case (3, "hard"):
-                        self.difficulty = 2
-
-                self.id = hash(computer_name + str(difficulty[0])) #can only hash a non-tuple
-                self.dice_hand = DiceHand()  # create dice_hand obj once class is integrated
-                self.score = 0
-                self.turn_number = 4  # number of scoring turns needed
-            raise TypeError(f"Parameter Issues: {type(computer_name)} or {type(difficulty)}")
-        raise TypeError(f"Parameter Issues: A Parameter is None")
+        self.computer_name = self.check_valid_computer_name(computer_name)
+        self.difficulty = self.check_valid_difficulty(difficulty)
+        self.id = hash(str(computer_name) + str(difficulty[0]))  # can only hash a non-tuple
+        self.dice_hand = DiceHand()  # create dice_hand obj once class is integrated
+        self.score = 0
+        self.turn_number = 4  # number of scoring turns needed
 
     def select_difficulty(self, new_difficulty):
         """selecting new difficulty;"""
-        if new_difficulty in ("easy", 1):  # from linting lol
-            self.difficulty = 0
-        elif new_difficulty in ("normal", 2):
-            self.difficulty = 1
-        elif new_difficulty in ("hard", 3):
-            self.difficulty = 2
+        # if new_difficulty in ("easy", 1):  # from linting lol
+        #     self.difficulty = 0
+        # elif new_difficulty in ("normal", 2):
+        #     self.difficulty = 1
+        # elif new_difficulty in ("hard", 3):
+        #     self.difficulty = 2
+        if type(new_difficulty) == tuple:
+            self.difficulty = self.check_valid_difficulty(new_difficulty)
         else:
-            return f"Invalid Difficulty Option: {new_difficulty}"
-        return f"Difficulty changed to: {self.__DIFFICULTIES[self.difficulty]}"
+            raise ValueError("Invalid Difficulty")
+        return f"Difficulty changed to: {self.difficulty[1]}"#self.__DIFFICULTIES[self.difficulty]
 
     def change_computer_name(self, new_name):
         """changing the computer username, id remains the same"""
-        if not new_name == "" or new_name is not None:
-            if isinstance(new_name, list or dict):
-                self.computer_name = ""
-                for item in new_name:
-                    self.computer_name += f"{str(item)}"
-            self.computer_name = new_name
-        else:
-            return "Name is invalid or/and null"
-        return " "
+        self.computer_name = self.check_valid_computer_name(new_name)
 
     def roll_dice(self):
         """rolls the dice; make it static?"""
@@ -187,3 +162,42 @@ class Computer:
         return turn
 
 
+    def check_valid_computer_name(self, computer_name):
+        """checks if the computer_name is of a valid type.
+         and returns a valid computer_name
+        1. of type string:
+            "" str --> default_name
+            else: return computer_name
+        2. of type list --> concatenate list elements into a string
+        3. of type dict --> concatenate dict values into a string
+        4. else return default
+
+        """
+        if type(computer_name) is None:
+            return self.__DEFAULT_NAME
+        elif type(computer_name)==str:
+            if computer_name =="":
+                return self.__DEFAULT_NAME
+            else: return computer_name
+        elif type(computer_name) == list:
+            new_name = ""
+            for item in computer_name:
+                new_name += str(item)
+            return new_name
+        elif type(computer_name) == dict:
+            new_name = ""
+            for values in computer_name.values():
+                new_name += str(values)
+            return new_name
+        else: return self.__DEFAULT_NAME
+
+    def check_valid_difficulty(self, difficulty):
+        """checks if difficulty is a tuple.
+        if yes: then return the valid difficulty
+        if no: return default easy difficulty;
+        subject to changes, as we will probably change the difficulty variable
+        to the index of the list of difficulties
+        """
+        if type(difficulty) == tuple:
+            return difficulty
+        else: return self.__DIFFICULTIES[0]
