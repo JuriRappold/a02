@@ -25,7 +25,7 @@ class Computer:
         """computer Constructor."""
         self.computer_name = self.check_valid_computer_name(computer_name)
         self.difficulty = self.check_valid_difficulty(difficulty)
-        self.id = hash(str(computer_name) + str(difficulty[0]))  # can only hash a non-tuple
+        self.id = hash(str(computer_name) + str(0))  # can only hash a non-tuple
         self.dice_hand = DiceHand()  # create dice_hand obj once class is integrated
         self.score = 0
         self.turn_number = 4  # number of scoring turns needed
@@ -38,11 +38,14 @@ class Computer:
         #     self.difficulty = 1
         # elif new_difficulty in ("hard", 3):
         #     self.difficulty = 2
-        if type(new_difficulty) == tuple:
-            self.difficulty = self.check_valid_difficulty(new_difficulty)
-        else:
-            raise ValueError("Invalid Difficulty")
-        return f"Difficulty changed to: {self.difficulty[1]}"#self.__DIFFICULTIES[self.difficulty]
+        # if type(new_difficulty) == tuple:
+        #     self.difficulty = self.check_valid_difficulty(new_difficulty)
+        # else:
+        #     raise ValueError("Invalid Difficulty")
+        # return f"Difficulty changed to: {self.difficulty[1]}"#self.__DIFFICULTIES[self.difficulty]
+        self.difficulty = self.check_valid_difficulty(new_difficulty)
+        return f"Difficulty changed to: {self.__DIFFICULTIES[self.difficulty][1]}"
+
 
     def change_computer_name(self, new_name):
         """changing the computer username, id remains the same"""
@@ -192,12 +195,33 @@ class Computer:
         else: return self.__DEFAULT_NAME
 
     def check_valid_difficulty(self, difficulty):
-        """checks if difficulty is a tuple.
-        if yes: then return the valid difficulty
-        if no: return default easy difficulty;
-        subject to changes, as we will probably change the difficulty variable
-        to the index of the list of difficulties
-        """
-        if type(difficulty) == tuple:
-            return difficulty
-        else: return self.__DIFFICULTIES[0]
+       """
+       checks types of difficulty
+       :param difficulty: valid index (int) or valid string ("easy", "normal", "hard")
+       :return: proper index value of self.__DIFFICULTIES for the entered difficulty
+       """
+       listDiff = []
+       for diff in self.__DIFFICULTIES:
+           listDiff.append(diff[0])
+
+       if isinstance(difficulty, int or float):#type(difficulty) == int or float:
+           difficulty = int(difficulty)
+           if difficulty < 0 or difficulty > 2:
+               raise IndexError("Index Error Out of Bounds")
+           else:
+               return difficulty
+
+       elif isinstance(difficulty, str):
+           if difficulty not in listDiff:
+               raise ValueError("Value Error: value is a non-valid string")
+           else:
+               match difficulty:
+                   case "easy":
+                       return 0
+                   case "normal":
+                       return 1
+                   case "hard":
+                       return 2
+       elif type(difficulty) is None or list or dict or tuple or Computer:
+           raise TypeError(f"type is {type(difficulty)}")
+       else: return 0
