@@ -1,26 +1,14 @@
 tests/__init__.py:1:1: D104 Missing docstring in public package
-tests/dice_hand_tests.py:1:1: D100 Missing docstring in public module
-tests/dice_hand_tests.py:6:1: D400 First line should end with a period
-tests/dice_hand_tests.py:6:1: D403 First word of the first line should be properly capitalized
-tests/dice_hand_tests.py:8:12: E721 do not compare types, for exact checks use `is` / `is not`, for instance checks use `isinstance()`
-tests/dice_hand_tests.py:12:1: D400 First line should end with a period
-tests/dice_hand_tests.py:12:1: D403 First word of the first line should be properly capitalized
-tests/dice_hand_tests.py:14:12: E721 do not compare types, for exact checks use `is` / `is not`, for instance checks use `isinstance()`
-tests/dice_hand_tests.py:20:12: E721 do not compare types, for exact checks use `is` / `is not`, for instance checks use `isinstance()`
-tests/dice_hand_tests.py:54:80: E501 line too long (80 > 79 characters)
-tests/dice_hand_tests.py:61:80: E501 line too long (80 > 79 characters)
-tests/dice_hand_tests.py:83:80: E501 line too long (81 > 79 characters)
-tests/dice_hand_tests.py:112:80: E501 line too long (83 > 79 characters)
-tests/dice_hand_tests.py:116:80: E501 line too long (81 > 79 characters)
-tests/dice_hand_tests.py:133:80: E501 line too long (83 > 79 characters)
-tests/dice_unit_tests.py:1:1: D100 Missing docstring in public module
-tests/dice_unit_tests.py:6:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:12:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:17:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:22:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:28:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:33:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:38:1: D103 Missing docstring in public function
+tests/dice_hand_tests.py:7:1: D400 First line should end with a period
+tests/dice_hand_tests.py:7:1: D403 First word of the first line should be properly capitalized
+tests/dice_hand_tests.py:10:5: E265 block comment should start with '# '
+tests/dice_hand_tests.py:14:1: D400 First line should end with a period
+tests/dice_hand_tests.py:14:1: D403 First word of the first line should be properly capitalized
+tests/dice_hand_tests.py:22:12: E721 do not compare types, for exact checks use `is` / `is not`, for instance checks use `isinstance()`
+tests/dice_hand_tests.py:87:80: E501 line too long (81 > 79 characters)
+tests/dice_hand_tests.py:116:80: E501 line too long (83 > 79 characters)
+tests/dice_hand_tests.py:120:80: E501 line too long (81 > 79 characters)
+tests/dice_hand_tests.py:137:80: E501 line too long (83 > 79 characters)
 tests/test_player.py:1:1: D200 One-line docstring should fit on one line with quotes
 tests/test_player.py:1:1: D400 First line should end with a period
 tests/test_player.py:11:1: D400 First line should end with a period

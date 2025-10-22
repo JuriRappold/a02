@@ -1,6 +1,4 @@
-"""
-dice modul, see class description for function
-"""
+"""Dice modul, see class description for function."""
 
 import random
 
@@ -22,14 +20,16 @@ class Dice:
     # Methods
     @staticmethod
     def roll_dice():
-        """
+        """Returns random int.
+
         :return: random integer between 1 and 6 (inclusive of both ends)
         """
         return random.randint(1, 6)
 
     @staticmethod
     def get_dice_face(roll):
-        """
+        """Returns correct dice face.
+
         :param roll: an integer between 1 and 6 (inclusive);
         raises either TypeError(roll is not an integer) or
         an IndexError(not between 1 and 6 inclusive)

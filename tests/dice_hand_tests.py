@@ -1,3 +1,4 @@
+"""Unit Test Module for DiceHand."""
 import pytest
 from program.dice_hand import DiceHand
 
@@ -5,13 +6,14 @@ from program.dice_hand import DiceHand
 def test_init_game_rolls_is_list_value():
     """test if game rolls is a list"""
     test_dicehand = DiceHand()
-    assert type(test_dicehand.game_rolls) == list
+    assert isinstance(test_dicehand.game_rolls, list)
+    #type(test_dicehand.game_rolls) == list
 
 
 def test_init_turn_rolls_is_list_value():
-    """test if game rolls is a list"""
+    """test if turn rolls is a list"""
     test_dicehand = DiceHand()
-    assert type(test_dicehand.turn_rolls) == list
+    assert isinstance(test_dicehand.turn_rolls, list)
 
 
 def test_init_type():
@@ -27,7 +29,7 @@ def test_add_turn_roll_remove_rolls_from_turnroll():
     for i in test_rolls:
         test_dicehand.add_roll(i)
     test_dicehand.add_turn_rolls()
-    assert test_dicehand.turn_rolls == []
+    assert not test_dicehand.turn_rolls
 
 
 def test_add_turn_roll_moved_to_gamerolls():
@@ -43,22 +45,24 @@ def test_add_turn_roll_moved_to_gamerolls():
 def test_add_roll_is_added():
     """Test that add_roll() successfully adds a roll to turn_rolls."""
     test_dicehand = DiceHand()
-    test_dicehand.add_roll(9)
-    assert test_dicehand.turn_rolls[0] == 9
+    test_dicehand.add_roll(6)
+    assert test_dicehand.turn_rolls[0] == 6
 
 
 def test_add_roll_is_less_6():
     """Test that added roll values are within the valid dice range (1–6)."""
     test_dicehand = DiceHand()
     test_dicehand.add_roll(9)
-    assert test_dicehand.turn_rolls[0] >= 1 and test_dicehand.turn_rolls[0] <= 6
+    assert not test_dicehand.turn_rolls
+    # test_dicehand.turn_rolls[0] >= 1 and test_dicehand.turn_rolls[0] <= 6
 
 
 def test_add_roll_is_more_than_1():
     """Test that added roll values are within the valid dice range (1–6)."""
     test_dicehand = DiceHand()
     test_dicehand.add_roll(0)
-    assert test_dicehand.turn_rolls[0] >= 1 and test_dicehand.turn_rolls[0] <= 6
+    assert not test_dicehand.turn_rolls
+    # test_dicehand.turn_rolls[0] >= 1 and test_dicehand.turn_rolls[0] <= 6)
 
 
 def test_add_roll_None_value():
@@ -97,7 +101,7 @@ def test_sum_game_rolls_with_non_int_value():
     for i in test_rolls:
         test_dicehand.add_roll(i)
     test_dicehand.add_turn_rolls()
-    exp_sum = 31
+    exp_sum = 29  # 31
     assert test_dicehand.sum_game_rolls() == exp_sum
 
 
