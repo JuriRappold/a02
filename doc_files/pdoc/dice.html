@@ -56,12 +56,13 @@ el.replaceWith(d);
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class Dice:
-    &#39;&#39;&#39;
+    &#34;&#34;&#34;
     static Dice class, only really need the roll dice method;
     could be a static class? --&gt; &#34;easiest&#34; way would just be a python file with functions
     done it the &#34;Java&#34; way, source:
     https://stackoverflow.com/questions/30556857/creating-a-static-class-with-no-instances
-    &#39;&#39;&#39;
+    &#34;&#34;&#34;
+
     # Attributes
     # static class wide variable, &#34;real&#34; dice faces will be added later
     # DO NOT CHANGE LENGTH!! Only change to get new dice faces
@@ -73,8 +74,7 @@ el.replaceWith(d);
         &#34;&#34;&#34;
         :return: random integer between 1 and 6 (inclusive of both ends)
         &#34;&#34;&#34;
-        return random.randint(1,6)
-
+        return random.randint(1, 6)
 
     @staticmethod
     def get_dice_face(roll):
@@ -86,7 +86,7 @@ el.replaceWith(d);
         &#34;&#34;&#34;
         if isinstance(roll, int):
             if 0 &lt; roll &lt; 7:
-                return Dice.__STRING_DICE_FACE[roll-1]
+                return Dice.__STRING_DICE_FACE[roll - 1]
             raise IndexError(&#34;Roll out of Bounds&#34;)
         raise TypeError(&#34;Roll is not an integer!&#34;)</code></pre>
 </details>
@@ -114,7 +114,7 @@ def get_dice_face(roll):
     &#34;&#34;&#34;
     if isinstance(roll, int):
         if 0 &lt; roll &lt; 7:
-            return Dice.__STRING_DICE_FACE[roll-1]
+            return Dice.__STRING_DICE_FACE[roll - 1]
         raise IndexError(&#34;Roll out of Bounds&#34;)
     raise TypeError(&#34;Roll is not an integer!&#34;)</code></pre>
 </details>
@@ -136,7 +136,7 @@ def roll_dice():
     &#34;&#34;&#34;
     :return: random integer between 1 and 6 (inclusive of both ends)
     &#34;&#34;&#34;
-    return random.randint(1,6)</code></pre>
+    return random.randint(1, 6)</code></pre>
 </details>
 <div class="desc"><p>:return: random integer between 1 and 6 (inclusive of both ends)</p></div>
 </dd>

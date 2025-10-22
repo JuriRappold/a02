@@ -57,10 +57,12 @@ el.replaceWith(d);
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class Player:
-    # Static variable that changes throughout all classes
-    _next_id = 0
+    &#34;&#34;&#34;Class Player, used for real players in the game&#34;&#34;&#34;
 
-    def __init__(self,name):
+    # Static variable that changes throughout all classes
+    next_id = 0
+
+    def __init__(self, name):
         &#34;&#34;&#34;Initialisation of object Player.
         If name is string and not an empty string, we create an object that has: &lt;br&gt;
         1. Username&lt;br&gt;
@@ -68,32 +70,35 @@ el.replaceWith(d);
         3. Total score (that will be changed throughout the game)&lt;br&gt;
         4. DiceHand obj, that stores all rolled dice
         &#34;&#34;&#34;
-        if isinstance(name,str) and name != &#39;&#39;:
+        if isinstance(name, str) and name != &#34;&#34;:
             self.__username = name
-            self.__player_id = Player._next_id
+            self.__player_id = Player.next_id
             # self._diceHand = DiceHand()
+            Player.next_id += 1
             self.__total_score = 0
-            print(Player._next_id)
-            Player._next_id += 1
         else:
             raise TypeError(&#34;name should be string!&#34;)
 
     def roll_dice(self):
-        &#39;&#39;&#39;Roll dice by calling dice class and saving it to player&#39;s dicehand&#39;&#39;&#39;
+        &#34;&#34;&#34;Roll dice by calling dice class and saving it to player&#39;s dicehand&#34;&#34;&#34;
         dice = Dice.roll_dice()
         # self._diceHand.append(dice)
         return dice
 
-    def change_username(self,new_name):
-        &#39;&#39;&#39;change username (if given username isn&#39;t empty and a string)&#39;&#39;&#39;
-        if isinstance(new_name,str) and new_name != &#39;&#39;:
+    def change_username(self, new_name):
+        &#34;&#34;&#34;change username (if given username isn&#39;t empty and a string)&#34;&#34;&#34;
+        if isinstance(new_name, str) and new_name != &#34;&#34;:
             self.__username = new_name
         else:
             raise TypeError(&#34;name should be string!&#34;)
 
     def get_username(self):
-        &#39;&#39;&#39;get access to variable username&#39;&#39;&#39;
+        &#34;&#34;&#34;get access to variable username&#34;&#34;&#34;
         return self.__username
+
+    def get_id(self):
+        &#34;&#34;&#34;get access to variable id&#34;&#34;&#34;
+        return self.__player_id
 
     def get_total_score(self):
         &#34;&#34;&#34;get access to variable total score&#34;&#34;&#34;
@@ -101,20 +106,27 @@ el.replaceWith(d);
 
     # for cheating purposes
     def set_total_score(self, score):
-        &#39;&#39;&#39;For cheating/testing purposes: set total_score to other value&#39;&#39;&#39;
+        &#34;&#34;&#34;For cheating/testing purposes: set total_score to other value&#34;&#34;&#34;
         self.__total_score = score
 
-    def set_dice_hand(dice_hand_list):
+    def set_dice_hand(self, dice_hand_list):
         &#34;&#34;&#34;For cheating/testing purposes: set dice_hand_list to other value&#34;&#34;&#34;
-        # self.diceHand = dice_hand_list
-        pass</code></pre>
+        # self.diceHand = dice_hand_list</code></pre>
 </details>
-<div class="desc"><p>Initialisation of object Player.
+<div class="desc"><p>Class Player, used for real players in the game</p>
+<p>Initialisation of object Player.
 If name is string and not an empty string, we create an object that has: <br>
 1. Username<br>
 2. Unique id<br>
 3. Total score (that will be changed throughout the game)<br>
 4. DiceHand obj, that stores all rolled dice</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="player.Player.next_id"><code class="name">var <span class="ident">next_id</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+</dl>
 <h3>Methods</h3>
 <dl>
 <dt id="player.Player.change_username"><code class="name flex">
@@ -125,14 +137,28 @@ If name is string and not an empty string, we create an object that has: <br>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def change_username(self,new_name):
-    &#39;&#39;&#39;change username (if given username isn&#39;t empty and a string)&#39;&#39;&#39;
-    if isinstance(new_name,str) and new_name != &#39;&#39;:
+<pre><code class="python">def change_username(self, new_name):
+    &#34;&#34;&#34;change username (if given username isn&#39;t empty and a string)&#34;&#34;&#34;
+    if isinstance(new_name, str) and new_name != &#34;&#34;:
         self.__username = new_name
     else:
         raise TypeError(&#34;name should be string!&#34;)</code></pre>
 </details>
 <div class="desc"><p>change username (if given username isn't empty and a string)</p></div>
+</dd>
+<dt id="player.Player.get_id"><code class="name flex">
+<span>def <span class="ident">get_id</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_id(self):
+    &#34;&#34;&#34;get access to variable id&#34;&#34;&#34;
+    return self.__player_id</code></pre>
+</details>
+<div class="desc"><p>get access to variable id</p></div>
 </dd>
 <dt id="player.Player.get_total_score"><code class="name flex">
 <span>def <span class="ident">get_total_score</span></span>(<span>self)</span>
@@ -157,7 +183,7 @@ If name is string and not an empty string, we create an object that has: <br>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def get_username(self):
-    &#39;&#39;&#39;get access to variable username&#39;&#39;&#39;
+    &#34;&#34;&#34;get access to variable username&#34;&#34;&#34;
     return self.__username</code></pre>
 </details>
 <div class="desc"><p>get access to variable username</p></div>
@@ -171,7 +197,7 @@ If name is string and not an empty string, we create an object that has: <br>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def roll_dice(self):
-    &#39;&#39;&#39;Roll dice by calling dice class and saving it to player&#39;s dicehand&#39;&#39;&#39;
+    &#34;&#34;&#34;Roll dice by calling dice class and saving it to player&#39;s dicehand&#34;&#34;&#34;
     dice = Dice.roll_dice()
     # self._diceHand.append(dice)
     return dice</code></pre>
@@ -179,17 +205,16 @@ If name is string and not an empty string, we create an object that has: <br>
 <div class="desc"><p>Roll dice by calling dice class and saving it to player's dicehand</p></div>
 </dd>
 <dt id="player.Player.set_dice_hand"><code class="name flex">
-<span>def <span class="ident">set_dice_hand</span></span>(<span>dice_hand_list)</span>
+<span>def <span class="ident">set_dice_hand</span></span>(<span>self, dice_hand_list)</span>
 </code></dt>
 <dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def set_dice_hand(dice_hand_list):
+<pre><code class="python">def set_dice_hand(self, dice_hand_list):
     &#34;&#34;&#34;For cheating/testing purposes: set dice_hand_list to other value&#34;&#34;&#34;
-    # self.diceHand = dice_hand_list
-    pass</code></pre>
+    # self.diceHand = dice_hand_list</code></pre>
 </details>
 <div class="desc"><p>For cheating/testing purposes: set dice_hand_list to other value</p></div>
 </dd>
@@ -202,7 +227,7 @@ If name is string and not an empty string, we create an object that has: <br>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def set_total_score(self, score):
-    &#39;&#39;&#39;For cheating/testing purposes: set total_score to other value&#39;&#39;&#39;
+    &#34;&#34;&#34;For cheating/testing purposes: set total_score to other value&#34;&#34;&#34;
     self.__total_score = score</code></pre>
 </details>
 <div class="desc"><p>For cheating/testing purposes: set total_score to other value</p></div>
@@ -223,8 +248,10 @@ If name is string and not an empty string, we create an object that has: <br>
 <h4><code><a title="player.Player" href="#player.Player">Player</a></code></h4>
 <ul class="two-column">
 <li><code><a title="player.Player.change_username" href="#player.Player.change_username">change_username</a></code></li>
+<li><code><a title="player.Player.get_id" href="#player.Player.get_id">get_id</a></code></li>
 <li><code><a title="player.Player.get_total_score" href="#player.Player.get_total_score">get_total_score</a></code></li>
 <li><code><a title="player.Player.get_username" href="#player.Player.get_username">get_username</a></code></li>
+<li><code><a title="player.Player.next_id" href="#player.Player.next_id">next_id</a></code></li>
 <li><code><a title="player.Player.roll_dice" href="#player.Player.roll_dice">roll_dice</a></code></li>
 <li><code><a title="player.Player.set_dice_hand" href="#player.Player.set_dice_hand">set_dice_hand</a></code></li>
 <li><code><a title="player.Player.set_total_score" href="#player.Player.set_total_score">set_total_score</a></code></li>

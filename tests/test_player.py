@@ -1,8 +1,9 @@
 """
 Unit tests for Player class
 """
-from program.player import Player
+
 import pytest
+from program.player import Player
 
 
 # Tests for __init__ method
@@ -16,7 +17,7 @@ def test_init_creates_unique_player_id():
     """Test that each player gets a unique ID"""
     player1 = Player("Alice")
     player2 = Player("Bob")
-    assert player1._Player__player_id != player2._Player__player_id
+    assert player1.get_id() != player2.get_id()
 
 
 def test_init_sets_initial_total_score_to_zero():
@@ -70,6 +71,14 @@ def test_change_username_raises_error_for_none():
     player = Player("Alice")
     with pytest.raises(TypeError, match="name should be string!"):
         player.change_username(None)
+
+
+# Tests for get_id method
+def test_get_id_returns_correct_id():
+    """Test that get_id returns the correct id"""
+    exp = Player.next_id
+    player = Player("TestPlayer")
+    assert player.get_id() == exp
 
 
 # Tests for get_username method
@@ -148,7 +157,7 @@ def test_roll_dice_returns_different_values():
 def test_set_dice_hand_exists():
     """Test that set_dice_hand method exists"""
     player = Player("Alice")
-    assert hasattr(player, 'set_dice_hand')
+    assert hasattr(player, "set_dice_hand")
 
 
 # Integration tests
@@ -168,6 +177,6 @@ def test_player_can_be_created_and_modified():
 def test_multiple_players_have_unique_ids():
     """Test that multiple players get sequential unique IDs"""
     players = [Player(f"Player{i}") for i in range(5)]
-    player_ids = [p._Player__player_id for p in players]
+    player_ids = [p.get_id for p in players]
     # Check all IDs are unique
     assert len(player_ids) == len(set(player_ids))
