@@ -1,5 +1,6 @@
+"""Tests for class high_score.py"""
+
 from program.high_score import HighScore
-import pytest
 
 
 def test_init_creates_instance():
@@ -69,7 +70,7 @@ def test_sort_dict_input_int():
     assert res == exp
 
 
-def test_sort_dict_input_None():
+def test_sort_dict_input_none():
     """Test that sort_dict can handle None"""
     res = HighScore.sort_dict(None)
     exp = {}
