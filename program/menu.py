@@ -7,6 +7,7 @@ displaying game information. The menu acts as the main interaction
 point between the player and the game.
 """
 
+
 class menu:
     """
     Manages the user interface and menu system for pig dice game.
@@ -80,6 +81,15 @@ class menu:
         :param new_username: new username to set
         :return: True if successful, False if old username doesn't match
         """
+        # Validate inputs
+        if new_username is None:
+            return False
+        if isinstance(new_username, str) and '\n' in new_username:
+            return False
+        # Convert numbers to string, reject other non-string types
+        if not isinstance(new_username, (str, int, float)):
+            return False
+
         if self.player1 is not None:
             if self.player1.username == old_username:
                 self.player1.change_usr_name(new_username)
@@ -103,7 +113,7 @@ class menu:
         # Each block represents 10 points (max 10 blocks for 100 points)
         filled_blocks = score // 10
         empty_blocks = 10 - filled_blocks
-        progress_bar = '█' * filled_blocks + '░' * empty_blocks
+        progress_bar = "█" * filled_blocks + "░" * empty_blocks
 
         scoreboard = f"""
         ========================================================
@@ -140,8 +150,16 @@ class menu:
         Set the main player for the game.
 
         :param player: Player object to set as player1
+        :return: True if successful, False if invalid input
         """
+        # Validate input - must be an object with username attribute
+        if player is None:
+            return False
+        if not hasattr(player, 'username'):
+            return False
+
         self.player1 = player
+        return True
 
     def get_player(self):
         """
@@ -179,7 +197,7 @@ class menu:
 
         :return: formatted menu options string
         """
-        #missing changing difficulty for computer
+        # missing changing difficulty for computer
         options = """
         ========================================
                     MAIN MENU
@@ -202,15 +220,18 @@ class menu:
 
         :param choice: user input choice (string)
         :return: True if choice is valid (1-5), False otherwise
+        :raises ValueError: if choice cannot be converted to int or is invalid
         """
-        # probably just have choice_int = int(choice) \n return 1 <= choice_int <= 5 --> is a boolean expression
-        # also pretty sure it won't throw an error
         try:
+            # Reject floats explicitly
+            if isinstance(choice, float):
+                raise ValueError("False")
             choice_int = int(choice)
-            return 1 <= choice_int <= 5
-        except ValueError:
-            # for testing purposes turned into a string, ide warned of a syntax error...
-            return "False"
+            if not (1 <= choice_int <= 5):
+                raise ValueError("False")
+            return True
+        except (ValueError, TypeError):
+            raise ValueError("False")
 
     def display_error_message(self, message):
         """

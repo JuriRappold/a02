@@ -2,3 +2,5 @@
 .idea
 # best practice if everybody individually installs the virtual environment
 .venv
+# not to commit every unit test
+.pyc
