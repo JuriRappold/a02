@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.6">
 <title>computer API documentation</title>
-<meta name="description" content="computer module">
+<meta name="description" content="computer module.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
@@ -36,7 +36,7 @@ el.replaceWith(d);
 <h1 class="title">Module <code>computer</code></h1>
 </header>
 <section id="section-intro">
-<p>computer module</p>
+<p>computer module.</p>
 </section>
 <section>
 </section>
@@ -57,55 +57,48 @@ el.replaceWith(d);
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class Computer:
+    &#34;&#34;&#34;computer player class with three different difficulty modes.
+
+    methods:
+    __init__(computer_name, difficulty),
+    select_difficulty(new_difficulty),
+    change_computer_name(new_name),
+    roll_dice()--&gt;static,
+    hold_at_twenty() --&gt; easy mode,
+    scoring_turn() --&gt; normal mode,
+    keep_or_race(player_score) --&gt; hard mode,
+    take_turn(player_score) --&gt;
+    should be only call really outside the class
     &#34;&#34;&#34;
-        computer player class with three different difficulty modes
-        methods:
-            __init__(computer_name, difficulty),
-            select_difficulty(new_difficulty),
-            change_computer_name(new_name),
-            roll_dice()--&gt;static,
-            hold_at_twenty() --&gt; easy mode,
-            scoring_turn() --&gt; normal mode,
-            keep_or_race(player_score) --&gt; hard mode,
-            take_turn(player_score) --&gt; should be only call really outside the class
-        &#34;&#34;&#34;
+
+    __DIFFICULTIES = [(1, &#34;easy&#34;), (2, &#34;normal&#34;), (3, &#34;hard&#34;)]
+    __DEFAULT_NAME = &#34;Harald (default)&#34;
 
     def __init__(self, computer_name, difficulty):
-        &#34;&#34;&#34;Constructor&#34;&#34;&#34;
-        self.computer_name = computer_name
-        self.difficulty = difficulty #has to be a tuple
-        self.id = hash(computer_name+difficulty)
-        self.dice_hand = DiceHand() #create dice_hand obj once class is integrated
+        &#34;&#34;&#34;Computer Constructor with input checks.&#34;&#34;&#34;
+        self.computer_name = self.check_valid_computer_name(computer_name)
+        self.difficulty = self.check_valid_difficulty(difficulty)
+        self.id = hash(str(computer_name) + str(self.difficulty))
+        self.dice_hand = DiceHand()
         self.score = 0
-        self.turn_number = 0 #number of scoring turns
+        self.turn_number = 4  # number of scoring turns needed
 
     def select_difficulty(self, new_difficulty):
-        &#34;&#34;&#34;selecting new difficulty; &#34;&#34;&#34;
-        if new_difficulty in (&#39;easy&#39;, 1):#from linting lol
-            self.difficulty = (1, &#34;easy&#34;)
-        elif new_difficulty in (&#39;normal&#39;, 2):
-            self.difficulty = (2, &#34;normal&#34;)
-        elif new_difficulty in (&#39;hard&#39;, 3):
-            self.difficulty = (3, &#34;hard&#34;)
-        else:
-            return f&#34;Invalid Difficulty Option: {new_difficulty}&#34;
-        return f&#34;Difficulty changed to: {self.difficulty[1]}&#34;
+        &#34;&#34;&#34;Selects new difficulty.&#34;&#34;&#34;
+        self.difficulty = self.check_valid_difficulty(new_difficulty)
+        return f&#34;Difficulty changed to: {self.__DIFFICULTIES[self.difficulty][1]}&#34;
 
     def change_computer_name(self, new_name):
-        &#34;&#34;&#34;changing the computer username, id remains the same&#34;&#34;&#34;
-        if not new_name == &#34;&#34;:
-            self.computer_name = new_name
-        else:
-            return &#34;Name is invalid or/and null&#34;
-        return &#34;&#34;
+        &#34;&#34;&#34;Changes the computer username, id remains the same.&#34;&#34;&#34;
+        self.computer_name = self.check_valid_computer_name(new_name)
 
     def roll_dice(self):
-        &#34;&#34;&#34;rolls the dice; make it static?&#34;&#34;&#34;
+        &#34;&#34;&#34;Rolls the dice; make it static?.&#34;&#34;&#34;
         return Dice.roll_dice()
 
-    def hold_at_twenty(self):#easy mode;
-        &#34;&#34;&#34;
-        Each turn try to reach the sum of 20;
+    def hold_at_twenty(self):  # easy mode;
+        &#34;&#34;&#34;Each turn try to reach the sum of 20.
+
         https://en.wikipedia.org/wiki/Pig_(dice_game)#Optimal_play
         :return: the result of the turn, either sum of the dice
          or 0 (when a 1 is rolled)
@@ -113,7 +106,7 @@ el.replaceWith(d);
         turn = 0
         roll_is_one = False
 
-        while not roll_is_one and turn&lt;20:
+        while not roll_is_one and turn &lt; 20:
             roll = self.roll_dice()
             if roll == 1:
                 roll_is_one = True
@@ -124,9 +117,9 @@ el.replaceWith(d);
                 turn += roll
         return turn
 
-    def scoring_turn(self):#normal mode
-        &#34;&#34;&#34;
-        4 scoring turns,
+    def scoring_turn(self):  # normal mode
+        &#34;&#34;&#34;4 scoring turns.
+
         bound--&gt; sum trying to be reached each turn
         1. turn: bound = 25, sum1
         2. turn: bound = (100-sum1)/3, sum2
@@ -134,17 +127,17 @@ el.replaceWith(d);
         4. turn: bound = (100-sum3), sum4&gt;=100
         :return: 0 (rolled a 1) or sum( var turn)
         &#34;&#34;&#34;
-        #setup
+        # setup
         turn = 0
-        if self.turn_number == 0:
-            #incorrect logic, should be 4, see docstring
-            #double check
+        if self.turn_number == 4:
+            # incorrect logic, should be 4, see docstring
+            # double check
             bound = 25
         else:
-            bound = (100-self.score)/self.turn_number
+            bound = (100 - self.score) / self.turn_number
         roll_is_one = False
 
-        #turn
+        # turn
         while not roll_is_one and turn &lt; bound:
             roll = Dice.roll_dice()
             if roll == 1:
@@ -155,15 +148,15 @@ el.replaceWith(d);
                 turn += roll
                 self.dice_hand.add_roll(roll)
 
-        #end of turn logic
+        # end of turn logic
         if not roll_is_one:
-            self.turn_number+=1
+            self.turn_number -= 1
             self.dice_hand.add_turn_rolls()
         return turn
 
-    def keep_or_race(self, player_score): #hard mode
-        &#34;&#34;&#34;
-        if the player score or the computers score is below 71, roll to win
+    def keep_or_race(self, player_score):  # hard mode
+        &#34;&#34;&#34;If the player score or the computers score is below 71, roll to win.
+
         Otherwise, hold on 21 plus the difference between scores divided by 8
         bound = 21 + (|player_score-self.score|)/8
         :param player_score: requires player_score for an if statement
@@ -173,7 +166,9 @@ el.replaceWith(d);
         roll_is_one = False
 
         if (player_score or self.score) &lt; 71:
-            while not roll_is_one and 21 + (player_score-self.score)/8:#absolute score
+            while (
+                not roll_is_one and 21 + (player_score - self.score) / 8
+            ):  # absolute score
                 roll = self.roll_dice()
                 if roll == 1:
                     roll_is_one = True
@@ -181,7 +176,7 @@ el.replaceWith(d);
                     self.dice_hand.reset_turn_list()
                 else:
                     self.dice_hand.add_roll(roll)
-                    turn+=roll
+                    turn += roll
         else:
             while not roll_is_one and (self.score + turn) &lt; 100:
                 roll = self.roll_dice()
@@ -193,9 +188,9 @@ el.replaceWith(d);
                     turn += roll
         return turn
 
-    def take_turn(self, player_score = 0):
-        &#34;&#34;&#34;
-        turn method, should be the only function called outside the class,
+    def take_turn(self, player_score=0):
+        &#34;&#34;&#34;Turn method, should be the only function called outside the class.
+
         besides init and change_computer_name(...)
         :param player_score: for keep_or_race function
         :return: turn (sum or 0)
@@ -208,10 +203,73 @@ el.replaceWith(d);
                 turn = self.scoring_turn()
             case 3:
                 turn = self.keep_or_race(player_score)
-        return turn</code></pre>
+        return turn
+
+    def check_valid_computer_name(self, computer_name):
+        &#34;&#34;&#34;Checks if the computer_name is of a valid type.
+
+         and returns a valid computer_name
+        1. of type string:
+            &#34;&#34; str --&gt; default_name
+            else: return computer_name
+        2. of type list --&gt; concatenate list elements into a string
+        3. of type dict --&gt; concatenate dict values into a string
+        4. else return default
+        &#34;&#34;&#34;
+        if computer_name is None:
+            return self.__DEFAULT_NAME
+
+        if isinstance(computer_name, str):
+            if computer_name == &#34;&#34;:
+                return self.__DEFAULT_NAME
+            return computer_name
+        if isinstance(computer_name, list):
+            new_name = &#34;&#34;
+            for item in computer_name:
+                new_name += str(item)
+            return new_name
+        if isinstance(computer_name, dict):
+            new_name = &#34;&#34;
+            for values in computer_name.values():
+                new_name += str(values)
+            return new_name
+        return self.__DEFAULT_NAME
+
+    def check_valid_difficulty(self, difficulty):
+        &#34;&#34;&#34;
+        Checks types of difficulty.
+
+        :param difficulty: valid index (int) or
+         valid string (&#34;easy&#34;, &#34;normal&#34;, &#34;hard&#34;)
+        :return: proper index value of self.__DIFFICULTIES
+        for the entered difficulty
+        &#34;&#34;&#34;
+        list_diff = []
+        for diff in self.__DIFFICULTIES:
+            list_diff.append(diff[1])
+
+        if isinstance(difficulty, int or float):
+            difficulty = int(difficulty)
+            if 0 &lt;= difficulty &lt;= 2:
+                return difficulty
+            raise IndexError(&#34;Index Error Out of Bounds&#34;)
+
+        if isinstance(difficulty, str):
+            if difficulty not in list_diff:
+                raise ValueError(&#34;value is a non-valid string&#34;)
+            match difficulty:
+                case &#34;easy&#34;:
+                    return 0
+                case &#34;normal&#34;:
+                    return 1
+                case &#34;hard&#34;:
+                    return 2
+        if difficulty is None or isinstance(difficulty, list | dict | tuple | Computer):
+            raise TypeError(f&#34;type is {type(difficulty)}&#34;)
+        return 0</code></pre>
 </details>
-<div class="desc"><p>computer player class with three different difficulty modes
-methods:
+<div class="desc"><p>computer player class with three different difficulty modes.</p>
+<p>methods:
 <strong>init</strong>(computer_name, difficulty),
 select_difficulty(new_difficulty),
 change_computer_name(new_name),
@@ -219,8 +277,9 @@ roll_dice()&ndash;&gt;static,
 hold_at_twenty() &ndash;&gt; easy mode,
 scoring_turn() &ndash;&gt; normal mode,
 keep_or_race(player_score) &ndash;&gt; hard mode,
-take_turn(player_score) &ndash;&gt; should be only call really outside the class</p>
-<p>Constructor</p></div>
+take_turn(player_score) &ndash;&gt;
+should be only call really outside the class</p>
+<p>Computer Constructor with input checks.</p></div>
 <h3>Methods</h3>
 <dl>
 <dt id="computer.Computer.change_computer_name"><code class="name flex">
@@ -232,14 +291,104 @@ take_turn(player_score) &ndash;&gt; should be only call really outside the class
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def change_computer_name(self, new_name):
-    &#34;&#34;&#34;changing the computer username, id remains the same&#34;&#34;&#34;
-    if not new_name == &#34;&#34;:
-        self.computer_name = new_name
-    else:
-        return &#34;Name is invalid or/and null&#34;
-    return &#34;&#34;</code></pre>
+    &#34;&#34;&#34;Changes the computer username, id remains the same.&#34;&#34;&#34;
+    self.computer_name = self.check_valid_computer_name(new_name)</code></pre>
 </details>
-<div class="desc"><p>changing the computer username, id remains the same</p></div>
+<div class="desc"><p>Changes the computer username, id remains the same.</p></div>
+</dd>
+<dt id="computer.Computer.check_valid_computer_name"><code class="name flex">
+<span>def <span class="ident">check_valid_computer_name</span></span>(<span>self, computer_name)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_valid_computer_name(self, computer_name):
+    &#34;&#34;&#34;Checks if the computer_name is of a valid type.
+
+     and returns a valid computer_name
+    1. of type string:
+        &#34;&#34; str --&gt; default_name
+        else: return computer_name
+    2. of type list --&gt; concatenate list elements into a string
+    3. of type dict --&gt; concatenate dict values into a string
+    4. else return default
+    &#34;&#34;&#34;
+    if computer_name is None:
+        return self.__DEFAULT_NAME
+
+    if isinstance(computer_name, str):
+        if computer_name == &#34;&#34;:
+            return self.__DEFAULT_NAME
+        return computer_name
+    if isinstance(computer_name, list):
+        new_name = &#34;&#34;
+        for item in computer_name:
+            new_name += str(item)
+        return new_name
+    if isinstance(computer_name, dict):
+        new_name = &#34;&#34;
+        for values in computer_name.values():
+            new_name += str(values)
+        return new_name
+    return self.__DEFAULT_NAME</code></pre>
+</details>
+<div class="desc"><p>Checks if the computer_name is of a valid type.</p>
+<p>and returns a valid computer_name
+1. of type string:
+"" str &ndash;&gt; default_name
+else: return computer_name
+2. of type list &ndash;&gt; concatenate list elements into a string
+3. of type dict &ndash;&gt; concatenate dict values into a string
+4. else return default</p></div>
+</dd>
+<dt id="computer.Computer.check_valid_difficulty"><code class="name flex">
+<span>def <span class="ident">check_valid_difficulty</span></span>(<span>self, difficulty)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_valid_difficulty(self, difficulty):
+    &#34;&#34;&#34;
+    Checks types of difficulty.
+
+    :param difficulty: valid index (int) or
+     valid string (&#34;easy&#34;, &#34;normal&#34;, &#34;hard&#34;)
+    :return: proper index value of self.__DIFFICULTIES
+    for the entered difficulty
+    &#34;&#34;&#34;
+    list_diff = []
+    for diff in self.__DIFFICULTIES:
+        list_diff.append(diff[1])
+
+    if isinstance(difficulty, int or float):
+        difficulty = int(difficulty)
+        if 0 &lt;= difficulty &lt;= 2:
+            return difficulty
+        raise IndexError(&#34;Index Error Out of Bounds&#34;)
+
+    if isinstance(difficulty, str):
+        if difficulty not in list_diff:
+            raise ValueError(&#34;value is a non-valid string&#34;)
+        match difficulty:
+            case &#34;easy&#34;:
+                return 0
+            case &#34;normal&#34;:
+                return 1
+            case &#34;hard&#34;:
+                return 2
+    if difficulty is None or isinstance(difficulty, list | dict | tuple | Computer):
+        raise TypeError(f&#34;type is {type(difficulty)}&#34;)
+    return 0</code></pre>
+</details>
+<div class="desc"><p>Checks types of difficulty.</p>
+<p>:param difficulty: valid index (int) or
+valid string ("easy", "normal", "hard")
+:return: proper index value of self.__DIFFICULTIES
+for the entered difficulty</p></div>
 </dd>
 <dt id="computer.Computer.hold_at_twenty"><code class="name flex">
 <span>def <span class="ident">hold_at_twenty</span></span>(<span>self)</span>
@@ -249,9 +398,9 @@ take_turn(player_score) &ndash;&gt; should be only call really outside the class
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def hold_at_twenty(self):#easy mode;
-    &#34;&#34;&#34;
-    Each turn try to reach the sum of 20;
+<pre><code class="python">def hold_at_twenty(self):  # easy mode;
+    &#34;&#34;&#34;Each turn try to reach the sum of 20.
+
     https://en.wikipedia.org/wiki/Pig_(dice_game)#Optimal_play
     :return: the result of the turn, either sum of the dice
      or 0 (when a 1 is rolled)
@@ -259,7 +408,7 @@ take_turn(player_score) &ndash;&gt; should be only call really outside the class
     turn = 0
     roll_is_one = False
 
-    while not roll_is_one and turn&lt;20:
+    while not roll_is_one and turn &lt; 20:
         roll = self.roll_dice()
         if roll == 1:
             roll_is_one = True
@@ -270,8 +419,8 @@ take_turn(player_score) &ndash;&gt; should be only call really outside the class
             turn += roll
     return turn</code></pre>
 </details>
-<div class="desc"><p>Each turn try to reach the sum of 20;
-<a href="https://en.wikipedia.org/wiki/Pig_(dice_game)#Optimal_play">https://en.wikipedia.org/wiki/Pig_(dice_game)#Optimal_play</a>
+<div class="desc"><p>Each turn try to reach the sum of 20.</p>
+<p><a href="https://en.wikipedia.org/wiki/Pig_(dice_game)#Optimal_play">https://en.wikipedia.org/wiki/Pig_(dice_game)#Optimal_play</a>
 :return: the result of the turn, either sum of the dice
 or 0 (when a 1 is rolled)</p></div>
 </dd>
@@ -283,9 +432,9 @@ or 0 (when a 1 is rolled)</p></div>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def keep_or_race(self, player_score): #hard mode
-    &#34;&#34;&#34;
-    if the player score or the computers score is below 71, roll to win
+<pre><code class="python">def keep_or_race(self, player_score):  # hard mode
+    &#34;&#34;&#34;If the player score or the computers score is below 71, roll to win.
+
     Otherwise, hold on 21 plus the difference between scores divided by 8
     bound = 21 + (|player_score-self.score|)/8
     :param player_score: requires player_score for an if statement
@@ -295,7 +444,9 @@ or 0 (when a 1 is rolled)</p></div>
     roll_is_one = False
 
     if (player_score or self.score) &lt; 71:
-        while not roll_is_one and 21 + (player_score-self.score)/8:#absolute score
+        while (
+            not roll_is_one and 21 + (player_score - self.score) / 8
+        ):  # absolute score
             roll = self.roll_dice()
             if roll == 1:
                 roll_is_one = True
@@ -303,7 +454,7 @@ or 0 (when a 1 is rolled)</p></div>
                 self.dice_hand.reset_turn_list()
             else:
                 self.dice_hand.add_roll(roll)
-                turn+=roll
+                turn += roll
     else:
         while not roll_is_one and (self.score + turn) &lt; 100:
             roll = self.roll_dice()
@@ -315,8 +466,8 @@ or 0 (when a 1 is rolled)</p></div>
                 turn += roll
     return turn</code></pre>
 </details>
-<div class="desc"><p>if the player score or the computers score is below 71, roll to win
-Otherwise, hold on 21 plus the difference between scores divided by 8
+<div class="desc"><p>If the player score or the computers score is below 71, roll to win.</p>
+<p>Otherwise, hold on 21 plus the difference between scores divided by 8
 bound = 21 + (|player_score-self.score|)/8
 :param player_score: requires player_score for an if statement
 :return: 0 (rolled a 1) or sum( var turn)</p></div>
@@ -330,10 +481,10 @@ bound = 21 + (|player_score-self.score|)/8
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def roll_dice(self):
-    &#34;&#34;&#34;rolls the dice; make it static?&#34;&#34;&#34;
+    &#34;&#34;&#34;Rolls the dice; make it static?.&#34;&#34;&#34;
     return Dice.roll_dice()</code></pre>
 </details>
-<div class="desc"><p>rolls the dice; make it static?</p></div>
+<div class="desc"><p>Rolls the dice; make it static?.</p></div>
 </dd>
 <dt id="computer.Computer.scoring_turn"><code class="name flex">
 <span>def <span class="ident">scoring_turn</span></span>(<span>self)</span>
@@ -343,9 +494,9 @@ bound = 21 + (|player_score-self.score|)/8
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def scoring_turn(self):#normal mode
-    &#34;&#34;&#34;
-    4 scoring turns,
+<pre><code class="python">def scoring_turn(self):  # normal mode
+    &#34;&#34;&#34;4 scoring turns.
+
     bound--&gt; sum trying to be reached each turn
     1. turn: bound = 25, sum1
     2. turn: bound = (100-sum1)/3, sum2
@@ -353,17 +504,17 @@ bound = 21 + (|player_score-self.score|)/8
     4. turn: bound = (100-sum3), sum4&gt;=100
     :return: 0 (rolled a 1) or sum( var turn)
     &#34;&#34;&#34;
-    #setup
+    # setup
     turn = 0
-    if self.turn_number == 0:
-        #incorrect logic, should be 4, see docstring
-        #double check
+    if self.turn_number == 4:
+        # incorrect logic, should be 4, see docstring
+        # double check
         bound = 25
     else:
-        bound = (100-self.score)/self.turn_number
+        bound = (100 - self.score) / self.turn_number
     roll_is_one = False
 
-    #turn
+    # turn
     while not roll_is_one and turn &lt; bound:
         roll = Dice.roll_dice()
         if roll == 1:
@@ -374,14 +525,14 @@ bound = 21 + (|player_score-self.score|)/8
             turn += roll
             self.dice_hand.add_roll(roll)
 
-    #end of turn logic
+    # end of turn logic
     if not roll_is_one:
-        self.turn_number+=1
+        self.turn_number -= 1
         self.dice_hand.add_turn_rolls()
     return turn</code></pre>
 </details>
-<div class="desc"><p>4 scoring turns,
-bound&ndash;&gt; sum trying to be reached each turn
+<div class="desc"><p>4 scoring turns.</p>
+<p>bound&ndash;&gt; sum trying to be reached each turn
 1. turn: bound = 25, sum1
 2. turn: bound = (100-sum1)/3, sum2
 3. turn: bound = (100-sum2)/2, sum3
@@ -397,18 +548,11 @@ bound&ndash;&gt; sum trying to be reached each turn
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def select_difficulty(self, new_difficulty):
-    &#34;&#34;&#34;selecting new difficulty; &#34;&#34;&#34;
-    if new_difficulty in (&#39;easy&#39;, 1):#from linting lol
-        self.difficulty = (1, &#34;easy&#34;)
-    elif new_difficulty in (&#39;normal&#39;, 2):
-        self.difficulty = (2, &#34;normal&#34;)
-    elif new_difficulty in (&#39;hard&#39;, 3):
-        self.difficulty = (3, &#34;hard&#34;)
-    else:
-        return f&#34;Invalid Difficulty Option: {new_difficulty}&#34;
-    return f&#34;Difficulty changed to: {self.difficulty[1]}&#34;</code></pre>
+    &#34;&#34;&#34;Selects new difficulty.&#34;&#34;&#34;
+    self.difficulty = self.check_valid_difficulty(new_difficulty)
+    return f&#34;Difficulty changed to: {self.__DIFFICULTIES[self.difficulty][1]}&#34;</code></pre>
 </details>
-<div class="desc"><p>selecting new difficulty;</p></div>
+<div class="desc"><p>Selects new difficulty.</p></div>
 </dd>
 <dt id="computer.Computer.take_turn"><code class="name flex">
 <span>def <span class="ident">take_turn</span></span>(<span>self, player_score=0)</span>
@@ -418,9 +562,9 @@ bound&ndash;&gt; sum trying to be reached each turn
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def take_turn(self, player_score = 0):
-    &#34;&#34;&#34;
-    turn method, should be the only function called outside the class,
+<pre><code class="python">def take_turn(self, player_score=0):
+    &#34;&#34;&#34;Turn method, should be the only function called outside the class.
+
     besides init and change_computer_name(...)
     :param player_score: for keep_or_race function
     :return: turn (sum or 0)
@@ -435,8 +579,8 @@ bound&ndash;&gt; sum trying to be reached each turn
             turn = self.keep_or_race(player_score)
     return turn</code></pre>
 </details>
-<div class="desc"><p>turn method, should be the only function called outside the class,
-besides init and change_computer_name(&hellip;)
+<div class="desc"><p>Turn method, should be the only function called outside the class.</p>
+<p>besides init and change_computer_name(&hellip;)
 :param player_score: for keep_or_race function
 :return: turn (sum or 0)</p></div>
 </dd>
@@ -456,6 +600,8 @@ besides init and change_computer_name(&hellip;)
 <h4><code><a title="computer.Computer" href="#computer.Computer">Computer</a></code></h4>
 <ul class="">
 <li><code><a title="computer.Computer.change_computer_name" href="#computer.Computer.change_computer_name">change_computer_name</a></code></li>
+<li><code><a title="computer.Computer.check_valid_computer_name" href="#computer.Computer.check_valid_computer_name">check_valid_computer_name</a></code></li>
+<li><code><a title="computer.Computer.check_valid_difficulty" href="#computer.Computer.check_valid_difficulty">check_valid_difficulty</a></code></li>
 <li><code><a title="computer.Computer.hold_at_twenty" href="#computer.Computer.hold_at_twenty">hold_at_twenty</a></code></li>
 <li><code><a title="computer.Computer.keep_or_race" href="#computer.Computer.keep_or_race">keep_or_race</a></code></li>
 <li><code><a title="computer.Computer.roll_dice" href="#computer.Computer.roll_dice">roll_dice</a></code></li>

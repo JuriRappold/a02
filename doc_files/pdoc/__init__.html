@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.6">
-<title>dice API documentation</title>
-<meta name="description" content="Dice module, see class description for function.">
+<title>__init__ API documentation</title>
+<meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
@@ -33,10 +33,9 @@ el.replaceWith(d);
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>dice</code></h1>
+<h1 class="title">Module <code>__init__</code></h1>
 </header>
 <section id="section-intro">
-<p>Dice module, see class description for function.</p>
 </section>
 <section>
 </section>
@@ -45,106 +44,6 @@ el.replaceWith(d);
 <section>
 </section>
 <section>
-<h2 class="section-title" id="header-classes">Classes</h2>
-<dl>
-<dt id="dice.Dice"><code class="flex name class">
-<span>class <span class="ident">Dice</span></span>
-</code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">class Dice:
-    &#34;&#34;&#34;
-    Static Dice class, only really need the roll dice method.
-
-    could be a static class? --&gt; &#34;
-    easiest&#34; way would just be a python file with functions
-    done it the &#34;Java&#34; way, source:
-    https://stackoverflow.com/questions/30556857/creating-a-static-class-with-no-instances
-    &#34;&#34;&#34;
-
-    # Attributes
-    # static class wide variable, &#34;real&#34; dice faces will be added later
-    # DO NOT CHANGE LENGTH!! Only change to get new dice faces
-    __STRING_DICE_FACE = [&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;, &#34;5&#34;, &#34;6&#34;]
-
-    # Methods
-    @staticmethod
-    def roll_dice():
-        &#34;&#34;&#34;:return: random integer between 1 and 6 (inclusive of both ends).&#34;&#34;&#34;
-        return int(random.randint(1, 6))
-
-    @staticmethod
-    def get_dice_face(roll):
-        &#34;&#34;&#34;Returns dice face.
-
-        :param roll: an integer between 1 and 6 (inclusive).
-        raises either TypeError(roll is not an integer) or
-        an IndexError(not between 1 and 6 inclusive)
-        :return: corresponding dice face is returned
-        &#34;&#34;&#34;
-        if isinstance(roll, int):
-            if 0 &lt; roll &lt; 7:
-                return Dice.__STRING_DICE_FACE[roll - 1]
-            raise IndexError(&#34;Roll out of Bounds&#34;)
-        raise TypeError(&#34;Roll is not an integer!&#34;)</code></pre>
-</details>
-<div class="desc"><p>Static Dice class, only really need the roll dice method.</p>
-<p>could be a static class? &ndash;&gt; "
-easiest" way would just be a python file with functions
-done it the "Java" way, source:
-<a href="https://stackoverflow.com/questions/30556857/creating-a-static-class-with-no-instances">https://stackoverflow.com/questions/30556857/creating-a-static-class-with-no-instances</a></p></div>
-<h3>Static methods</h3>
-<dl>
-<dt id="dice.Dice.get_dice_face"><code class="name flex">
-<span>def <span class="ident">get_dice_face</span></span>(<span>roll)</span>
-</code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">@staticmethod
-def get_dice_face(roll):
-    &#34;&#34;&#34;Returns dice face.
-
-    :param roll: an integer between 1 and 6 (inclusive).
-    raises either TypeError(roll is not an integer) or
-    an IndexError(not between 1 and 6 inclusive)
-    :return: corresponding dice face is returned
-    &#34;&#34;&#34;
-    if isinstance(roll, int):
-        if 0 &lt; roll &lt; 7:
-            return Dice.__STRING_DICE_FACE[roll - 1]
-        raise IndexError(&#34;Roll out of Bounds&#34;)
-    raise TypeError(&#34;Roll is not an integer!&#34;)</code></pre>
-</details>
-<div class="desc"><p>Returns dice face.</p>
-<p>:param roll: an integer between 1 and 6 (inclusive).
-raises either TypeError(roll is not an integer) or
-an IndexError(not between 1 and 6 inclusive)
-:return: corresponding dice face is returned</p></div>
-</dd>
-<dt id="dice.Dice.roll_dice"><code class="name flex">
-<span>def <span class="ident">roll_dice</span></span>(<span>)</span>
-</code></dt>
-<dd>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">@staticmethod
-def roll_dice():
-    &#34;&#34;&#34;:return: random integer between 1 and 6 (inclusive of both ends).&#34;&#34;&#34;
-    return int(random.randint(1, 6))</code></pre>
-</details>
-<div class="desc"><p>:return: random integer between 1 and 6 (inclusive of both ends).</p></div>
-</dd>
-</dl>
-</dd>
-</dl>
 </section>
 </article>
 <nav id="sidebar">
@@ -152,17 +51,6 @@ def roll_dice():
 <ul></ul>
 </div>
 <ul id="index">
-<li><h3><a href="#header-classes">Classes</a></h3>
-<ul>
-<li>
-<h4><code><a title="dice.Dice" href="#dice.Dice">Dice</a></code></h4>
-<ul class="">
-<li><code><a title="dice.Dice.get_dice_face" href="#dice.Dice.get_dice_face">get_dice_face</a></code></li>
-<li><code><a title="dice.Dice.roll_dice" href="#dice.Dice.roll_dice">roll_dice</a></code></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 </nav>
 </main>

@@ -1,14 +1,14 @@
-"""
-dice module, see class description for function
-"""
+"""Dice module, see class description for function."""
 
 import random
 
 
 class Dice:
     """
-    static Dice class, only really need the roll dice method;
-    could be a static class? --> "easiest" way would just be a python file with functions
+    Static Dice class, only really need the roll dice method.
+
+    could be a static class? --> "
+    easiest" way would just be a python file with functions
     done it the "Java" way, source:
     https://stackoverflow.com/questions/30556857/creating-a-static-class-with-no-instances
     """
@@ -21,15 +21,14 @@ class Dice:
     # Methods
     @staticmethod
     def roll_dice():
-        """
-        :return: random integer between 1 and 6 (inclusive of both ends)
-        """
+        """:return: random integer between 1 and 6 (inclusive of both ends)."""
         return int(random.randint(1, 6))
 
     @staticmethod
     def get_dice_face(roll):
-        """
-        :param roll: an integer between 1 and 6 (inclusive);
+        """Returns dice face.
+
+        :param roll: an integer between 1 and 6 (inclusive).
         raises either TypeError(roll is not an integer) or
         an IndexError(not between 1 and 6 inclusive)
         :return: corresponding dice face is returned

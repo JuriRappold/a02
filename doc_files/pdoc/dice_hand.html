@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.6">
 <title>dice_hand API documentation</title>
-<meta name="description" content="module for class DiceHand">
+<meta name="description" content="Module for class DiceHand.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
@@ -36,7 +36,7 @@ el.replaceWith(d);
 <h1 class="title">Module <code>dice_hand</code></h1>
 </header>
 <section id="section-intro">
-<p>module for class DiceHand</p>
+<p>Module for class DiceHand.</p>
 </section>
 <section>
 </section>
@@ -55,54 +55,52 @@ el.replaceWith(d);
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class DiceHand: #change class name to Dice_Hand???
-    &#34;&#34;&#34;
-    keeps track of every roll a player makes over the entire game
-    &#34;&#34;&#34;
-    # Attributes
-    #game_rolls = []
-    #turn_rolls = []
+<pre><code class="python">class DiceHand:  # change class name to Dice_Hand???
+    &#34;&#34;&#34;Keeps track of every roll a player makes over the entire game.&#34;&#34;&#34;
 
-    # Methods
     def __init__(self):
-        # declare attributes here, not above?
-        self.game_rolls =[]
+        &#34;&#34;&#34;Dice Hand Constructor: just creates the lists.&#34;&#34;&#34;
+        self.game_rolls = []
         self.turn_rolls = []
 
     def add_turn_rolls(self):
         &#34;&#34;&#34;
-        adds the rolls of an entire turn to the list of rolls of the game for an individual player
+        Adds the rolls of an entire turn to the list of rolls of the game for an individual player.
+
         :return: NaN
         &#34;&#34;&#34;
-        #self.game_rolls.append(self.turn_rolls)#!!!appends list as list item!!
         for r in self.turn_rolls:
             self.game_rolls.append(r)
         self.turn_rolls = []
 
     def add_roll(self, roll):
         &#34;&#34;&#34;
-        adds the current roll to a temporary turn list of rolls
+        Adds the current roll to a temporary turn list of rolls.
+
         :param roll: has to be an integer, else it raises a TypeError
         :return: NaN
         &#34;&#34;&#34;
         if isinstance(roll, int):
             self.turn_rolls.append(roll)
-        else: raise TypeError(&#34;Roll not an int; Check dice_hand .add_roll() calls&#34;)
-        #print(f&#34;type in add_roll(): {type(roll)}&#34;)
+        else:
+            raise TypeError(&#34;Roll not an int; Check dice_hand .add_roll() calls&#34;)
+        # print(f&#34;type in add_roll(): {type(roll)}&#34;)
 
     def sum_game_rolls(self):
         &#34;&#34;&#34;
-        sum of the list of game rolls
+        Sum of the list of game rolls.
+
         :return: sum
         &#34;&#34;&#34;
         sum_rolls = 0
         for r in self.game_rolls:
-            sum_rolls+=r
+            sum_rolls += r
         return sum_rolls
 
     def sum_turn_rolls(self):
         &#34;&#34;&#34;
-        sum of the list for the turn
+        Sum of the list for the turn.
+
         :return:
         &#34;&#34;&#34;
         sum_rolls = 0
@@ -112,12 +110,14 @@ el.replaceWith(d);
 
     def reset_turn_list(self):
         &#34;&#34;&#34;
-        resets the turn list, in case somebody rolled a one
+        Resets the turn list, in case somebody rolled a one.
+
         :return:
         &#34;&#34;&#34;
         self.turn_rolls = []</code></pre>
 </details>
-<div class="desc"><p>keeps track of every roll a player makes over the entire game</p></div>
+<div class="desc"><p>Keeps track of every roll a player makes over the entire game.</p>
+<p>Dice Hand Constructor: just creates the lists.</p></div>
 <h3>Methods</h3>
 <dl>
 <dt id="dice_hand.DiceHand.add_roll"><code class="name flex">
@@ -130,17 +130,19 @@ el.replaceWith(d);
 </summary>
 <pre><code class="python">def add_roll(self, roll):
     &#34;&#34;&#34;
-    adds the current roll to a temporary turn list of rolls
+    Adds the current roll to a temporary turn list of rolls.
+
     :param roll: has to be an integer, else it raises a TypeError
     :return: NaN
     &#34;&#34;&#34;
     if isinstance(roll, int):
         self.turn_rolls.append(roll)
-    else: raise TypeError(&#34;Roll not an int; Check dice_hand .add_roll() calls&#34;)
-    #print(f&#34;type in add_roll(): {type(roll)}&#34;)</code></pre>
+    else:
+        raise TypeError(&#34;Roll not an int; Check dice_hand .add_roll() calls&#34;)
+    # print(f&#34;type in add_roll(): {type(roll)}&#34;)</code></pre>
 </details>
-<div class="desc"><p>adds the current roll to a temporary turn list of rolls
-:param roll: has to be an integer, else it raises a TypeError
+<div class="desc"><p>Adds the current roll to a temporary turn list of rolls.</p>
+<p>:param roll: has to be an integer, else it raises a TypeError
 :return: NaN</p></div>
 </dd>
 <dt id="dice_hand.DiceHand.add_turn_rolls"><code class="name flex">
@@ -153,16 +155,16 @@ el.replaceWith(d);
 </summary>
 <pre><code class="python">def add_turn_rolls(self):
     &#34;&#34;&#34;
-    adds the rolls of an entire turn to the list of rolls of the game for an individual player
+    Adds the rolls of an entire turn to the list of rolls of the game for an individual player.
+
     :return: NaN
     &#34;&#34;&#34;
-    #self.game_rolls.append(self.turn_rolls)#!!!appends list as list item!!
     for r in self.turn_rolls:
         self.game_rolls.append(r)
     self.turn_rolls = []</code></pre>
 </details>
-<div class="desc"><p>adds the rolls of an entire turn to the list of rolls of the game for an individual player
-:return: NaN</p></div>
+<div class="desc"><p>Adds the rolls of an entire turn to the list of rolls of the game for an individual player.</p>
+<p>:return: NaN</p></div>
 </dd>
 <dt id="dice_hand.DiceHand.reset_turn_list"><code class="name flex">
 <span>def <span class="ident">reset_turn_list</span></span>(<span>self)</span>
@@ -174,13 +176,14 @@ el.replaceWith(d);
 </summary>
 <pre><code class="python">def reset_turn_list(self):
     &#34;&#34;&#34;
-    resets the turn list, in case somebody rolled a one
+    Resets the turn list, in case somebody rolled a one.
+
     :return:
     &#34;&#34;&#34;
     self.turn_rolls = []</code></pre>
 </details>
-<div class="desc"><p>resets the turn list, in case somebody rolled a one
-:return:</p></div>
+<div class="desc"><p>Resets the turn list, in case somebody rolled a one.</p>
+<p>:return:</p></div>
 </dd>
 <dt id="dice_hand.DiceHand.sum_game_rolls"><code class="name flex">
 <span>def <span class="ident">sum_game_rolls</span></span>(<span>self)</span>
@@ -192,16 +195,17 @@ el.replaceWith(d);
 </summary>
 <pre><code class="python">def sum_game_rolls(self):
     &#34;&#34;&#34;
-    sum of the list of game rolls
+    Sum of the list of game rolls.
+
     :return: sum
     &#34;&#34;&#34;
     sum_rolls = 0
     for r in self.game_rolls:
-        sum_rolls+=r
+        sum_rolls += r
     return sum_rolls</code></pre>
 </details>
-<div class="desc"><p>sum of the list of game rolls
-:return: sum</p></div>
+<div class="desc"><p>Sum of the list of game rolls.</p>
+<p>:return: sum</p></div>
 </dd>
 <dt id="dice_hand.DiceHand.sum_turn_rolls"><code class="name flex">
 <span>def <span class="ident">sum_turn_rolls</span></span>(<span>self)</span>
@@ -213,7 +217,8 @@ el.replaceWith(d);
 </summary>
 <pre><code class="python">def sum_turn_rolls(self):
     &#34;&#34;&#34;
-    sum of the list for the turn
+    Sum of the list for the turn.
+
     :return:
     &#34;&#34;&#34;
     sum_rolls = 0
@@ -221,8 +226,8 @@ el.replaceWith(d);
         sum_rolls += r
     return sum_rolls</code></pre>
 </details>
-<div class="desc"><p>sum of the list for the turn
-:return:</p></div>
+<div class="desc"><p>Sum of the list for the turn.</p>
+<p>:return:</p></div>
 </dd>
 </dl>
 </dd>

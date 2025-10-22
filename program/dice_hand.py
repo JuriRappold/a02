@@ -1,36 +1,28 @@
-"""
-module for class DiceHand
-"""
+"""Module for class DiceHand."""
 
 
 class DiceHand:  # change class name to Dice_Hand???
-    """
-    keeps track of every roll a player makes over the entire game
-    """
+    """Keeps track of every roll a player makes over the entire game."""
 
-    # Attributes
-    # game_rolls = []
-    # turn_rolls = []
-
-    # Methods
     def __init__(self):
-        # declare attributes here, not above?
+        """Dice Hand Constructor: just creates the lists."""
         self.game_rolls = []
         self.turn_rolls = []
 
     def add_turn_rolls(self):
         """
-        adds the rolls of an entire turn to the list of rolls of the game for an individual player
+        Adds the rolls of an entire turn to the list of rolls of the game for an individual player.
+
         :return: NaN
         """
-        # self.game_rolls.append(self.turn_rolls)#!!!appends list as list item!!
         for r in self.turn_rolls:
             self.game_rolls.append(r)
         self.turn_rolls = []
 
     def add_roll(self, roll):
         """
-        adds the current roll to a temporary turn list of rolls
+        Adds the current roll to a temporary turn list of rolls.
+
         :param roll: has to be an integer, else it raises a TypeError
         :return: NaN
         """
@@ -42,7 +34,8 @@ class DiceHand:  # change class name to Dice_Hand???
 
     def sum_game_rolls(self):
         """
-        sum of the list of game rolls
+        Sum of the list of game rolls.
+
         :return: sum
         """
         sum_rolls = 0
@@ -52,7 +45,8 @@ class DiceHand:  # change class name to Dice_Hand???
 
     def sum_turn_rolls(self):
         """
-        sum of the list for the turn
+        Sum of the list for the turn.
+
         :return:
         """
         sum_rolls = 0
@@ -62,7 +56,8 @@ class DiceHand:  # change class name to Dice_Hand???
 
     def reset_turn_list(self):
         """
-        resets the turn list, in case somebody rolled a one
+        Resets the turn list, in case somebody rolled a one.
+
         :return:
         """
         self.turn_rolls = []

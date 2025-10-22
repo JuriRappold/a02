@@ -5,8 +5,8 @@ from program.dice_hand import DiceHand
 
 
 class Computer:
-    """
-    computer player class with three different difficulty modes.
+    """computer player class with three different difficulty modes.
+
     methods:
     __init__(computer_name, difficulty),
     select_difficulty(new_difficulty),
@@ -18,35 +18,35 @@ class Computer:
     take_turn(player_score) -->
     should be only call really outside the class
     """
+
     __DIFFICULTIES = [(1, "easy"), (2, "normal"), (3, "hard")]
     __DEFAULT_NAME = "Harald (default)"
 
     def __init__(self, computer_name, difficulty):
-        """computer Constructor."""
+        """Computer Constructor with input checks."""
         self.computer_name = self.check_valid_computer_name(computer_name)
         self.difficulty = self.check_valid_difficulty(difficulty)
-        self.id = hash(str(computer_name) + str(0))  # can only hash a non-tuple
-        self.dice_hand = DiceHand()  # create dice_hand obj once class is integrated
+        self.id = hash(str(computer_name) + str(self.difficulty))
+        self.dice_hand = DiceHand()
         self.score = 0
         self.turn_number = 4  # number of scoring turns needed
 
     def select_difficulty(self, new_difficulty):
-        """selecting new difficulty;"""
+        """Selects new difficulty."""
         self.difficulty = self.check_valid_difficulty(new_difficulty)
         return f"Difficulty changed to: {self.__DIFFICULTIES[self.difficulty][1]}"
 
-
     def change_computer_name(self, new_name):
-        """changing the computer username, id remains the same"""
+        """Changes the computer username, id remains the same."""
         self.computer_name = self.check_valid_computer_name(new_name)
 
     def roll_dice(self):
-        """rolls the dice; make it static?"""
+        """Rolls the dice; make it static?."""
         return Dice.roll_dice()
 
     def hold_at_twenty(self):  # easy mode;
-        """
-        Each turn try to reach the sum of 20;
+        """Each turn try to reach the sum of 20.
+
         https://en.wikipedia.org/wiki/Pig_(dice_game)#Optimal_play
         :return: the result of the turn, either sum of the dice
          or 0 (when a 1 is rolled)
@@ -66,8 +66,8 @@ class Computer:
         return turn
 
     def scoring_turn(self):  # normal mode
-        """
-        4 scoring turns,
+        """4 scoring turns.
+
         bound--> sum trying to be reached each turn
         1. turn: bound = 25, sum1
         2. turn: bound = (100-sum1)/3, sum2
@@ -103,8 +103,8 @@ class Computer:
         return turn
 
     def keep_or_race(self, player_score):  # hard mode
-        """
-        if the player score or the computers score is below 71, roll to win
+        """If the player score or the computers score is below 71, roll to win.
+
         Otherwise, hold on 21 plus the difference between scores divided by 8
         bound = 21 + (|player_score-self.score|)/8
         :param player_score: requires player_score for an if statement
@@ -137,8 +137,8 @@ class Computer:
         return turn
 
     def take_turn(self, player_score=0):
-        """
-        turn method, should be the only function called outside the class,
+        """Turn method, should be the only function called outside the class.
+
         besides init and change_computer_name(...)
         :param player_score: for keep_or_race function
         :return: turn (sum or 0)
@@ -154,7 +154,8 @@ class Computer:
         return turn
 
     def check_valid_computer_name(self, computer_name):
-        """checks if the computer_name is of a valid type.
+        """Checks if the computer_name is of a valid type.
+
          and returns a valid computer_name
         1. of type string:
             "" str --> default_name
@@ -162,54 +163,55 @@ class Computer:
         2. of type list --> concatenate list elements into a string
         3. of type dict --> concatenate dict values into a string
         4. else return default
-
         """
-        if type(computer_name) is None:
+        if computer_name is None:
             return self.__DEFAULT_NAME
-        elif type(computer_name)==str:
-            if computer_name =="":
+
+        if isinstance(computer_name, str):
+            if computer_name == "":
                 return self.__DEFAULT_NAME
-            else: return computer_name
-        elif type(computer_name) == list:
+            return computer_name
+        if isinstance(computer_name, list):
             new_name = ""
             for item in computer_name:
                 new_name += str(item)
             return new_name
-        elif type(computer_name) == dict:
+        if isinstance(computer_name, dict):
             new_name = ""
             for values in computer_name.values():
                 new_name += str(values)
             return new_name
-        else: return self.__DEFAULT_NAME
+        return self.__DEFAULT_NAME
 
     def check_valid_difficulty(self, difficulty):
-       """
-       checks types of difficulty
-       :param difficulty: valid index (int) or valid string ("easy", "normal", "hard")
-       :return: proper index value of self.__DIFFICULTIES for the entered difficulty
-       """
-       listDiff = []
-       for diff in self.__DIFFICULTIES:
-           listDiff.append(diff[1])
+        """
+        Checks types of difficulty.
 
-       if isinstance(difficulty, int or float):#type(difficulty) == int or float:
-           difficulty = int(difficulty)
-           if difficulty < 0 or difficulty > 2:
-               raise IndexError("Index Error Out of Bounds")
-           else:
-               return difficulty
+        :param difficulty: valid index (int) or
+         valid string ("easy", "normal", "hard")
+        :return: proper index value of self.__DIFFICULTIES
+        for the entered difficulty
+        """
+        list_diff = []
+        for diff in self.__DIFFICULTIES:
+            list_diff.append(diff[1])
 
-       elif isinstance(difficulty, str):
-           if difficulty not in listDiff:
-               raise ValueError("value is a non-valid string")
-           else:
-               match difficulty:
-                   case "easy":
-                       return 0
-                   case "normal":
-                       return 1
-                   case "hard":
-                       return 2
-       elif type(difficulty) is None or list or dict or tuple or Computer:
-           raise TypeError(f"type is {type(difficulty)}")
-       else: return 0
+        if isinstance(difficulty, int or float):
+            difficulty = int(difficulty)
+            if 0 <= difficulty <= 2:
+                return difficulty
+            raise IndexError("Index Error Out of Bounds")
+
+        if isinstance(difficulty, str):
+            if difficulty not in list_diff:
+                raise ValueError("value is a non-valid string")
+            match difficulty:
+                case "easy":
+                    return 0
+                case "normal":
+                    return 1
+                case "hard":
+                    return 2
+        if difficulty is None or isinstance(difficulty, list | dict | tuple | Computer):
+            raise TypeError(f"type is {type(difficulty)}")
+        return 0
