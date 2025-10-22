@@ -87,7 +87,6 @@ def test_init_difficulty_valid_index():
 
 
 
-
 def test_init_hash_same_input_produces_same_id():
     """Test that identical name and difficulty produce the same hash id within one session."""
     pc1 = Computer("Nephilim", 1)
@@ -123,7 +122,13 @@ def test_difficulty_values():
 
 
 # DIFFICULTY CHANGE
+def test_select_difficulty_int():
+    test = Computer("harald", 1)
+    assert test.select_difficulty(2) == "Difficulty changed to: hard"
 
+def test_select_difficulty_str():
+    test = Computer("harald", 0)
+    assert test.select_difficulty("normal") == "Difficulty changed to: normal"
 
 # TEST CHANGE COMPUTER NAME
 def test_change_computer_name():

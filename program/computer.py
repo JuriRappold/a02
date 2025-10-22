@@ -32,17 +32,6 @@ class Computer:
 
     def select_difficulty(self, new_difficulty):
         """selecting new difficulty;"""
-        # if new_difficulty in ("easy", 1):  # from linting lol
-        #     self.difficulty = 0
-        # elif new_difficulty in ("normal", 2):
-        #     self.difficulty = 1
-        # elif new_difficulty in ("hard", 3):
-        #     self.difficulty = 2
-        # if type(new_difficulty) == tuple:
-        #     self.difficulty = self.check_valid_difficulty(new_difficulty)
-        # else:
-        #     raise ValueError("Invalid Difficulty")
-        # return f"Difficulty changed to: {self.difficulty[1]}"#self.__DIFFICULTIES[self.difficulty]
         self.difficulty = self.check_valid_difficulty(new_difficulty)
         return f"Difficulty changed to: {self.__DIFFICULTIES[self.difficulty][1]}"
 
