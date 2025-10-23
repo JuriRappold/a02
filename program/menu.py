@@ -81,21 +81,20 @@ class menu:
         :param new_username: new username to set
         :return: True if successful, False if old username doesn't match
         """
-        # Validate inputs
-        if new_username is None:
-            return False
-        # Only allow str, int, float types
-        if not isinstance(new_username, (str, int, float)):
-            return False
-        # Convert to string for uniform validation
-        new_username_str = str(new_username)
-        # Reject if username contains newlines
-        if '\n' in new_username_str:
-            return False
-        new_username = new_username_str
-
         if self.player1 is not None:
             if self.player1.username == old_username:
+                # Validate new_username
+                if new_username is None:
+                    return False
+                # Only allow str, int, float types
+                if not isinstance(new_username, (str, int, float)):
+                    return False
+                # Convert to string for uniform validation
+                new_username_str = str(new_username)
+                # Reject if username contains newlines
+                if '\n' in new_username_str:
+                    return False
+                new_username = new_username_str
                 self.player1.change_usr_name(new_username)
                 return True
         return False
