@@ -1,6 +1,4 @@
-"""
-Unit tests for Player class
-"""
+""" Unit tests for Player class """
 
 import pytest
 from program.player import Player
