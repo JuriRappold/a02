@@ -81,6 +81,10 @@ class menu:
         :param new_username: new username to set
         :return: True if successful, False if old username doesn't match
         """
+
+        if old_username is None:
+            return False
+
         if self.player1 is not None:
             if self.player1.username == old_username:
                 # Validate new_username
