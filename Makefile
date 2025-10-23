@@ -88,17 +88,17 @@ codestyle: black
 #
 unittest:
 	@$(call MESSAGE,$@)
-	 $(PYTHON) -m pytest tests/computer_tests.py
+	 $(PYTHON) -m pytest tests/
 
 coverage:
 	@$(call MESSAGE,$@)
-	coverage run -m pytest tests/dice_unit_tests.py
+	coverage run -m pytest tests/
 	coverage html
 	coverage report -m
 
 coverage-xml:
 	@$(call MESSAGE,$@)
-	coverage run -m pytest tests/dice_unit_tests.py
+	coverage run -m pytest tests/
 	coverage xml
 
 test: lint coverage
@@ -167,4 +167,4 @@ bandit:
 # own cmds
 pytest:
 	@$(call MESSAGE,$@)
-	-cd tests && pytest dice_unit_tests.py
+	pytest tests/test_menu.py > doc_files/test_results/test_menu_results.txt

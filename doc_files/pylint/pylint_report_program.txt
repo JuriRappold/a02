@@ -1,4 +1,7 @@
+************* Module program.menu
+program\menu.py:11:0: C0103: Class name "menu" doesn't conform to PascalCase naming style (invalid-name)
+program\menu.py:137:8: W0107: Unnecessary pass statement (unnecessary-pass)
 
---------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+-----------------------------------
+Your code has been rated at 9.65/10
 

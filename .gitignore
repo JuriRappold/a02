@@ -2,5 +2,6 @@
 .idea
 # best practice if everybody individually installs the virtual environment
 .venv
-# exclude pycache files
-program/__pycache__
+# Python compiled files and cache directories
+*.pyc
+__pycache__/
