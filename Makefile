@@ -65,7 +65,6 @@ pylint:
 	$(PYTHON) -m pylint program/*.py > doc_files/pylint/pylint_report_program.txt 2>&1
 	$(PYTHON) -m pylint tests/*.py > doc_files/pylint/pylint_report_tests.txt 2>&1
 
-
 flake8:
 	@$(call MESSAGE,$@)
 	-flake8 program/ > doc_files/flake/flake_report_program.txt 2>&1
@@ -89,11 +88,11 @@ codestyle: black
 #
 unittest:
 	@$(call MESSAGE,$@)
-	 $(PYTHON) -m tests/dice_unit_tests.py
+	 $(PYTHON) -m pytest tests/computer_tests.py
 
 coverage:
 	@$(call MESSAGE,$@)
-	coverage run -m tests/dice_unit_tests.py
+	coverage run -m pytest tests/dice_unit_tests.py
 	coverage html
 	coverage report -m
 
@@ -121,7 +120,7 @@ pdoc:
 
 pyreverse:
 	@$(call MESSAGE,$@)
-	install -d doc/pyreverse
+	install -d doc_files/pyreverse
 	pyreverse -a1 -s1 program/*.py
 	dot -Tpng classes.dot -o doc_files/pyreverse/classes.png
 	dot -Tpng packages.dot -o doc_files/pyreverse/packages.png
@@ -163,7 +162,7 @@ metrics: radon-cc radon-mi radon-raw radon-hal cohesion
 #
 bandit:
 	@$(call MESSAGE,$@)
-	bandit --recursive guess
+	bandit --recursive program
 # ---------------------------------------------------------
 # own cmds
 pytest:

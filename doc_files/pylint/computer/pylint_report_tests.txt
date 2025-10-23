@@ -1,0 +1,8 @@
+************* Module tests.computer_tests
+tests\computer_tests.py:39:0: C0103: Function name "test_init_values_None_value_computer_name" doesn't conform to snake_case naming style (invalid-name)
+tests\computer_tests.py:60:0: C0103: Function name "test_init_difficulty_None" doesn't conform to snake_case naming style (invalid-name)
+tests\computer_tests.py:214:0: C0103: Function name "test_change_name_None_value" doesn't conform to snake_case naming style (invalid-name)
+
+------------------------------------------------------------------
+Your code has been rated at 9.81/10 (previous run: 9.81/10, +0.00)
+
