@@ -229,13 +229,13 @@ class menu:
         try:
             # Reject floats explicitly
             if isinstance(choice, float):
-                raise ValueError("Invalid menu choice: must be an integer between 1 and 5")
+                raise ValueError("False: Invalid menu choice: must be an integer between 1 and 5")
             choice_int = int(choice)
             if not (1 <= choice_int <= 5):
-                raise ValueError("Invalid menu choice: must be an integer between 1 and 5")
+                raise ValueError("False: Invalid menu choice: must be an integer between 1 and 5")
             return True
         except (ValueError, TypeError):
-            raise ValueError("Invalid menu choice: must be an integer between 1 and 5")
+            raise ValueError("False: Invalid menu choice: must be an integer between 1 and 5")
 
     def display_error_message(self, message):
         """
