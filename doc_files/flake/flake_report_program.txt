@@ -1,15 +1,40 @@
 program/__init__.py:1:1: D104 Missing docstring in public package
+program/computer.py:7:1: H601 class has low (22.50%) cohesion
+program/computer.py:26:1: D401 First line should be in imperative mood
+program/computer.py:35:1: D401 First line should be in imperative mood
+program/computer.py:37:80: E501 line too long (82 > 79 characters)
+program/computer.py:40:1: D401 First line should be in imperative mood
+program/computer.py:44:1: D401 First line should be in imperative mood
+program/computer.py:157:1: D401 First line should be in imperative mood
+program/computer.py:187:1: D401 First line should be in imperative mood
+program/computer.py:215:80: E501 line too long (88 > 79 characters)
 program/dice.py:6:1: H601 class has low (0.00%) cohesion
-program/dice.py:7:1: D205 1 blank line required between summary line and description
-program/dice.py:7:1: D400 First line should end with a period
-program/dice.py:23:1: D401 First line should be in imperative mood
-program/dice.py:31:1: D401 First line should be in imperative mood
+program/dice.py:29:1: D401 First line should be in imperative mood
 program/dice_hand.py:8:1: D403 First word of the first line should be properly capitalized
 program/dice_hand.py:14:1: D401 First line should be in imperative mood
 program/dice_hand.py:14:80: E501 line too long (102 > 79 characters)
 program/dice_hand.py:18:80: E501 line too long (80 > 79 characters)
 program/dice_hand.py:24:1: D401 First line should be in imperative mood
 program/dice_hand.py:33:80: E501 line too long (81 > 79 characters)
+program/dice_hand.py:56:1: D401 First line should be in imperative mood
+program/high_score.py:1:1: D400 First line should end with a period
+program/high_score.py:4:1: H601 class has low (33.33%) cohesion
+program/high_score.py:5:1: D400 First line should end with a period
+program/high_score.py:9:1: D107 Missing docstring in __init__
+program/high_score.py:13:1: D205 1 blank line required between summary line and description
+program/high_score.py:13:1: D400 First line should end with a period
+program/high_score.py:13:1: D403 First word of the first line should be properly capitalized
+program/high_score.py:14:80: E501 line too long (89 > 79 characters)
+program/high_score.py:17:80: E501 line too long (84 > 79 characters)
+program/high_score.py:29:1: D400 First line should end with a period
+program/high_score.py:29:1: D403 First word of the first line should be properly capitalized
+program/high_score.py:35:80: E501 line too long (99 > 79 characters)
+program/menu.py:1:1: D400 First line should end with a period
+program/menu.py:11:1: H601 class has low (26.92%) cohesion
+program/menu.py:73:1: D202 No blank lines allowed after function docstring
+program/menu.py:235:80: E501 line too long (98 > 79 characters)
+program/menu.py:238:80: E501 line too long (98 > 79 characters)
+program/menu.py:241:80: E501 line too long (94 > 79 characters)
 program/player.py:1:1: D400 First line should end with a period
 program/player.py:8:1: H601 class has low (25.00%) cohesion
 program/player.py:9:1: D400 First line should end with a period

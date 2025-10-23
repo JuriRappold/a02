@@ -44,8 +44,8 @@ installed:
 #
 clean:
 	@$(call MESSAGE,$@)
-	rm -f .coverage *.pyc
-	rm -rf __pycache__
+	rm -f doc_files/coverage/.coverage *.pyc
+	rm -rf program/__pycache__ tests/__pycache__
 	rm -rf htmlcov
 
 clean-doc: clean
@@ -165,6 +165,6 @@ bandit:
 	bandit --recursive program
 # ---------------------------------------------------------
 # own cmds
-pytest:
-	@$(call MESSAGE,$@)
-	pytest tests/test_menu.py > doc_files/test_results/test_menu_results.txt
+#pytest:
+#	@$(call MESSAGE,$@)
+#	pytest tests/test_menu.py > doc_files/test_results/test_menu_results.txt

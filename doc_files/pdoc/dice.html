@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.6">
 <title>dice API documentation</title>
-<meta name="description" content="dice modul, see class description for function">
+<meta name="description" content="Dice module, see class description for function.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
@@ -36,7 +36,7 @@ el.replaceWith(d);
 <h1 class="title">Module <code>dice</code></h1>
 </header>
 <section id="section-intro">
-<p>dice modul, see class description for function</p>
+<p>Dice module, see class description for function.</p>
 </section>
 <section>
 </section>
@@ -57,13 +57,10 @@ el.replaceWith(d);
 </summary>
 <pre><code class="python">class Dice:
     &#34;&#34;&#34;
-    static Dice class, only really need the roll dice method;
-<<<<<<< HEAD
-    could be a static class? --&gt; &#34;easiest&#34; way would just be a python file with functions
-=======
-    could be a static class? --&gt; &#34;easiest&#34; way would just be a python file
-    with functions
->>>>>>> 7855e42 (generated docs for highscore)
+    Static Dice class, only really need the roll dice method.
+
+    could be a static class? --&gt; &#34;
+    easiest&#34; way would just be a python file with functions
     done it the &#34;Java&#34; way, source:
     https://stackoverflow.com/questions/30556857/creating-a-static-class-with-no-instances
     &#34;&#34;&#34;
@@ -76,15 +73,14 @@ el.replaceWith(d);
     # Methods
     @staticmethod
     def roll_dice():
-        &#34;&#34;&#34;
-        :return: random integer between 1 and 6 (inclusive of both ends)
-        &#34;&#34;&#34;
-        return random.randint(1, 6)
+        &#34;&#34;&#34;:return: random integer between 1 and 6 (inclusive of both ends).&#34;&#34;&#34;
+        return int(random.randint(1, 6))
 
     @staticmethod
     def get_dice_face(roll):
-        &#34;&#34;&#34;
-        :param roll: an integer between 1 and 6 (inclusive);
+        &#34;&#34;&#34;Returns dice face.
+
+        :param roll: an integer between 1 and 6 (inclusive).
         raises either TypeError(roll is not an integer) or
         an IndexError(not between 1 and 6 inclusive)
         :return: corresponding dice face is returned
@@ -95,13 +91,9 @@ el.replaceWith(d);
             raise IndexError(&#34;Roll out of Bounds&#34;)
         raise TypeError(&#34;Roll is not an integer!&#34;)</code></pre>
 </details>
-<div class="desc"><p>static Dice class, only really need the roll dice method;
-<<<<<<< HEAD
-could be a static class? &ndash;&gt; "easiest" way would just be a python file with functions
-=======
-could be a static class? &ndash;&gt; "easiest" way would just be a python file
-with functions
->>>>>>> 7855e42 (generated docs for highscore)
+<div class="desc"><p>Static Dice class, only really need the roll dice method.</p>
+<p>could be a static class? &ndash;&gt; "
+easiest" way would just be a python file with functions
 done it the "Java" way, source:
 <a href="https://stackoverflow.com/questions/30556857/creating-a-static-class-with-no-instances">https://stackoverflow.com/questions/30556857/creating-a-static-class-with-no-instances</a></p></div>
 <h3>Static methods</h3>
@@ -116,8 +108,9 @@ done it the "Java" way, source:
 </summary>
 <pre><code class="python">@staticmethod
 def get_dice_face(roll):
-    &#34;&#34;&#34;
-    :param roll: an integer between 1 and 6 (inclusive);
+    &#34;&#34;&#34;Returns dice face.
+
+    :param roll: an integer between 1 and 6 (inclusive).
     raises either TypeError(roll is not an integer) or
     an IndexError(not between 1 and 6 inclusive)
     :return: corresponding dice face is returned
@@ -128,7 +121,8 @@ def get_dice_face(roll):
         raise IndexError(&#34;Roll out of Bounds&#34;)
     raise TypeError(&#34;Roll is not an integer!&#34;)</code></pre>
 </details>
-<div class="desc"><p>:param roll: an integer between 1 and 6 (inclusive);
+<div class="desc"><p>Returns dice face.</p>
+<p>:param roll: an integer between 1 and 6 (inclusive).
 raises either TypeError(roll is not an integer) or
 an IndexError(not between 1 and 6 inclusive)
 :return: corresponding dice face is returned</p></div>
@@ -143,12 +137,10 @@ an IndexError(not between 1 and 6 inclusive)
 </summary>
 <pre><code class="python">@staticmethod
 def roll_dice():
-    &#34;&#34;&#34;
-    :return: random integer between 1 and 6 (inclusive of both ends)
-    &#34;&#34;&#34;
-    return random.randint(1, 6)</code></pre>
+    &#34;&#34;&#34;:return: random integer between 1 and 6 (inclusive of both ends).&#34;&#34;&#34;
+    return int(random.randint(1, 6))</code></pre>
 </details>
-<div class="desc"><p>:return: random integer between 1 and 6 (inclusive of both ends)</p></div>
+<div class="desc"><p>:return: random integer between 1 and 6 (inclusive of both ends).</p></div>
 </dd>
 </dl>
 </dd>

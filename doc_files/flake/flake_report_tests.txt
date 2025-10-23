@@ -1,4 +1,15 @@
 tests/__init__.py:1:1: D104 Missing docstring in public package
+tests/computer_tests.py:8:80: E501 line too long (96 > 79 characters)
+tests/computer_tests.py:13:80: E501 line too long (80 > 79 characters)
+tests/computer_tests.py:27:80: E501 line too long (83 > 79 characters)
+tests/computer_tests.py:34:80: E501 line too long (90 > 79 characters)
+tests/computer_tests.py:46:80: E501 line too long (82 > 79 characters)
+tests/computer_tests.py:92:80: E501 line too long (87 > 79 characters)
+tests/computer_tests.py:116:80: E501 line too long (94 > 79 characters)
+tests/computer_tests.py:143:80: E501 line too long (80 > 79 characters)
+tests/computer_tests.py:178:80: E501 line too long (83 > 79 characters)
+tests/computer_tests.py:187:80: E501 line too long (85 > 79 characters)
+tests/computer_tests.py:239:80: E501 line too long (84 > 79 characters)
 tests/dice_hand_tests.py:7:1: D400 First line should end with a period
 tests/dice_hand_tests.py:7:1: D403 First word of the first line should be properly capitalized
 tests/dice_hand_tests.py:10:5: E265 block comment should start with '# '
@@ -7,8 +18,61 @@ tests/dice_hand_tests.py:14:1: D403 First word of the first line should be prope
 tests/dice_hand_tests.py:22:12: E721 do not compare types, for exact checks use `is` / `is not`, for instance checks use `isinstance()`
 tests/dice_hand_tests.py:87:80: E501 line too long (81 > 79 characters)
 tests/dice_hand_tests.py:116:80: E501 line too long (83 > 79 characters)
-tests/dice_hand_tests.py:120:80: E501 line too long (81 > 79 characters)
+tests/dice_hand_tests.py:120:80: E501 line too long (83 > 79 characters)
 tests/dice_hand_tests.py:137:80: E501 line too long (83 > 79 characters)
+tests/dice_unit_tests.py:20:1: D205 1 blank line required between summary line and description
+tests/dice_unit_tests.py:20:1: D209 Multi-line docstring closing quotes should be on a separate line
+tests/mock_player.py:1:1: D100 Missing docstring in public module
+tests/mock_player.py:1:1: D101 Missing docstring in public class
+tests/mock_player.py:2:1: D107 Missing docstring in __init__
+tests/mock_player.py:6:1: D102 Missing docstring in public method
+tests/mock_player.py:10:1: D102 Missing docstring in public method
+tests/test_high_score.py:1:1: D400 First line should end with a period
+tests/test_high_score.py:7:1: D400 First line should end with a period
+tests/test_high_score.py:15:1: D400 First line should end with a period
+tests/test_high_score.py:22:1: D400 First line should end with a period
+tests/test_high_score.py:30:1: D400 First line should end with a period
+tests/test_high_score.py:38:1: D400 First line should end with a period
+tests/test_high_score.py:49:1: D400 First line should end with a period
+tests/test_high_score.py:59:1: D400 First line should end with a period
+tests/test_high_score.py:67:1: D400 First line should end with a period
+tests/test_high_score.py:74:1: D400 First line should end with a period
+tests/test_high_score.py:81:1: D400 First line should end with a period
+tests/test_high_score.py:88:1: D400 First line should end with a period
+tests/test_high_score.py:95:1: D400 First line should end with a period
+tests/test_high_score.py:102:1: D400 First line should end with a period
+tests/test_high_score.py:110:1: D400 First line should end with a period
+tests/test_high_score.py:117:1: D400 First line should end with a period
+tests/test_menu.py:1:1: D100 Missing docstring in public module
+tests/test_menu.py:6:80: E501 line too long (95 > 79 characters)
+tests/test_menu.py:7:1: D103 Missing docstring in public function
+tests/test_menu.py:12:49: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+tests/test_menu.py:15:1: D103 Missing docstring in public function
+tests/test_menu.py:20:55: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+tests/test_menu.py:23:1: D103 Missing docstring in public function
+tests/test_menu.py:28:53: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+tests/test_menu.py:31:1: D103 Missing docstring in public function
+tests/test_menu.py:36:53: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+tests/test_menu.py:39:1: D103 Missing docstring in public function
+tests/test_menu.py:44:68: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+tests/test_menu.py:47:1: D103 Missing docstring in public function
+tests/test_menu.py:53:80: E501 line too long (81 > 79 characters)
+tests/test_menu.py:54:9: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+tests/test_menu.py:61:80: E501 line too long (101 > 79 characters)
+tests/test_menu.py:62:1: D103 Missing docstring in public function
+tests/test_menu.py:65:38: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+tests/test_menu.py:68:1: D103 Missing docstring in public function
+tests/test_menu.py:72:47: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+tests/test_menu.py:75:1: D103 Missing docstring in public function
+tests/test_menu.py:78:48: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+tests/test_menu.py:81:1: D103 Missing docstring in public function
+tests/test_menu.py:85:44: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+tests/test_menu.py:88:80: E501 line too long (111 > 79 characters)
+tests/test_menu.py:91:1: D103 Missing docstring in public function
+tests/test_menu.py:97:1: D103 Missing docstring in public function
+tests/test_menu.py:103:1: D103 Missing docstring in public function
+tests/test_menu.py:109:1: D103 Missing docstring in public function
+tests/test_menu.py:115:1: D103 Missing docstring in public function
 tests/test_player.py:1:1: D200 One-line docstring should fit on one line with quotes
 tests/test_player.py:1:1: D400 First line should end with a period
 tests/test_player.py:11:1: D400 First line should end with a period
@@ -35,11 +99,3 @@ tests/test_player.py:149:1: D400 First line should end with a period
 tests/test_player.py:158:1: D400 First line should end with a period
 tests/test_player.py:165:1: D400 First line should end with a period
 tests/test_player.py:178:1: D400 First line should end with a period
-tests/dice_unit_tests.py:1:1: D100 Missing docstring in public module
-tests/dice_unit_tests.py:6:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:12:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:17:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:22:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:28:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:33:1: D103 Missing docstring in public function
-tests/dice_unit_tests.py:38:1: D103 Missing docstring in public function

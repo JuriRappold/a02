@@ -1,12 +1,13 @@
 ************* Module program.dice_hand
 program\dice_hand.py:14:0: C0301: Line too long (102/100) (line-too-long)
+************* Module program.high_score
+program\high_score.py:12:4: E0213: Method 'sort_dict' should have "self" as first argument (no-self-argument)
+************* Module program.menu
+program\menu.py:237:0: C0325: Unnecessary parens after 'not' keyword (superfluous-parens)
+program\menu.py:11:0: C0103: Class name "menu" doesn't conform to PascalCase naming style (invalid-name)
+program\menu.py:153:8: W0107: Unnecessary pass statement (unnecessary-pass)
+program\menu.py:241:12: W0707: Consider explicitly re-raising using 'except (ValueError, TypeError) as exc' and 'raise ValueError('False: Invalid menu choice: must be an integer between 1 and 5') from exc' (raise-missing-from)
 
 ------------------------------------------------------------------
-Your code has been rated at 9.84/10 (previous run: 9.84/10, +0.00)
-************* Module program.menu
-program\menu.py:11:0: C0103: Class name "menu" doesn't conform to PascalCase naming style (invalid-name)
-program\menu.py:137:8: W0107: Unnecessary pass statement (unnecessary-pass)
-
------------------------------------
-Your code has been rated at 9.65/10
+Your code has been rated at 9.61/10 (previous run: 9.84/10, -0.23)
 
