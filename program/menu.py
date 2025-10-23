@@ -84,11 +84,15 @@ class menu:
         # Validate inputs
         if new_username is None:
             return False
-        if isinstance(new_username, str) and '\n' in new_username:
-            return False
-        # Convert numbers to string, reject other non-string types
+        # Only allow str, int, float types
         if not isinstance(new_username, (str, int, float)):
             return False
+        # Convert to string for uniform validation
+        new_username_str = str(new_username)
+        # Reject if username contains newlines
+        if '\n' in new_username_str:
+            return False
+        new_username = new_username_str
 
         if self.player1 is not None:
             if self.player1.username == old_username:
