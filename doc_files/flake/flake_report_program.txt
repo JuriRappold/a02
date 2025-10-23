@@ -1,12 +1,30 @@
 program/__init__.py:1:1: D104 Missing docstring in public package
-program/dice.py:1:1: D200 One-line docstring should fit on one line with quotes
-program/dice.py:1:1: D400 First line should end with a period
-program/dice.py:8:1: H601 class has low (0.00%) cohesion
-program/dice.py:9:1: D205 1 blank line required between summary line and description
-program/dice.py:9:1: D400 First line should end with a period
-program/dice.py:25:1: D200 One-line docstring should fit on one line with quotes
-program/dice.py:25:1: D400 First line should end with a period
-program/dice.py:32:1: D205 1 blank line required between summary line and description
-program/dice.py:32:1: D400 First line should end with a period
-program/menu.py:1:1: D400 First line should end with a period
-program/menu.py:11:1: H601 class has low (26.92%) cohesion
+program/dice.py:6:1: H601 class has low (0.00%) cohesion
+program/dice.py:7:1: D205 1 blank line required between summary line and description
+program/dice.py:7:1: D400 First line should end with a period
+program/dice.py:23:1: D401 First line should be in imperative mood
+program/dice.py:31:1: D401 First line should be in imperative mood
+program/dice_hand.py:8:1: D403 First word of the first line should be properly capitalized
+program/dice_hand.py:14:1: D401 First line should be in imperative mood
+program/dice_hand.py:14:80: E501 line too long (102 > 79 characters)
+program/dice_hand.py:18:80: E501 line too long (80 > 79 characters)
+program/dice_hand.py:24:1: D401 First line should be in imperative mood
+program/dice_hand.py:33:80: E501 line too long (81 > 79 characters)
+program/player.py:1:1: D400 First line should end with a period
+program/player.py:8:1: H601 class has low (25.00%) cohesion
+program/player.py:9:1: D400 First line should end with a period
+program/player.py:15:1: D205 1 blank line required between summary line and description
+program/player.py:15:1: D401 First line should be in imperative mood
+program/player.py:16:80: E501 line too long (85 > 79 characters)
+program/player.py:32:1: D400 First line should end with a period
+program/player.py:32:80: E501 line too long (80 > 79 characters)
+program/player.py:38:1: D400 First line should end with a period
+program/player.py:38:1: D403 First word of the first line should be properly capitalized
+program/player.py:45:1: D400 First line should end with a period
+program/player.py:45:1: D403 First word of the first line should be properly capitalized
+program/player.py:49:1: D400 First line should end with a period
+program/player.py:49:1: D403 First word of the first line should be properly capitalized
+program/player.py:53:1: D400 First line should end with a period
+program/player.py:53:1: D403 First word of the first line should be properly capitalized
+program/player.py:58:1: D400 First line should end with a period
+program/player.py:62:1: D400 First line should end with a period

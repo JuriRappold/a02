@@ -1,3 +1,8 @@
+************* Module program.dice_hand
+program\dice_hand.py:14:0: C0301: Line too long (102/100) (line-too-long)
+
+------------------------------------------------------------------
+Your code has been rated at 9.84/10 (previous run: 9.84/10, +0.00)
 ************* Module program.menu
 program\menu.py:11:0: C0103: Class name "menu" doesn't conform to PascalCase naming style (invalid-name)
 program\menu.py:137:8: W0107: Unnecessary pass statement (unnecessary-pass)

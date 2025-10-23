@@ -1,12 +1,10 @@
-"""Unit tests for dice.py."""
-
+"""Unit Tests for the Dice class."""
 import pytest
 from program.dice import Dice
 
 
-
 def test_non_int0():
-    """Non-integer parameter test --> parameter is a string."""
+    """Roll parameter is a string."""
     with pytest.raises(TypeError, match="Roll is not an integer!"):
         # non-int inputs
         Dice.get_dice_face("hello")
@@ -19,7 +17,8 @@ def test_non_int1():
 
 
 def test_non_int2():
-    """Non-integer parameter test --> parameter is an Array."""
+    """Roll parameter is a mixed list.
+    Non-integer parameter test --> parameter is an Array."""
     with pytest.raises(TypeError, match="Roll is not an integer!"):
         Dice.get_dice_face([1, 2.2, "h"])
 
