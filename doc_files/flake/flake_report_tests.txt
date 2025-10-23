@@ -35,3 +35,11 @@ tests/test_player.py:149:1: D400 First line should end with a period
 tests/test_player.py:158:1: D400 First line should end with a period
 tests/test_player.py:165:1: D400 First line should end with a period
 tests/test_player.py:178:1: D400 First line should end with a period
+tests/dice_unit_tests.py:1:1: D100 Missing docstring in public module
+tests/dice_unit_tests.py:6:1: D103 Missing docstring in public function
+tests/dice_unit_tests.py:12:1: D103 Missing docstring in public function
+tests/dice_unit_tests.py:17:1: D103 Missing docstring in public function
+tests/dice_unit_tests.py:22:1: D103 Missing docstring in public function
+tests/dice_unit_tests.py:28:1: D103 Missing docstring in public function
+tests/dice_unit_tests.py:33:1: D103 Missing docstring in public function
+tests/dice_unit_tests.py:38:1: D103 Missing docstring in public function

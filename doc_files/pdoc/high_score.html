@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.6">
 <title>high_score API documentation</title>
+<<<<<<< HEAD
 <meta name="description" content="">
+=======
+<meta name="description" content="Module that prints dictionary pretty">
+>>>>>>> 7855e42 (generated docs for highscore)
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
@@ -36,6 +40,10 @@ el.replaceWith(d);
 <h1 class="title">Module <code>high_score</code></h1>
 </header>
 <section id="section-intro">
+<<<<<<< HEAD
+=======
+<p>Module that prints dictionary pretty</p>
+>>>>>>> 7855e42 (generated docs for highscore)
 </section>
 <section>
 </section>
@@ -48,6 +56,10 @@ el.replaceWith(d);
 <dl>
 <dt id="high_score.HighScore"><code class="flex name class">
 <span>class <span class="ident">HighScore</span></span>
+<<<<<<< HEAD
+=======
+<span>(</span><span>chart)</span>
+>>>>>>> 7855e42 (generated docs for highscore)
 </code></dt>
 <dd>
 <details class="source">
@@ -55,6 +67,7 @@ el.replaceWith(d);
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class HighScore:
+<<<<<<< HEAD
     &#39;&#39;&#39;Dictionary containing  playerID:Player&#39;&#39;&#39;
     chart = {}
 
@@ -74,16 +87,132 @@ playerID:Player</p></div>
 <dl>
 <dt id="high_score.HighScore.get_chart"><code class="name flex">
 <span>def <span class="ident">get_chart</span></span>(<span>)</span>
+=======
+    &#34;&#34;&#34;Dictionary containing  playerID:Player&#34;&#34;&#34;
+
+    _chart = {}
+
+    def __init__(self, chart):
+        self.chart = chart
+
+    def sort_dict(input_dict):
+        &#34;&#34;&#34;sort dictionary in descending order &lt;br&gt;
+        p.s.: pylint says that i should add self for this method, but I strongly disagree
+        &#34;&#34;&#34;
+        return (
+            dict(sorted(input_dict.items(), key=lambda item: item[1], reverse=True))
+            if isinstance(input_dict, dict)
+            else {}
+        )
+        # dict -&gt; convert tuples into dictionary back
+        # sorted() -&gt; sort those tuples using a specific rule
+        # self.chart.items() -&gt; get dictionary as tuples
+        # key=lambda item -&gt; iterate through each item
+        # item[1] -&gt; iterate through item value
+        # reverse=True -&gt; do it in descending, not ascending order
+
+    def get_chart(self):
+        &#34;&#34;&#34;generate nice table player-score&#34;&#34;&#34;
+        scores = HighScore.sort_dict(self.chart)
+        if not isinstance(scores, dict) or not scores:
+            return &#34;Wrong value/empty dictionary, unable generate table&#34;
+        score_lines = &#34;&#34;.join(
+            map(
+                lambda score: f&#34;║ {score[0]:&gt;2}. {score[1][0]:&lt;14} │ {score[1][1]:&gt;5} ║\n        &#34;,
+                enumerate(scores.items(), 1),
+            )
+        )
+        # &#34;&#34;.join -&gt;append to table lines that lambda generated
+        # score: / enumerate(scores.items(), 1)))
+        #       -&gt; score is enumerate(scores.items(), 1)))
+        # f&#34;║ {score[0]:&gt;2}. {score[1][0]:&lt;14} │ {score[1][1]:&gt;5} ║\n&#34;,
+        #       -&gt; fstring which makes it pretty
+        # umerate(scores.items(), 1)))
+        #       -&gt; creates dict with dict in it [rank[name,score]]
+
+        # join generated lines into table
+        table = f&#34;&#34;&#34;
+        ╔════════════════════════════╗
+        ║       🏅 LEADERBOARD       ║
+        ╠════════════════════════════╣
+        {score_lines}╚════════════════════════════╝&#34;&#34;&#34;
+        return table</code></pre>
+</details>
+<div class="desc"><p>Dictionary containing
+playerID:Player</p></div>
+<h3>Methods</h3>
+<dl>
+<dt id="high_score.HighScore.get_chart"><code class="name flex">
+<span>def <span class="ident">get_chart</span></span>(<span>self)</span>
+>>>>>>> 7855e42 (generated docs for highscore)
 </code></dt>
 <dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
+<<<<<<< HEAD
 <pre><code class="python">def get_chart():
     return chart</code></pre>
 </details>
 <div class="desc"></div>
+=======
+<pre><code class="python">def get_chart(self):
+    &#34;&#34;&#34;generate nice table player-score&#34;&#34;&#34;
+    scores = HighScore.sort_dict(self.chart)
+    if not isinstance(scores, dict) or not scores:
+        return &#34;Wrong value/empty dictionary, unable generate table&#34;
+    score_lines = &#34;&#34;.join(
+        map(
+            lambda score: f&#34;║ {score[0]:&gt;2}. {score[1][0]:&lt;14} │ {score[1][1]:&gt;5} ║\n        &#34;,
+            enumerate(scores.items(), 1),
+        )
+    )
+    # &#34;&#34;.join -&gt;append to table lines that lambda generated
+    # score: / enumerate(scores.items(), 1)))
+    #       -&gt; score is enumerate(scores.items(), 1)))
+    # f&#34;║ {score[0]:&gt;2}. {score[1][0]:&lt;14} │ {score[1][1]:&gt;5} ║\n&#34;,
+    #       -&gt; fstring which makes it pretty
+    # umerate(scores.items(), 1)))
+    #       -&gt; creates dict with dict in it [rank[name,score]]
+
+    # join generated lines into table
+    table = f&#34;&#34;&#34;
+    ╔════════════════════════════╗
+    ║       🏅 LEADERBOARD       ║
+    ╠════════════════════════════╣
+    {score_lines}╚════════════════════════════╝&#34;&#34;&#34;
+    return table</code></pre>
+</details>
+<div class="desc"><p>generate nice table player-score</p></div>
+</dd>
+<dt id="high_score.HighScore.sort_dict"><code class="name flex">
+<span>def <span class="ident">sort_dict</span></span>(<span>input_dict)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sort_dict(input_dict):
+    &#34;&#34;&#34;sort dictionary in descending order &lt;br&gt;
+    p.s.: pylint says that i should add self for this method, but I strongly disagree
+    &#34;&#34;&#34;
+    return (
+        dict(sorted(input_dict.items(), key=lambda item: item[1], reverse=True))
+        if isinstance(input_dict, dict)
+        else {}
+    )
+    # dict -&gt; convert tuples into dictionary back
+    # sorted() -&gt; sort those tuples using a specific rule
+    # self.chart.items() -&gt; get dictionary as tuples
+    # key=lambda item -&gt; iterate through each item
+    # item[1] -&gt; iterate through item value
+    # reverse=True -&gt; do it in descending, not ascending order</code></pre>
+</details>
+<div class="desc"><p>sort dictionary in descending order <br>
+p.s.: pylint says that i should add self for this method, but I strongly disagree</p></div>
+>>>>>>> 7855e42 (generated docs for highscore)
 </dd>
 </dl>
 </dd>
@@ -100,8 +229,13 @@ playerID:Player</p></div>
 <li>
 <h4><code><a title="high_score.HighScore" href="#high_score.HighScore">HighScore</a></code></h4>
 <ul class="">
+<<<<<<< HEAD
 <li><code><a title="high_score.HighScore.chart" href="#high_score.HighScore.chart">chart</a></code></li>
 <li><code><a title="high_score.HighScore.get_chart" href="#high_score.HighScore.get_chart">get_chart</a></code></li>
+=======
+<li><code><a title="high_score.HighScore.get_chart" href="#high_score.HighScore.get_chart">get_chart</a></code></li>
+<li><code><a title="high_score.HighScore.sort_dict" href="#high_score.HighScore.sort_dict">sort_dict</a></code></li>
+>>>>>>> 7855e42 (generated docs for highscore)
 </ul>
 </li>
 </ul>
