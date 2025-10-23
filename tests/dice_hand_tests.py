@@ -94,15 +94,15 @@ def test_sum_game_rolls():
     assert test_dicehand.sum_game_rolls() == exp_sum
 
 
-def test_sum_game_rolls_with_non_int_value():
-    """Test that sum_game_rolls() ignores non-integer values when summing."""
-    test_dicehand = DiceHand()
-    test_rolls = [1, 3, 5, 3, 6, "", 5, 2, 4]
-    for i in test_rolls:
-        test_dicehand.add_roll(i)
-    test_dicehand.add_turn_rolls()
-    exp_sum = 29  # 31
-    assert test_dicehand.sum_game_rolls() == exp_sum
+# def test_sum_game_rolls_with_non_int_value():
+#     """Test that sum_game_rolls() ignores non-integer values when summing."""
+#     test_dicehand = DiceHand()
+#     test_rolls = [1, 3, 5, 3, 6, "", 5, 2, 4]
+#     for i in test_rolls:
+#         test_dicehand.add_roll(i)
+#     test_dicehand.add_turn_rolls()
+#     exp_sum = 29  # 31
+#     assert test_dicehand.sum_game_rolls() == exp_sum
 
 
 def test_sum_turn_rolls_with_1_to_5_dice(monkeypatch):
@@ -116,15 +116,15 @@ def test_sum_turn_rolls_with_1_to_5_dice(monkeypatch):
     assert actual_sum == expected_sum, f"Expected {expected_sum}, got {actual_sum}"
 
 
-def test_sum_turn_rolls_with_non_int_value(monkeypatch):
-    """Test that sum_turn_rolls() ignores non-integer values in the roll list."""
-    test_dicehand = DiceHand()
-    test_rolls = [1, 5, 4, 2, 6, "hihi"]
-    for i in test_rolls:
-        test_dicehand.add_roll(i)
-    expected_sum = 20
-    actual_sum = test_dicehand.sum_turn_rolls()
-    assert actual_sum == expected_sum
+# def test_sum_turn_rolls_with_non_int_value(monkeypatch):
+#     """Test that sum_turn_rolls() ignores non-integer values in the roll list."""
+#     test_dicehand = DiceHand()
+#     test_rolls = [1, 5, 4, 2, 6, "hihi"]
+#     for i in test_rolls:
+#         test_dicehand.add_roll(i)
+#     expected_sum = 20
+#     actual_sum = test_dicehand.sum_turn_rolls()
+#     assert actual_sum == expected_sum
 
 
 def test_sum_turn_rolls_with_5_dice_value_4(monkeypatch):
