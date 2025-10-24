@@ -37,7 +37,7 @@ class Computer:
         return f"Difficulty changed to: {self.__DIFFICULTIES[self.difficulty][1]}"
 
     def change_computer_name(self, new_name):
-        """Changes the computer username, id remains the same."""
+        """Changes the computer __username, id remains the same."""
         self.__username = self.check_valid_computer_name(new_name)
 
     def roll_dice(self):

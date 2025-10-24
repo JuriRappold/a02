@@ -39,7 +39,6 @@ def test_change_usrName_numbers():
 
 def test_change_usrName_escapeChar():
     mockPlayer = MockPlayer("Mocker", 28)
-
     menuTest = Menu()
     menuTest.set_player(mockPlayer)
     assert menuTest.change_username("Mocker", "Escape\nCharacter") == False
@@ -51,7 +50,7 @@ def test_change_usrName_player():
     menuTest = Menu()
     menuTest.set_player(mockPlayer)
     assert (
-        menuTest.change_username(mockPlayer.username, MockPlayer("Username", 42))
+        menuTest.change_username(mockPlayer.get_username(), MockPlayer("Username", 42))
         == False
     )
 

@@ -78,14 +78,15 @@ class Player:
             print("Please enter 'y' or 'n'.")
 
     def change_username(self, new_name):
-        """change username (if given username isn't empty and a string)"""
-        if isinstance(new_name, str) and new_name != "":
-            self.__username = new_name
+        """change __username (if given __username isn't empty and a string)"""
+        if isinstance(new_name, (str, int, float)) and new_name != "":
+            self.__username = str(new_name)
+            return True
         else:
             raise TypeError("name should be string!")
 
     def get_username(self):
-        """get access to variable username"""
+        """get access to variable __username"""
         return self.__username
 
     def get_id(self):

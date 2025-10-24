@@ -3,6 +3,7 @@ import pytest
 
 from program.high_score import HighScore
 from program.player import Player
+from tests.mock_player import MockPlayer
 
 
 def test_init_creates_instance():
@@ -30,10 +31,9 @@ def test_get_chart_returns_string():
 
 def test_get_chart_input_non_dictionary():
     """Test that get_chart detects non-dictionary value"""
-    scores = HighScore("heheeee >:]", 3.20)
-    res = scores.get_chart()
-    exp = "Wrong value/empty dictionary, unable generate table"
-    assert exp == res
+    with pytest.raises(TypeError, match="Not a Player or Computer"):
+        HighScore("heheeee >:]", 3.20)
+
 
 
 def test_get_chart_input_none_parameters():
@@ -96,6 +96,8 @@ def test_get_chart_formats_correctly():
     alice.set_total_score(50)
     bob = Player("Bob")
     bob.set_total_score(24)
+    # alice = MockPlayer("Alice", 50)
+    # bob = MockPlayer("Bob", 24)
     scores = HighScore(alice, bob)
     res = scores.get_chart()
     assert "║" in res

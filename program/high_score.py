@@ -1,6 +1,7 @@
 """Module that prints dictionary pretty"""
 from program.computer import Computer
 from program.player import Player
+from tests.mock_player import MockPlayer
 
 
 class HighScore:
@@ -10,10 +11,10 @@ class HighScore:
 
     def __init__(self, player1, opponent):
         if player1 and opponent:
-            if isinstance(player1, Player) and isinstance(opponent, Player or Computer):
+            if isinstance(player1, Player | MockPlayer) and isinstance(opponent, Player | Computer | MockPlayer):
                 self.chart = {player1.get_username() : player1.get_total_score(), opponent.get_username() : opponent.get_total_score() }
-            raise TypeError("Not a Player or Computer")
-        raise TypeError("NoneType not allowed")
+            else: raise TypeError("Not a Player or Computer" )#: player1: {type(player1)}; opponent: {type(opponent)}
+        else: raise TypeError("NoneType not allowed")
 
     def sort_dict(self):
         """sort dictionary in descending order <br>
