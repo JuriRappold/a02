@@ -6,6 +6,7 @@ for the pig dice game, including game setup, player management, and
 displaying game information. The menu acts as the main interaction
 point between the player and the game.
 """
+from program.game import Game
 
 
 class menu:
@@ -150,7 +151,8 @@ class menu:
         # 2. Add participants (player1 and possibly computer)
         # 3. Run the game loop
         # 4. Display winner
-        pass
+        game = Game(self.player1)
+        game.game()
 
     def set_player(self, player):
         """
@@ -167,6 +169,9 @@ class menu:
 
         self.player1 = player
         return True
+
+    def set_computer():
+        pass
 
     def get_player(self):
         """

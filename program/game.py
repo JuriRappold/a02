@@ -4,9 +4,11 @@ game module for pig dice game
 This module contains the game class which manages the main game logic,
 including player turns, game flow, and win conditions for the pig dice game.
 """
+from program.computer import Computer
+from program.player import Player
 
 
-class game:
+class Game:
     """
     Represents the main game logic for pig dice game.
 
@@ -18,44 +20,16 @@ class game:
     # Win condition - first to reach 100 points
     GOAL = 100
 
-    def __init__(self):
+    def __init__(self, player_1):
         """
         Initialize a new game instance.
 
         Sets up an empty participants list and prepares the game
         with the default goal of 100 points.
         """
-        self.participants = []
+        self.participants = [player_1]
 
-    def turn(self, player):
-        """
-        Execute a turn for the given player or computer.
-
-        Manages the rolling phase for a player's turn, allowing them to
-        roll multiple times or hold. If a 1 is rolled, the turn ends and
-        no points are scored for that turn.
-
-        :param player: the player or computer taking their turn
-        """
-        temporary_score = 0
-        print(f"\nIts {player.name}'s turn!")
-
-        while True:
-            roll = 0  # method to roll the dice
-            print(f"\n{player.name} rolled a {roll}!")
-
-            if roll == 1:
-                print(f"Bad luck! {player.name} loses all points from this turn.")
-                temporary_score = 0
-                break
-            temporary_score += roll
-            print(f"Turn score: {temporary_score}")  # to be continued with decision making (either computer or player)
-
-        player.total_score += temporary_score
-        print(f"{player.name}'s total score: {player.total_score}\n")
-        return player.total_score
-
-    def game(self, participants):
+    def game(self):
         """
         Main game loop that manages the entire game flow.
 
@@ -66,16 +40,30 @@ class game:
         :param participants: list of Player and/or Computer objects
         :return: the winning participant
         """
-        self.participants = participants
-        game_over = False
+        choice = input("Who do you want to play against? Another Player(p) or a Computer(c)")
+        match choice:
+            case "p" | "P" | "player" | "Player":
+                self.participants.append(self.create_player2())
+            case "C" | "c" | "computer" | "Computer":
+                self.participants.append(self.create_computer())
 
+        game_over = False
         while not game_over:
             for participant in self.participants:
-                self.turn(participant)
-                if participant.total_score >= self.GOAL:
+                total_score = participant.take_turn()
+                if total_score >= self.GOAL:
                     game_over = True
                     return participant
         return None
+
+    def create_computer():
+        computer_name = input("Enter the name of your enemy!")
+        computer_difficulty = input("How strong is your enemy (easy, normal, hard)?")
+        return Computer(computer_name, computer_difficulty)
+
+    def create_player2():
+        player2_name = input("Enter your name honorable player: ")
+        return Player(player2_name)
 
     def speedrun_game(self):
         """

@@ -1,7 +1,6 @@
 """Object Player: creates player with given name and generates unique id"""
 
 from program.dice import Dice
-
 # from dice_hand import DiceHand
 
 
@@ -33,6 +32,47 @@ class Player:
         dice = Dice.roll_dice()
         # self._diceHand.append(dice)
         return dice
+
+    def take_turn(self):
+        """
+        Execute a turn for the given player or computer.
+
+        Manages the rolling phase for a player's turn, allowing them to
+        roll multiple times or hold. If a 1 is rolled, the turn ends and
+        no points are scored for that turn.
+
+        :param player: the player or computer taking their turn
+        """
+        temporary_score = 0
+        player_continue = True
+
+        print(f"\nIts {self.__username}'s turn!")
+        while player_continue:
+            roll = self.roll_dice()  # method to roll the dice
+            print(f"\n{self.__username} rolled a {roll}!")
+
+            if roll == 1:
+                print(f"Bad luck! {self.__username} loses all points from this turn.")
+                temporary_score = 0
+                player_continue = False
+                break
+
+            temporary_score += roll
+            print(f"Turn score: {temporary_score}")
+            player_continue = self.continue_rolling(self.__username)
+
+        self.__username.total_score += temporary_score
+        print(f"{self.__username}'s total score: {self.total_score}\n")
+        return self.total_score
+
+    def continue_rolling(self):
+        choice = input(f"{self.__username} do you want to continue rolling (y/n)?").lower()
+        if choice == 'y':
+            return True
+        elif choice == 'n':
+            return False
+        else:
+            print("Please enter 'y' or 'n'.")
 
     def change_username(self, new_name):
         """change username (if given username isn't empty and a string)"""
