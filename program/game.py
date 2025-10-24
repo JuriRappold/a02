@@ -37,7 +37,23 @@ class game:
 
         :param player: the player or computer taking their turn
         """
-        pass
+        temporary_score = 0
+        print(f"\nIts {player.name}'s turn!")
+
+        while True:
+            roll = 0  # method to roll the dice
+            print(f"\n{player.name} rolled a {roll}!")
+
+            if roll == 1:
+                print(f"Bad luck! {player.name} loses all points from this turn.")
+                temporary_score = 0
+                break
+            temporary_score += roll
+            print(f"Turn score: {temporary_score}")  # to be continued with decision making (either computer or player)
+
+        player.total_score += temporary_score
+        print(f"{player.name}'s total score: {player.total_score}\n")
+        return player.total_score
 
     def game(self, participants):
         """
