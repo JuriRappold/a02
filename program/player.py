@@ -1,6 +1,7 @@
 """Object Player: creates player with given name and generates unique id"""
 
 from program.dice import Dice
+
 # from dice_hand import DiceHand
 
 
@@ -8,7 +9,7 @@ class Player:
     """Class Player, used for real players in the game"""
 
     # Static variable that changes throughout all classes
-    #next_id = 0
+    # next_id = 0
 
     def __init__(self, name):
         """Initialisation of object Player.
@@ -20,9 +21,9 @@ class Player:
         """
         if isinstance(name, str) and name != "":
             self.__username = name
-            self.id = hash(self.__username)#Player.next_id
+            self.id = hash(self.__username)  # Player.next_id
             # self._diceHand = DiceHand()
-            #Player.next_id += 1
+            # Player.next_id += 1
             self.__total_score = 0
         else:
             raise TypeError("name should be string!")
@@ -67,10 +68,12 @@ class Player:
         return game_over
 
     def continue_rolling(self):
-        choice = input(f"{self.__username} do you want to continue rolling (y/n)?").lower()
-        if choice == 'y':
+        choice = input(
+            f"{self.__username} do you want to continue rolling (y/n)?"
+        ).lower()
+        if choice == "y":
             return True, False
-        elif choice == 'n':
+        elif choice == "n":
             return False, False
         elif choice == "q" or "Q":
             return False, True
@@ -105,5 +108,6 @@ class Player:
     def set_dice_hand(self, dice_hand_list):
         """For cheating/testing purposes: set dice_hand_list to other value"""
         # self.diceHand = dice_hand_list
+
     def reset(self):
         pass

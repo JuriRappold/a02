@@ -1,4 +1,4 @@
-""" Unit tests for the game module. """
+"""Unit tests for the game module."""
 
 import pytest
 from program.game import Game

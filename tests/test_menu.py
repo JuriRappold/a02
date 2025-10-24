@@ -30,7 +30,7 @@ def test_change_usrName_newNull():
 
 
 def test_change_usrName_numbers():
-    mockPlayer = Player("Mocker")#MockPlayer("Mocker", 28)
+    mockPlayer = Player("Mocker")  # MockPlayer("Mocker", 28)
 
     menuTest = Menu()
     menuTest.set_player(mockPlayer)

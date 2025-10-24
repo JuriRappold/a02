@@ -1,4 +1,5 @@
 """Tests for class high_score.py"""
+
 import pytest
 
 from program.high_score import HighScore
@@ -13,7 +14,7 @@ def test_init_creates_instance():
     moth = Player("Moth")
     rob.set_total_score(28)
     moth.set_total_score(19)
-    scores = HighScore(rob,moth)
+    scores = HighScore(rob, moth)
     assert scores.chart == test_chart
     assert isinstance(scores, HighScore)
 
@@ -33,7 +34,6 @@ def test_get_chart_input_non_dictionary():
     """Test that get_chart detects non-dictionary value"""
     with pytest.raises(TypeError, match="Not a Player or Computer"):
         HighScore("heheeee >:]", 3.20)
-
 
 
 def test_get_chart_input_none_parameters():
@@ -102,4 +102,3 @@ def test_get_chart_formats_correctly():
     res = scores.get_chart()
     assert "║" in res
     assert "╔" in res or "=" in res
-

@@ -119,7 +119,7 @@ class Computer:
 
         if (player_score or self.total_score) < 71:
             while (
-                    not roll_is_one and 21 + (player_score - self.total_score) / 8
+                not roll_is_one and 21 + (player_score - self.total_score) / 8
             ):  # absolute score
                 roll = self.roll_dice()
                 print(f"Roll: {roll}")
@@ -163,7 +163,7 @@ class Computer:
             case 3:
                 print("hard")
                 turn = self.keep_or_race(player_score)
-        self.total_score+= turn
+        self.total_score += turn
         print(f"total score: {self.total_score}")
         return turn
 
@@ -232,5 +232,6 @@ class Computer:
 
     def get_total_score(self):
         return self.total_score
+
     def get_username(self):
         return self.__username

@@ -4,6 +4,7 @@ game module for pig dice game
 This module contains the game class which manages the main game logic,
 including player turns, game flow, and win conditions for the pig dice game.
 """
+
 from program.computer import Computer
 from program.player import Player
 
@@ -41,14 +42,14 @@ class Game:
         :param participants: list of Player and/or Computer objects
         :return: the winning participant
         """
-        choice = input("Who do you want to play against? Another Player(p) or a Computer(c)")
+        choice = input(
+            "Who do you want to play against? Another Player(p) or a Computer(c)"
+        )
         match choice:
             case "p" | "P" | "player" | "Player":
                 self.participants.append(self.create_player2())
             case "C" | "c" | "computer" | "Computer":
                 self.participants.append(self.create_computer())
-        #self.participants.append(Computer("Clanker", 1))
-
 
         game_over = False
         player1 = self.participants[0]

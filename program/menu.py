@@ -6,11 +6,10 @@ for the pig dice game, including game setup, player management, and
 displaying game information. The menu acts as the main interaction
 point between the player and the game.
 """
-from program.computer import Computer
+
 from program.game import Game
 from program.player import Player
 from program.high_score import HighScore
-from tests.mock_player import MockPlayer
 
 
 class Menu:
@@ -22,7 +21,7 @@ class Menu:
     Acts as the main entry point for player interaction.
     """
 
-    def __init__(self, player1 = Player("Gunnar")):
+    def __init__(self, player1=Player("Gunnar")):
         """
         Initialize a new menu instance.
 
@@ -97,13 +96,15 @@ class Menu:
                     print("is none")
                     return False
                 # Only allow str, int, float types
-                if not isinstance(new_username, (str, int,  float)): # (str, int,  float) #str or int or float
+                if not isinstance(
+                    new_username, (str, int, float)
+                ):  # (str, int,  float) #str or int or float
                     print("non-valid type")
                     return False
                 # Convert to string for uniform validation
                 new_username_str = str(new_username)
                 # Reject if __username contains newlines
-                if '\n' in new_username_str:
+                if "\n" in new_username_str:
                     print("newline")
                     return False
                 new_username = new_username_str
@@ -111,7 +112,6 @@ class Menu:
                 return True
         print("is none")
         return False
-
 
     def play_game(self):
         """
@@ -129,12 +129,10 @@ class Menu:
         # 4. Display winner
         game = Game(self.player1)
         self.player1, opponent = game.game()
-        #print(self.player1, opponent)
+        # print(self.player1, opponent)
         bord = HighScore(self.player1, opponent)
         bord.sort_dict()
         print(bord.get_chart())
-
-
 
     def set_player(self, player):
         """
@@ -147,7 +145,9 @@ class Menu:
         if player is None:
             print("player is none")
             return False
-        if not hasattr(player, "_Player__username"):#isinstance(player, (Player, Computer, MockPlayer)):
+        if not hasattr(
+            player, "_Player__username"
+        ):  # isinstance(player, (Player, Computer, MockPlayer)):
             print("player has no name")
             return False
 
@@ -220,13 +220,19 @@ class Menu:
         try:
             # Reject floats explicitly
             if isinstance(choice, float):
-                raise ValueError("False: Invalid menu choice: must be an integer between 1 and 5")
+                raise ValueError(
+                    "False: Invalid menu choice: must be an integer between 1 and 5"
+                )
             choice_int = int(choice)
             if not (1 <= choice_int <= 5):
-                raise ValueError("False: Invalid menu choice: must be an integer between 1 and 5")
+                raise ValueError(
+                    "False: Invalid menu choice: must be an integer between 1 and 5"
+                )
             return True
         except (ValueError, TypeError):
-            raise ValueError("False: Invalid menu choice: must be an integer between 1 and 5")
+            raise ValueError(
+                "False: Invalid menu choice: must be an integer between 1 and 5"
+            )
 
     def display_error_message(self, message):
         """
@@ -240,7 +246,6 @@ class Menu:
     def display_success_message(self, message):
         """
         Display a success message to the user.
-
         :param message: success message to display
         :return: formatted success message string
         """
@@ -251,22 +256,23 @@ class Menu:
             print(self.display_welcome())
             print(self.display_menu_options())
             menu_choice = input("Your choice: ").strip()
-            #self.validate_menu_choice(menu_choice)
+            # self.validate_menu_choice(menu_choice)
             match menu_choice:
-                case "1": #play game
+                case "1":  # play game
                     self.play_game()
-                case "2": #get the game rules
+                case "2":  # get the game rules
                     print(self.get_rules())
-                case "3": #score board
+                case "3":  # score board
                     pass
-                case "4": # changing the __username
+                case "4":  # changing the __username
                     new_username = input("Enter your new __username: ")
                     self.change_username(self.player1.get_username(), new_username)
-                case "5" | "q" | "Q": #
+                case "5" | "q" | "Q":  #
                     print("Quitting! Goodbye!...")
                     break
                 case _:
                     print("Please enter valid menu option")
+
 
 if __name__ == "__main__":
     menu = Menu()

@@ -1,4 +1,5 @@
 """Unit Test Module for DiceHand."""
+
 import pytest
 from program.dice_hand import DiceHand
 
@@ -7,7 +8,7 @@ def test_init_game_rolls_is_list_value():
     """test if game rolls is a list"""
     test_dicehand = DiceHand()
     assert isinstance(test_dicehand.game_rolls, list)
-    #type(test_dicehand.game_rolls) == list
+    # type(test_dicehand.game_rolls) == list
 
 
 def test_init_turn_rolls_is_list_value():

@@ -1,4 +1,5 @@
 """Unit Tests for the Dice class."""
+
 import pytest
 from program.dice import Dice
 
