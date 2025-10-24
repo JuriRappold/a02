@@ -19,7 +19,6 @@ class Game:
 
     # Win condition - first to reach 100 points
     GOAL = 100
-    participants = []
 
     def __init__(self, player_1):
         """
@@ -28,6 +27,7 @@ class Game:
         Sets up an empty participants list and prepares the game
         with the default goal of 100 points.
         """
+        self.participants = []
         self.participants.append(player_1)
 
     def game(self):
@@ -145,6 +145,7 @@ class Game:
         :param participant: Player or Computer object to add
         """
         self.participants.append(participant)
+
 
 if __name__ == "__main__":
     player = Player("harald")
