@@ -8,7 +8,7 @@ class Computer:
     """computer player class with three different difficulty modes.
 
     methods:
-    __init__(computer_name, difficulty),
+    __init__(__username, difficulty),
     select_difficulty(new_difficulty),
     change_computer_name(new_name),
     roll_dice()-->static,
@@ -24,11 +24,11 @@ class Computer:
 
     def __init__(self, computer_name, difficulty):
         """Computer Constructor with input checks."""
-        self.computer_name = self.check_valid_computer_name(computer_name)
+        self.__username = self.check_valid_computer_name(computer_name)
         self.difficulty = self.check_valid_difficulty(difficulty)
         self.id = hash(str(computer_name) + str(self.difficulty))
         self.dice_hand = DiceHand()
-        self.score = 0
+        self.total_score = 0
         self.turn_number = 4  # number of scoring turns needed
 
     def select_difficulty(self, new_difficulty):
@@ -37,8 +37,8 @@ class Computer:
         return f"Difficulty changed to: {self.__DIFFICULTIES[self.difficulty][1]}"
 
     def change_computer_name(self, new_name):
-        """Changes the computer username, id remains the same."""
-        self.computer_name = self.check_valid_computer_name(new_name)
+        """Changes the computer __username, id remains the same."""
+        self.__username = self.check_valid_computer_name(new_name)
 
     def roll_dice(self):
         """Rolls the dice; make it static?."""
@@ -56,6 +56,7 @@ class Computer:
 
         while not roll_is_one and turn < 20:
             roll = self.roll_dice()
+            print(f"roll: {roll}")
             if roll == 1:
                 roll_is_one = True
                 turn = 0
@@ -63,6 +64,7 @@ class Computer:
             else:
                 self.dice_hand.add_roll(roll)
                 turn += roll
+        print(f"turn: {turn}")
         return turn
 
     def scoring_turn(self):  # normal mode
@@ -82,12 +84,13 @@ class Computer:
             # double check
             bound = 25
         else:
-            bound = (100 - self.score) / self.turn_number
+            bound = (100 - self.total_score) / self.turn_number
         roll_is_one = False
 
         # turn
         while not roll_is_one and turn < bound:
             roll = Dice.roll_dice()
+            print(f"Roll{roll}")
             if roll == 1:
                 roll_is_one = True
                 turn = 0
@@ -95,6 +98,7 @@ class Computer:
             else:
                 turn += roll
                 self.dice_hand.add_roll(roll)
+            print(f"Turn: {turn}")
 
         # end of turn logic
         if not roll_is_one:
@@ -113,11 +117,12 @@ class Computer:
         turn = 0
         roll_is_one = False
 
-        if (player_score or self.score) < 71:
+        if (player_score or self.total_score) < 71:
             while (
-                not roll_is_one and 21 + (player_score - self.score) / 8
+                    not roll_is_one and 21 + (player_score - self.total_score) / 8
             ):  # absolute score
                 roll = self.roll_dice()
+                print(f"Roll: {roll}")
                 if roll == 1:
                     roll_is_one = True
                     turn = 0
@@ -125,15 +130,18 @@ class Computer:
                 else:
                     self.dice_hand.add_roll(roll)
                     turn += roll
+                print(f"turn score: {turn}")
         else:
-            while not roll_is_one and (self.score + turn) < 100:
+            while not roll_is_one and (self.total_score + turn) < 100:
                 roll = self.roll_dice()
+                print(f"Roll: {roll}")
                 if roll == 1:
                     roll_is_one = True
                     turn = 0
                 else:
                     self.dice_hand.add_roll(roll)
                     turn += roll
+                print(f"turn score: {turn}")
         return turn
 
     def take_turn(self, player_score=0):
@@ -144,22 +152,28 @@ class Computer:
         :return: turn (sum or 0)
         """
         turn = 0
-        match self.difficulty[0]:
+        diff = self.__DIFFICULTIES[self.difficulty]
+        match diff[0]:
             case 1:
+                print("easy")
                 turn = self.hold_at_twenty()
             case 2:
+                print("normal")
                 turn = self.scoring_turn()
             case 3:
+                print("hard")
                 turn = self.keep_or_race(player_score)
+        self.total_score+= turn
+        print(f"total score: {self.total_score}")
         return turn
 
     def check_valid_computer_name(self, computer_name):
-        """Checks if the computer_name is of a valid type.
+        """Checks if the __username is of a valid type.
 
-         and returns a valid computer_name
+         and returns a valid __username
         1. of type string:
             "" str --> default_name
-            else: return computer_name
+            else: return __username
         2. of type list --> concatenate list elements into a string
         3. of type dict --> concatenate dict values into a string
         4. else return default
@@ -215,3 +229,8 @@ class Computer:
         if difficulty is None or isinstance(difficulty, list | dict | tuple | Computer):
             raise TypeError(f"type is {type(difficulty)}")
         return 0
+
+    def get_total_score(self):
+        return self.total_score
+    def get_username(self):
+        return self.__username

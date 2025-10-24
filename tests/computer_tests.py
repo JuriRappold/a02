@@ -5,11 +5,11 @@ from program.computer import Computer
 
 # TEST INIT
 def test_init_values():
-    """Test that __init__ sets computer_name, difficulty, id, dice_hand, score, and turn_number.
+    """Test that __init__ sets __username, difficulty, id, dice_hand, score, and turn_number.
 
-    test those: computer_name = computer_name
+    test those: __username = __username
     self.difficulty = difficulty  # has to be a tuple
-    self.id = hash(computer_name + difficulty)
+    self.id = hash(__username + difficulty)
     self.dice_hand = DiceHand()  # create dice_hand obj once class is integrated
     self.score = 0
     self.turn_number = 0
@@ -24,34 +24,34 @@ def test_init_class():
 
 
 def test_init_same_name_value():
-    """Test that the provided computer_name is stored correctly in the instance."""
+    """Test that the provided __username is stored correctly in the instance."""
     name_exp = "Nephilim"
     test_pc = Computer(name_exp, 1)
-    assert test_pc.computer_name == name_exp
+    assert test_pc.__username == name_exp
 
 
 def test_init_values_empty_value_computer_name():
-    """Test that computer_name is not empty even when initialized with an empty string."""
+    """Test that __username is not empty even when initialized with an empty string."""
     test_pc = Computer("", 1)
-    assert test_pc.computer_name != ""
+    assert test_pc.__username != ""
 
 
 def test_init_values_None_value_computer_name():
-    """Test that computer_name becomes a string when initialized with None."""
+    """Test that __username becomes a string when initialized with None."""
     test_pc = Computer(None, 1)
-    assert isinstance(test_pc.computer_name, str)
+    assert isinstance(test_pc.__username, str)
 
 
 def test_init_values_dict_value_computer_name():
-    """Test that a dictionary input for computer_name is converted to a string."""
+    """Test that a dictionary input for __username is converted to a string."""
     test_pc = Computer({4: 5, 8: 2}, 1)
-    assert isinstance(test_pc.computer_name, str)
+    assert isinstance(test_pc.__username, str)
 
 
 def test_init_values_list_value_computer_name():
-    """Test that a list input for computer_name is handled properly."""
+    """Test that a list input for __username is handled properly."""
     test_pc = Computer([4, 7, 9], 1)
-    assert isinstance(test_pc.computer_name, str)
+    assert isinstance(test_pc.__username, str)
 
 
 # init difficulty check (difficulty as index)
@@ -132,14 +132,14 @@ def test_hash_is_integer_type():
     assert isinstance(test_pc.id, int)
 
 
-# test that you can't change self.computer_name value?
+# test that you can't change self.__username value?
 
 
 # TEST ID?
 def test_init_values_hash():
     """No clue whats happening here.
 
-    self.id = hash(computer_name + difficulty)
+    self.id = hash(__username + difficulty)
     self.dice_hand = DiceHand()  # create dice_hand obj once class is integrated
     self.score = 0
     self.turn_number = 0
@@ -167,15 +167,15 @@ def test_select_difficulty_str():
 
 # TEST CHANGE COMPUTER NAME
 def test_change_computer_name():
-    """Test that change_computer_name() successfully updates computer_name."""
+    """Test that change_computer_name() successfully updates __username."""
     test_pc = Computer("Name1", 1)
     exp = "Nephilim"
     test_pc.change_computer_name(exp)
-    assert test_pc.computer_name == exp
+    assert test_pc.__username == exp
 
 
 def test_change_name_same_id():
-    """Test that changing computer_name does not alter the computer's unique ID."""
+    """Test that changing __username does not alter the computer's unique ID."""
     test_pc = Computer("Name1", 1)
     first_id = test_pc.id
     test_pc.change_computer_name("Cool new name")
@@ -184,40 +184,40 @@ def test_change_name_same_id():
 
 
 def test_change_name_empty_value():
-    """Test that empty string input does not overwrite the existing computer_name."""
+    """Test that empty string input does not overwrite the existing __username."""
     first_name = "Name1"
     empty_name = ""
     test_pc = Computer(first_name, 1)
     test_pc.change_computer_name(empty_name)
-    assert test_pc.computer_name != empty_name
+    assert test_pc.__username != empty_name
 
 
 def test_change_name_dictionary_value():
-    """Check that computer_name can handle dictionary value."""
+    """Check that __username can handle dictionary value."""
     first_name = "Name1"
     dict_name = {1: 4, 6: 2}
     test_pc = Computer(first_name, 1)
     test_pc.change_computer_name(dict_name)
-    print(test_pc.computer_name)
-    assert isinstance(test_pc.computer_name, str)
+    print(test_pc.__username)
+    assert isinstance(test_pc.__username, str)
 
 
 def test_change_name_list_value():
-    """Check that computer_name can handle list value."""
+    """Check that __username can handle list value."""
     first_name = "Name1"
     list_name = [2, 4, 8, 0]
     test_pc = Computer(first_name, 1)
     test_pc.change_computer_name(list_name)
-    assert isinstance(test_pc.computer_name, str)
+    assert isinstance(test_pc.__username, str)
 
 
 def test_change_name_None_value():
-    """Check that computer_name can handle None."""
+    """Check that __username can handle None."""
     first_name = "Name1"
     none_name = None
     test_pc = Computer(first_name, 1)
     test_pc.change_computer_name(none_name)
-    assert isinstance(test_pc.computer_name, str)
+    assert isinstance(test_pc.__username, str)
 
 
 def test_roll_dice_type():

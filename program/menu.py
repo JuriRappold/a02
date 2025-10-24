@@ -6,9 +6,14 @@ for the pig dice game, including game setup, player management, and
 displaying game information. The menu acts as the main interaction
 point between the player and the game.
 """
+from program.computer import Computer
+from program.game import Game
+from program.player import Player
+from program.high_score import HighScore
+from tests.mock_player import MockPlayer
 
 
-class menu:
+class Menu:
     """
     Manages the user interface and menu system for pig dice game.
 
@@ -17,7 +22,7 @@ class menu:
     Acts as the main entry point for player interaction.
     """
 
-    def __init__(self):
+    def __init__(self, player1 = Player("Gunnar")):
         """
         Initialize a new menu instance.
 
@@ -25,7 +30,7 @@ class menu:
         The player will be created during the game setup phase.
         """
         self.game_rules = self._initialize_rules()
-        self.player1 = None
+        self.player1 = player1
 
     def _initialize_rules(self):
         """
@@ -71,70 +76,42 @@ class menu:
 
     def change_username(self, old_username, new_username):
         """
-        Change a player's username.
+        Change a player's __username.
 
-        Validates that the old username matches the current player's name,
-        then updates it to the new username. The player's ID is also
-        regenerated based on the new username.
+        Validates that the old __username matches the current player's name,
+        then updates it to the new __username. The player's ID is also
+        regenerated based on the new __username.
 
-        :param old_username: current username to verify
-        :param new_username: new username to set
-        :return: True if successful, False if old username doesn't match
+        :param old_username: current __username to verify
+        :param new_username: new __username to set
+        :return: True if successful, False if old __username doesn't match
         """
 
         if old_username is None:
             return False
 
         if self.player1 is not None:
-            if self.player1.username == old_username:
+            if self.player1.get_username() == old_username:
                 # Validate new_username
                 if new_username is None:
+                    print("is none")
                     return False
                 # Only allow str, int, float types
-                if not isinstance(new_username, (str, int, float)):
+                if not isinstance(new_username, (str, int,  float)): # (str, int,  float) #str or int or float
+                    print("non-valid type")
                     return False
                 # Convert to string for uniform validation
                 new_username_str = str(new_username)
-                # Reject if username contains newlines
+                # Reject if __username contains newlines
                 if '\n' in new_username_str:
+                    print("newline")
                     return False
                 new_username = new_username_str
-                self.player1.change_usr_name(new_username)
+                self.player1.change_username(new_username)
                 return True
+        print("is none")
         return False
 
-    def get_scoreboard(self):
-        """
-        Get the current scoreboard as a formatted string.
-
-        Displays player name, current score, and progress toward the goal.
-        Shows a visual representation of the player's progress using
-        Unicode block characters.
-
-        :return: formatted scoreboard string
-        """
-        if self.player1 is None:
-            return "No player registered yet!"
-
-        score = self.player1.total_score
-        # Each block represents 10 points (max 10 blocks for 100 points)
-        filled_blocks = score // 10
-        empty_blocks = 10 - filled_blocks
-        progress_bar = "█" * filled_blocks + "░" * empty_blocks
-
-        scoreboard = f"""
-        ========================================================
-                         SCOREBOARD
-        ========================================================
-
-        Player: {self.player1.username}
-        Score:  {score} / 100
-
-        Progress: [{progress_bar}]
-
-        ========================================================
-        """
-        return scoreboard
 
     def play_game(self):
         """
@@ -150,7 +127,14 @@ class menu:
         # 2. Add participants (player1 and possibly computer)
         # 3. Run the game loop
         # 4. Display winner
-        pass
+        game = Game(self.player1)
+        self.player1, opponent = game.game()
+        #print(self.player1, opponent)
+        bord = HighScore(self.player1, opponent)
+        bord.sort_dict()
+        print(bord.get_chart())
+
+
 
     def set_player(self, player):
         """
@@ -159,14 +143,19 @@ class menu:
         :param player: Player object to set as player1
         :return: True if successful, False if invalid input
         """
-        # Validate input - must be an object with username attribute
+        # Validate input - must be an object with __username attribute
         if player is None:
+            print("player is none")
             return False
-        if not hasattr(player, 'username'):
+        if not hasattr(player, "_Player__username"):#isinstance(player, (Player, Computer, MockPlayer)):
+            print("player has no name")
             return False
 
         self.player1 = player
         return True
+
+    def set_computer(self):
+        pass
 
     def get_player(self):
         """
@@ -217,8 +206,7 @@ class menu:
           5. Quit
 
         ========================================
-
-        Enter your choice: """
+        """
         return options
 
     def validate_menu_choice(self, choice):
@@ -257,3 +245,31 @@ class menu:
         :return: formatted success message string
         """
         return f"\n  ✅ SUCCESS: {message}\n"
+
+    def run(self):
+        while True:
+            print(self.display_welcome())
+            print(self.display_menu_options())
+            menu_choice = input("Your choice: ").strip()
+            #self.validate_menu_choice(menu_choice)
+            match menu_choice:
+                case "1": #play game
+                    self.play_game()
+                case "2": #get the game rules
+                    print(self.get_rules())
+                case "3": #score board
+                    pass
+                case "4": # changing the __username
+                    new_username = input("Enter your new __username: ")
+                    self.change_username(self.player1.get_username(), new_username)
+                case "5" | "q" | "Q": #
+                    print("Quitting! Goodbye!...")
+                    break
+                case _:
+                    print("Please enter valid menu option")
+
+if __name__ == "__main__":
+    menu = Menu()
+    # menu.set_player(Player("Juri"))
+    # menu.play_game()
+    menu.run()
