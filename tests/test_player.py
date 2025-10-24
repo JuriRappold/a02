@@ -74,8 +74,9 @@ def test_change_username_raises_error_for_none():
 # Tests for get_id method
 def test_get_id_returns_correct_id():
     """Test that get_id returns the correct id"""
-    exp = Player.next_id
+
     player = Player("TestPlayer")
+    exp = player.id
     assert player.get_id() == exp
 
 

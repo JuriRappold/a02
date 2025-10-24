@@ -8,7 +8,7 @@ class Player:
     """Class Player, used for real players in the game"""
 
     # Static variable that changes throughout all classes
-    next_id = 0
+    #next_id = 0
 
     def __init__(self, name):
         """Initialisation of object Player.
@@ -20,9 +20,9 @@ class Player:
         """
         if isinstance(name, str) and name != "":
             self.__username = name
-            self.__player_id = Player.next_id
+            self.id = hash(self.__username)#Player.next_id
             # self._diceHand = DiceHand()
-            Player.next_id += 1
+            #Player.next_id += 1
             self.__total_score = 0
         else:
             raise TypeError("name should be string!")
@@ -45,6 +45,7 @@ class Player:
         """
         temporary_score = 0
         player_continue = True
+        game_over = False
 
         print(f"\nIts {self.__username}'s turn!")
         while player_continue:
@@ -59,18 +60,20 @@ class Player:
 
             temporary_score += roll
             print(f"Turn score: {temporary_score}")
-            player_continue = self.continue_rolling()
+            player_continue, game_over = self.continue_rolling()
 
         self.__total_score += temporary_score
         print(f"{self.__username}'s total score: {self.__total_score}\n")
-        return self.__total_score
+        return game_over
 
     def continue_rolling(self):
         choice = input(f"{self.__username} do you want to continue rolling (y/n)?").lower()
         if choice == 'y':
-            return True
+            return True, False
         elif choice == 'n':
-            return False
+            return False, False
+        elif choice == "q" or "Q":
+            return False, True
         else:
             print("Please enter 'y' or 'n'.")
 
@@ -87,7 +90,7 @@ class Player:
 
     def get_id(self):
         """get access to variable id"""
-        return self.__player_id
+        return self.id
 
     def get_total_score(self):
         """get access to variable total score"""
@@ -101,3 +104,5 @@ class Player:
     def set_dice_hand(self, dice_hand_list):
         """For cheating/testing purposes: set dice_hand_list to other value"""
         # self.diceHand = dice_hand_list
+    def reset(self):
+        pass

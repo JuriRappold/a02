@@ -8,6 +8,7 @@ point between the player and the game.
 """
 from program.game import Game
 from program.player import Player
+from program.high_score import HighScore
 
 
 class Menu:
@@ -88,55 +89,26 @@ class Menu:
             return False
 
         if self.player1 is not None:
-            if self.player1.username == old_username:
+            if self.player1.get_username() == old_username:
                 # Validate new_username
                 if new_username is None:
+                    print("is none")
                     return False
                 # Only allow str, int, float types
                 if not isinstance(new_username, (str, int, float)):
+                    print("non-valid type")
                     return False
                 # Convert to string for uniform validation
                 new_username_str = str(new_username)
                 # Reject if username contains newlines
                 if '\n' in new_username_str:
+                    print("newline")
                     return False
                 new_username = new_username_str
-                self.player1.change_usr_name(new_username)
+                self.player1.change_username(new_username)
                 return True
         return False
 
-    def get_scoreboard(self):
-        """
-        Get the current scoreboard as a formatted string.
-
-        Displays player name, current score, and progress toward the goal.
-        Shows a visual representation of the player's progress using
-        Unicode block characters.
-
-        :return: formatted scoreboard string
-        """
-        if self.player1 is None:
-            return "No player registered yet!"
-
-        score = self.player1.total_score
-        # Each block represents 10 points (max 10 blocks for 100 points)
-        filled_blocks = score // 10
-        empty_blocks = 10 - filled_blocks
-        progress_bar = "█" * filled_blocks + "░" * empty_blocks
-
-        scoreboard = f"""
-        ========================================================
-                         SCOREBOARD
-        ========================================================
-
-        Player: {self.player1.username}
-        Score:  {score} / 100
-
-        Progress: [{progress_bar}]
-
-        ========================================================
-        """
-        return scoreboard
 
     def play_game(self):
         """
@@ -153,7 +125,10 @@ class Menu:
         # 3. Run the game loop
         # 4. Display winner
         game = Game(self.player1)
-        game.game()
+        self.player1, opponent = game.game()
+        scorebord = HighScore(self.player1, opponent)
+        scorebord.sort_dict()
+        print(scorebord.get_chart())
 
     def set_player(self, player):
         """
@@ -223,8 +198,7 @@ class Menu:
           5. Quit
 
         ========================================
-
-        Enter your choice: """
+        """
         return options
 
     def validate_menu_choice(self, choice):
@@ -264,7 +238,30 @@ class Menu:
         """
         return f"\n  ✅ SUCCESS: {message}\n"
 
+    def run(self):
+        while True:
+            print(self.display_welcome())
+            print(self.display_menu_options())
+            menu_choice = input("Your choice: ").strip()
+            #self.validate_menu_choice(menu_choice)
+            match menu_choice:
+                case "1": #play game
+                    self.play_game()
+                case "2": #get the game rules
+                    print(self.get_rules())
+                case "3": #score board
+                    pass
+                case "4": # changing the username
+                    new_username = input("Enter your new username: ")
+                    self.change_username(self.player1.get_username(), new_username)
+                case "5" | "q" | "Q": #
+                    print("Quitting! Goodbye!...")
+                    break
+                case _:
+                    print("Please enter valid menu option")
+
 if __name__ == "__main__":
     menu = Menu()
-    menu.set_player(Player("Juri"))
-    menu.play_game()
+    # menu.set_player(Player("Juri"))
+    # menu.play_game()
+    menu.run()

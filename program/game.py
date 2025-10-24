@@ -41,14 +41,14 @@ class Game:
         :param participants: list of Player and/or Computer objects
         :return: the winning participant
         """
-        # choice = input("Who do you want to play against? Another Player(p) or a Computer(c)")
-        # match choice:
-        #     case "p" | "P" | "player" | "Player":
-        #         self.participants.append(self.create_player2())
-        #     case "C" | "c" | "computer" | "Computer":
-        #         self.participants.append(self.create_computer())
-        self.participants.append(Computer("Clanker", 1))
-        #print(self.participants)
+        choice = input("Who do you want to play against? Another Player(p) or a Computer(c)")
+        match choice:
+            case "p" | "P" | "player" | "Player":
+                self.participants.append(self.create_player2())
+            case "C" | "c" | "computer" | "Computer":
+                self.participants.append(self.create_computer())
+        #self.participants.append(Computer("Clanker", 1))
+
 
         game_over = False
         player1 = self.participants[0]
@@ -61,7 +61,7 @@ class Game:
             #     if total_score >= self.GOAL:
             #         game_over = True
             #         return participant
-            player1.take_turn()
+            game_over = player1.take_turn()
             if (player1.get_total_score()) >= self.GOAL:
                 print("Goal reached! You won!")
                 game_over = True
@@ -74,7 +74,7 @@ class Game:
                 if opponent.get_total_score() >= self.GOAL:
                     print("Goal reached! Opponent won")
                     game_over = True
-        return None
+        return player1, opponent
 
     def create_computer(self):
         computer_name = input("Enter the name of your enemy!")

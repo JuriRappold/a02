@@ -1,4 +1,6 @@
 """Module that prints dictionary pretty"""
+from program.computer import Computer
+from program.player import Player
 
 
 class HighScore:
@@ -6,16 +8,20 @@ class HighScore:
 
     _chart = {}
 
-    def __init__(self, chart):
-        self.chart = chart
+    def __init__(self, player1, opponent):
+        if player1 and opponent:
+            if isinstance(player1, Player) and isinstance(opponent, Player or Computer):
+                self.chart = {player1.get_username() : player1.get_total_score(), opponent.get_username() : opponent.get_total_score() }
+            raise TypeError("Not a Player or Computer")
+        raise TypeError("NoneType not allowed")
 
-    def sort_dict(input_dict):
+    def sort_dict(self):
         """sort dictionary in descending order <br>
         p.s.: pylint says that i should add self for this method, but I strongly disagree
         """
         return (
-            dict(sorted(input_dict.items(), key=lambda item: item[1], reverse=True))
-            if isinstance(input_dict, dict)
+            dict(sorted(self.chart.items(), key=lambda item: item[1], reverse=True))
+            if isinstance(self.chart, dict)
             else {}
         )
         # dict -> convert tuples into dictionary back
@@ -27,7 +33,7 @@ class HighScore:
 
     def get_chart(self):
         """generate nice table player-score"""
-        scores = HighScore.sort_dict(self.chart)
+        scores = HighScore.sort_dict(self)
         if not isinstance(scores, dict) or not scores:
             return "Wrong value/empty dictionary, unable generate table"
         score_lines = "".join(

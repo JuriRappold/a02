@@ -8,7 +8,7 @@ class Computer:
     """computer player class with three different difficulty modes.
 
     methods:
-    __init__(computer_name, difficulty),
+    __init__(__username, difficulty),
     select_difficulty(new_difficulty),
     change_computer_name(new_name),
     roll_dice()-->static,
@@ -24,7 +24,7 @@ class Computer:
 
     def __init__(self, computer_name, difficulty):
         """Computer Constructor with input checks."""
-        self.computer_name = self.check_valid_computer_name(computer_name)
+        self.__username = self.check_valid_computer_name(computer_name)
         self.difficulty = self.check_valid_difficulty(difficulty)
         self.id = hash(str(computer_name) + str(self.difficulty))
         self.dice_hand = DiceHand()
@@ -38,7 +38,7 @@ class Computer:
 
     def change_computer_name(self, new_name):
         """Changes the computer username, id remains the same."""
-        self.computer_name = self.check_valid_computer_name(new_name)
+        self.__username = self.check_valid_computer_name(new_name)
 
     def roll_dice(self):
         """Rolls the dice; make it static?."""
@@ -168,12 +168,12 @@ class Computer:
         return turn
 
     def check_valid_computer_name(self, computer_name):
-        """Checks if the computer_name is of a valid type.
+        """Checks if the __username is of a valid type.
 
-         and returns a valid computer_name
+         and returns a valid __username
         1. of type string:
             "" str --> default_name
-            else: return computer_name
+            else: return __username
         2. of type list --> concatenate list elements into a string
         3. of type dict --> concatenate dict values into a string
         4. else return default
@@ -232,3 +232,5 @@ class Computer:
 
     def get_total_score(self):
         return self.total_score
+    def get_username(self):
+        return self.__username
