@@ -59,11 +59,11 @@ class Player:
 
             temporary_score += roll
             print(f"Turn score: {temporary_score}")
-            player_continue = self.continue_rolling(self.__username)
+            player_continue = self.continue_rolling()
 
-        self.__username.total_score += temporary_score
-        print(f"{self.__username}'s total score: {self.total_score}\n")
-        return self.total_score
+        self.__total_score += temporary_score
+        print(f"{self.__username}'s total score: {self.__total_score}\n")
+        return self.__total_score
 
     def continue_rolling(self):
         choice = input(f"{self.__username} do you want to continue rolling (y/n)?").lower()

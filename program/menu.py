@@ -7,9 +7,10 @@ displaying game information. The menu acts as the main interaction
 point between the player and the game.
 """
 from program.game import Game
+from program.player import Player
 
 
-class menu:
+class Menu:
     """
     Manages the user interface and menu system for pig dice game.
 
@@ -26,7 +27,7 @@ class menu:
         The player will be created during the game setup phase.
         """
         self.game_rules = self._initialize_rules()
-        self.player1 = None
+        self.player1 = Player("Gunnar")
 
     def _initialize_rules(self):
         """
@@ -164,13 +165,13 @@ class menu:
         # Validate input - must be an object with username attribute
         if player is None:
             return False
-        if not hasattr(player, 'username'):
+        if not hasattr(player, '__username'):
             return False
 
         self.player1 = player
         return True
 
-    def set_computer():
+    def set_computer(self):
         pass
 
     def get_player(self):
@@ -262,3 +263,8 @@ class menu:
         :return: formatted success message string
         """
         return f"\n  ✅ SUCCESS: {message}\n"
+
+if __name__ == "__main__":
+    menu = Menu()
+    menu.set_player(Player("Juri"))
+    menu.play_game()

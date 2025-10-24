@@ -19,6 +19,7 @@ class Game:
 
     # Win condition - first to reach 100 points
     GOAL = 100
+    participants = []
 
     def __init__(self, player_1):
         """
@@ -27,7 +28,7 @@ class Game:
         Sets up an empty participants list and prepares the game
         with the default goal of 100 points.
         """
-        self.participants = [player_1]
+        self.participants.append(player_1)
 
     def game(self):
         """
@@ -40,28 +41,47 @@ class Game:
         :param participants: list of Player and/or Computer objects
         :return: the winning participant
         """
-        choice = input("Who do you want to play against? Another Player(p) or a Computer(c)")
-        match choice:
-            case "p" | "P" | "player" | "Player":
-                self.participants.append(self.create_player2())
-            case "C" | "c" | "computer" | "Computer":
-                self.participants.append(self.create_computer())
+        # choice = input("Who do you want to play against? Another Player(p) or a Computer(c)")
+        # match choice:
+        #     case "p" | "P" | "player" | "Player":
+        #         self.participants.append(self.create_player2())
+        #     case "C" | "c" | "computer" | "Computer":
+        #         self.participants.append(self.create_computer())
+        self.participants.append(Computer("Clanker", 1))
+        #print(self.participants)
 
         game_over = False
+        player1 = self.participants[0]
+        opponent = self.participants[1]
         while not game_over:
-            for participant in self.participants:
-                total_score = participant.take_turn()
-                if total_score >= self.GOAL:
+            # for participant in self.participants:
+            #     if isinstance(participant, Computer):
+            #         total_score = participant.take_turn()
+            #     total_score = participant.take_turn()
+            #     if total_score >= self.GOAL:
+            #         game_over = True
+            #         return participant
+            player1.take_turn()
+            if (player1.get_total_score()) >= self.GOAL:
+                print("Goal reached! You won!")
+                game_over = True
+            if not game_over:
+                if isinstance(opponent, Computer):
+                    print(f"Computer is playing at {opponent.difficulty}")
+                    opponent.take_turn(player1.get_total_score())
+                else:
+                    opponent.take_turn()
+                if opponent.get_total_score() >= self.GOAL:
+                    print("Goal reached! Opponent won")
                     game_over = True
-                    return participant
         return None
 
-    def create_computer():
+    def create_computer(self):
         computer_name = input("Enter the name of your enemy!")
         computer_difficulty = input("How strong is your enemy (easy, normal, hard)?")
         return Computer(computer_name, computer_difficulty)
 
-    def create_player2():
+    def create_player2(self):
         player2_name = input("Enter your name honorable player: ")
         return Player(player2_name)
 
@@ -125,3 +145,8 @@ class Game:
         :param participant: Player or Computer object to add
         """
         self.participants.append(participant)
+
+if __name__ == "__main__":
+    player = Player("harald")
+    game = Game(player)
+    game.game()
