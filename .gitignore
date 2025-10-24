@@ -2,3 +2,8 @@
 .idea
 # best practice if everybody individually installs the virtual environment
 .venv
+program/__pycache__/
+tests/__pycache__/
+# Python compiled files and cache directories
+*.pyc
+__pycache__/

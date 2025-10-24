@@ -44,8 +44,8 @@ installed:
 #
 clean:
 	@$(call MESSAGE,$@)
-	rm -f .coverage *.pyc
-	rm -rf __pycache__
+	rm -f doc_files/coverage/.coverage *.pyc
+	rm -rf program/__pycache__ tests/__pycache__
 	rm -rf htmlcov
 
 clean-doc: clean
@@ -62,11 +62,13 @@ clean-all: clean clean-doc
 # `guess` changed to `program`
 pylint:
 	@$(call MESSAGE,$@)
-	-cd program && $(PYTHON) -m pylint *.py
+	$(PYTHON) -m pylint program/*.py > doc_files/pylint/pylint_report_program.txt 2>&1
+	$(PYTHON) -m pylint tests/*.py > doc_files/pylint/pylint_report_tests.txt 2>&1
 
 flake8:
 	@$(call MESSAGE,$@)
-	-flake8
+	-flake8 program/ > doc_files/flake/flake_report_program.txt 2>&1
+	-flake8 tests/ > doc_files/flake/flake_report_tests.txt 2>&1
 
 lint: flake8 pylint
 
@@ -76,7 +78,7 @@ lint: flake8 pylint
 #
 black:
 	@$(call MESSAGE,$@)
-	 $(PYTHON) -m black guess/ test/ test_game.py
+	 $(PYTHON) -m black program/ tests/
 
 codestyle: black
 
@@ -86,17 +88,17 @@ codestyle: black
 #
 unittest:
 	@$(call MESSAGE,$@)
-	 $(PYTHON) -m unittest discover
+	 $(PYTHON) -m pytest tests/
 
 coverage:
 	@$(call MESSAGE,$@)
-	coverage run -m unittest discover
+	coverage run -m pytest tests/
 	coverage html
 	coverage report -m
 
 coverage-xml:
 	@$(call MESSAGE,$@)
-	coverage run -m unittest discover
+	coverage run -m pytest tests/
 	coverage xml
 
 test: lint coverage
@@ -108,20 +110,20 @@ test: lint coverage
 .PHONY: pydoc
 pydoc:
 	@$(call MESSAGE,$@)
-	install -d doc/pydoc
-	$(PYTHON) -m pydoc -w guess/*.py
-	mv *.html doc/pydoc
+	install -d docs_gen/pydoc
+	$(PYTHON) -m pydoc -w program/*.py
+	mv *.html docs_gen/pydoc
 
 pdoc:
 	@$(call MESSAGE,$@)
-	pdoc --force --html --output-dir doc/pdoc guess/*.py
+	pdoc --force --html --output-dir doc_files/pdoc program/*.py
 
 pyreverse:
 	@$(call MESSAGE,$@)
-	install -d doc/pyreverse
-	pyreverse guess/*.py
-	dot -Tpng classes.dot -o doc/pyreverse/classes.png
-	dot -Tpng packages.dot -o doc/pyreverse/packages.png
+	install -d doc_files/pyreverse
+	pyreverse -a1 -s1 program/*.py
+	dot -Tpng classes.dot -o doc_files/pyreverse/classes.png
+	dot -Tpng packages.dot -o doc_files/pyreverse/packages.png
 	rm -f classes.dot packages.dot
 
 doc: pdoc pyreverse #pydoc sphinx
@@ -133,23 +135,23 @@ doc: pdoc pyreverse #pydoc sphinx
 #
 radon-cc:
 	@$(call MESSAGE,$@)
-	radon cc --show-complexity --average guess
+	radon cc --show-complexity --average program
 
 radon-mi:
 	@$(call MESSAGE,$@)
-	radon mi --show guess
+	radon mi --show program
 
 radon-raw:
 	@$(call MESSAGE,$@)
-	radon raw guess
+	radon raw program
 
 radon-hal:
 	@$(call MESSAGE,$@)
-	radon hal guess
+	radon hal program
 
 cohesion:
 	@$(call MESSAGE,$@)
-	cohesion --directory guess
+	cohesion --directory program
 
 metrics: radon-cc radon-mi radon-raw radon-hal cohesion
 
@@ -160,9 +162,9 @@ metrics: radon-cc radon-mi radon-raw radon-hal cohesion
 #
 bandit:
 	@$(call MESSAGE,$@)
-	bandit --recursive guess
+	bandit --recursive program
 # ---------------------------------------------------------
 # own cmds
-pytest:
-	@$(call MESSAGE,$@)
-	-cd tests && pytest dice_unit_tests.py
+#pytest:
+#	@$(call MESSAGE,$@)
+#	pytest tests/test_menu.py > doc_files/test_results/test_menu_results.txt

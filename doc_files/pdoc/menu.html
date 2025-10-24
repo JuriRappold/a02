@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>menu API documentation</title>
+<meta name="description" content="menu module for pig dice game …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>menu</code></h1>
+</header>
+<section id="section-intro">
+<p>menu module for pig dice game</p>
+<p>This module contains the menu class which provides the user interface
+for the pig dice game, including game setup, player management, and
+displaying game information. The menu acts as the main interaction
+point between the player and the game.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="menu.menu"><code class="flex name class">
+<span>class <span class="ident">menu</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class menu:
+    &#34;&#34;&#34;
+    Manages the user interface and menu system for pig dice game.
+
+    The menu class handles user interactions, displays game rules,
+    manages player information, shows scoreboards, and initiates games.
+    Acts as the main entry point for player interaction.
+    &#34;&#34;&#34;
+
+    def __init__(self):
+        &#34;&#34;&#34;
+        Initialize a new menu instance.
+
+        Sets up default game rules and initializes player1 to None.
+        The player will be created during the game setup phase.
+        &#34;&#34;&#34;
+        self.game_rules = self._initialize_rules()
+        self.player1 = None
+
+    def _initialize_rules(self):
+        &#34;&#34;&#34;
+        Initialize the game rules string with pig dice rules.
+
+        :return: formatted string containing the game rules
+        &#34;&#34;&#34;
+        rules = &#34;&#34;&#34;
+        ========================================================
+                    PIG DICE GAME RULES
+        ========================================================
+
+        OBJECTIVE:
+          Be the first player to reach 100 points!
+
+        GAMEPLAY:
+          • Roll the dice as many times as you want
+          • Each roll adds to your turn total
+          • Choose &#39;HOLD&#39; to bank your points
+          • BUT... rolling a 1 loses ALL turn points!
+
+        STRATEGY:
+          Risk vs Reward - When do you hold?
+          The more you roll, the bigger the risk!
+
+        WIN CONDITION:
+          First to 100 points wins!
+
+        ========================================================
+        &#34;&#34;&#34;
+        return rules
+
+    def get_rules(self):
+        &#34;&#34;&#34;
+        Get the game rules as a formatted string.
+
+        Returns the complete rules of the pig dice game for display
+        to the player.
+
+        :return: string containing the game rules
+        &#34;&#34;&#34;
+        return self.game_rules
+
+    def change_username(self, old_username, new_username):
+        &#34;&#34;&#34;
+        Change a player&#39;s username.
+
+        Validates that the old username matches the current player&#39;s name,
+        then updates it to the new username. The player&#39;s ID is also
+        regenerated based on the new username.
+
+        :param old_username: current username to verify
+        :param new_username: new username to set
+        :return: True if successful, False if old username doesn&#39;t match
+        &#34;&#34;&#34;
+
+        if old_username is None:
+            return False
+
+        if self.player1 is not None:
+            if self.player1.username == old_username:
+                # Validate new_username
+                if new_username is None:
+                    return False
+                # Only allow str, int, float types
+                if not isinstance(new_username, (str, int, float)):
+                    return False
+                # Convert to string for uniform validation
+                new_username_str = str(new_username)
+                # Reject if username contains newlines
+                if &#39;\n&#39; in new_username_str:
+                    return False
+                new_username = new_username_str
+                self.player1.change_usr_name(new_username)
+                return True
+        return False
+
+    def get_scoreboard(self):
+        &#34;&#34;&#34;
+        Get the current scoreboard as a formatted string.
+
+        Displays player name, current score, and progress toward the goal.
+        Shows a visual representation of the player&#39;s progress using
+        Unicode block characters.
+
+        :return: formatted scoreboard string
+        &#34;&#34;&#34;
+        if self.player1 is None:
+            return &#34;No player registered yet!&#34;
+
+        score = self.player1.total_score
+        # Each block represents 10 points (max 10 blocks for 100 points)
+        filled_blocks = score // 10
+        empty_blocks = 10 - filled_blocks
+        progress_bar = &#34;█&#34; * filled_blocks + &#34;░&#34; * empty_blocks
+
+        scoreboard = f&#34;&#34;&#34;
+        ========================================================
+                         SCOREBOARD
+        ========================================================
+
+        Player: {self.player1.username}
+        Score:  {score} / 100
+
+        Progress: [{progress_bar}]
+
+        ========================================================
+        &#34;&#34;&#34;
+        return scoreboard
+
+    def play_game(self):
+        &#34;&#34;&#34;
+        Start and manage the main game flow.
+
+        Creates a new game instance, sets up participants, and runs
+        the game loop until completion. Displays the winner and final
+        scores when the game ends.
+        &#34;&#34;&#34;
+        # Placeholder for game logic - will be implemented with Game class
+        # This method will:
+        # 1. Create a Game instance
+        # 2. Add participants (player1 and possibly computer)
+        # 3. Run the game loop
+        # 4. Display winner
+        pass
+
+    def set_player(self, player):
+        &#34;&#34;&#34;
+        Set the main player for the game.
+
+        :param player: Player object to set as player1
+        :return: True if successful, False if invalid input
+        &#34;&#34;&#34;
+        # Validate input - must be an object with username attribute
+        if player is None:
+            return False
+        if not hasattr(player, &#39;username&#39;):
+            return False
+
+        self.player1 = player
+        return True
+
+    def get_player(self):
+        &#34;&#34;&#34;
+        Get the current player.
+
+        :return: Player object or None if not set
+        &#34;&#34;&#34;
+        return self.player1
+
+    def display_welcome(self):
+        &#34;&#34;&#34;
+        Display welcome message for the game.
+
+        Shows an ASCII art welcome screen and brief game introduction.
+
+        :return: formatted welcome message string
+        &#34;&#34;&#34;
+        welcome = &#34;&#34;&#34;
+        ========================================================
+
+                 WELCOME TO PIG DICE GAME!
+
+                 Roll the dice, take your chances!
+                 First to 100 points wins!
+
+                 Good luck and have fun!
+
+        ========================================================
+        &#34;&#34;&#34;
+        return welcome
+
+    def display_menu_options(self):
+        &#34;&#34;&#34;
+        Display main menu options to the player.
+
+        :return: formatted menu options string
+        &#34;&#34;&#34;
+        # missing changing difficulty for computer
+        options = &#34;&#34;&#34;
+        ========================================
+                    MAIN MENU
+        ========================================
+
+          1. Play Game
+          2. View Rules
+          3. View Scoreboard
+          4. Change Username
+          5. Quit
+
+        ========================================
+
+        Enter your choice: &#34;&#34;&#34;
+        return options
+
+    def validate_menu_choice(self, choice):
+        &#34;&#34;&#34;
+        Validate if the menu choice is valid.
+
+        :param choice: user input choice (string)
+        :return: True if choice is valid (1-5), False otherwise
+        :raises ValueError: if choice cannot be converted to int or is invalid
+        &#34;&#34;&#34;
+        try:
+            # Reject floats explicitly
+            if isinstance(choice, float):
+                raise ValueError(&#34;False: Invalid menu choice: must be an integer between 1 and 5&#34;)
+            choice_int = int(choice)
+            if not (1 &lt;= choice_int &lt;= 5):
+                raise ValueError(&#34;False: Invalid menu choice: must be an integer between 1 and 5&#34;)
+            return True
+        except (ValueError, TypeError):
+            raise ValueError(&#34;False: Invalid menu choice: must be an integer between 1 and 5&#34;)
+
+    def display_error_message(self, message):
+        &#34;&#34;&#34;
+        Display an error message to the user.
+
+        :param message: error message to display
+        :return: formatted error message string
+        &#34;&#34;&#34;
+        return f&#34;\n  ❌ ERROR: {message}\n&#34;
+
+    def display_success_message(self, message):
+        &#34;&#34;&#34;
+        Display a success message to the user.
+
+        :param message: success message to display
+        :return: formatted success message string
+        &#34;&#34;&#34;
+        return f&#34;\n  ✅ SUCCESS: {message}\n&#34;</code></pre>
+</details>
+<div class="desc"><p>Manages the user interface and menu system for pig dice game.</p>
+<p>The menu class handles user interactions, displays game rules,
+manages player information, shows scoreboards, and initiates games.
+Acts as the main entry point for player interaction.</p>
+<p>Initialize a new menu instance.</p>
+<p>Sets up default game rules and initializes player1 to None.
+The player will be created during the game setup phase.</p></div>
+<h3>Methods</h3>
+<dl>
+<dt id="menu.menu.change_username"><code class="name flex">
+<span>def <span class="ident">change_username</span></span>(<span>self, old_username, new_username)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def change_username(self, old_username, new_username):
+    &#34;&#34;&#34;
+    Change a player&#39;s username.
+
+    Validates that the old username matches the current player&#39;s name,
+    then updates it to the new username. The player&#39;s ID is also
+    regenerated based on the new username.
+
+    :param old_username: current username to verify
+    :param new_username: new username to set
+    :return: True if successful, False if old username doesn&#39;t match
+    &#34;&#34;&#34;
+
+    if old_username is None:
+        return False
+
+    if self.player1 is not None:
+        if self.player1.username == old_username:
+            # Validate new_username
+            if new_username is None:
+                return False
+            # Only allow str, int, float types
+            if not isinstance(new_username, (str, int, float)):
+                return False
+            # Convert to string for uniform validation
+            new_username_str = str(new_username)
+            # Reject if username contains newlines
+            if &#39;\n&#39; in new_username_str:
+                return False
+            new_username = new_username_str
+            self.player1.change_usr_name(new_username)
+            return True
+    return False</code></pre>
+</details>
+<div class="desc"><p>Change a player's username.</p>
+<p>Validates that the old username matches the current player's name,
+then updates it to the new username. The player's ID is also
+regenerated based on the new username.</p>
+<p>:param old_username: current username to verify
+:param new_username: new username to set
+:return: True if successful, False if old username doesn't match</p></div>
+</dd>
+<dt id="menu.menu.display_error_message"><code class="name flex">
+<span>def <span class="ident">display_error_message</span></span>(<span>self, message)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_error_message(self, message):
+    &#34;&#34;&#34;
+    Display an error message to the user.
+
+    :param message: error message to display
+    :return: formatted error message string
+    &#34;&#34;&#34;
+    return f&#34;\n  ❌ ERROR: {message}\n&#34;</code></pre>
+</details>
+<div class="desc"><p>Display an error message to the user.</p>
+<p>:param message: error message to display
+:return: formatted error message string</p></div>
+</dd>
+<dt id="menu.menu.display_menu_options"><code class="name flex">
+<span>def <span class="ident">display_menu_options</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_menu_options(self):
+    &#34;&#34;&#34;
+    Display main menu options to the player.
+
+    :return: formatted menu options string
+    &#34;&#34;&#34;
+    # missing changing difficulty for computer
+    options = &#34;&#34;&#34;
+    ========================================
+                MAIN MENU
+    ========================================
+
+      1. Play Game
+      2. View Rules
+      3. View Scoreboard
+      4. Change Username
+      5. Quit
+
+    ========================================
+
+    Enter your choice: &#34;&#34;&#34;
+    return options</code></pre>
+</details>
+<div class="desc"><p>Display main menu options to the player.</p>
+<p>:return: formatted menu options string</p></div>
+</dd>
+<dt id="menu.menu.display_success_message"><code class="name flex">
+<span>def <span class="ident">display_success_message</span></span>(<span>self, message)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_success_message(self, message):
+    &#34;&#34;&#34;
+    Display a success message to the user.
+
+    :param message: success message to display
+    :return: formatted success message string
+    &#34;&#34;&#34;
+    return f&#34;\n  ✅ SUCCESS: {message}\n&#34;</code></pre>
+</details>
+<div class="desc"><p>Display a success message to the user.</p>
+<p>:param message: success message to display
+:return: formatted success message string</p></div>
+</dd>
+<dt id="menu.menu.display_welcome"><code class="name flex">
+<span>def <span class="ident">display_welcome</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_welcome(self):
+    &#34;&#34;&#34;
+    Display welcome message for the game.
+
+    Shows an ASCII art welcome screen and brief game introduction.
+
+    :return: formatted welcome message string
+    &#34;&#34;&#34;
+    welcome = &#34;&#34;&#34;
+    ========================================================
+
+             WELCOME TO PIG DICE GAME!
+
+             Roll the dice, take your chances!
+             First to 100 points wins!
+
+             Good luck and have fun!
+
+    ========================================================
+    &#34;&#34;&#34;
+    return welcome</code></pre>
+</details>
+<div class="desc"><p>Display welcome message for the game.</p>
+<p>Shows an ASCII art welcome screen and brief game introduction.</p>
+<p>:return: formatted welcome message string</p></div>
+</dd>
+<dt id="menu.menu.get_player"><code class="name flex">
+<span>def <span class="ident">get_player</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_player(self):
+    &#34;&#34;&#34;
+    Get the current player.
+
+    :return: Player object or None if not set
+    &#34;&#34;&#34;
+    return self.player1</code></pre>
+</details>
+<div class="desc"><p>Get the current player.</p>
+<p>:return: Player object or None if not set</p></div>
+</dd>
+<dt id="menu.menu.get_rules"><code class="name flex">
+<span>def <span class="ident">get_rules</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_rules(self):
+    &#34;&#34;&#34;
+    Get the game rules as a formatted string.
+
+    Returns the complete rules of the pig dice game for display
+    to the player.
+
+    :return: string containing the game rules
+    &#34;&#34;&#34;
+    return self.game_rules</code></pre>
+</details>
+<div class="desc"><p>Get the game rules as a formatted string.</p>
+<p>Returns the complete rules of the pig dice game for display
+to the player.</p>
+<p>:return: string containing the game rules</p></div>
+</dd>
+<dt id="menu.menu.get_scoreboard"><code class="name flex">
+<span>def <span class="ident">get_scoreboard</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_scoreboard(self):
+    &#34;&#34;&#34;
+    Get the current scoreboard as a formatted string.
+
+    Displays player name, current score, and progress toward the goal.
+    Shows a visual representation of the player&#39;s progress using
+    Unicode block characters.
+
+    :return: formatted scoreboard string
+    &#34;&#34;&#34;
+    if self.player1 is None:
+        return &#34;No player registered yet!&#34;
+
+    score = self.player1.total_score
+    # Each block represents 10 points (max 10 blocks for 100 points)
+    filled_blocks = score // 10
+    empty_blocks = 10 - filled_blocks
+    progress_bar = &#34;█&#34; * filled_blocks + &#34;░&#34; * empty_blocks
+
+    scoreboard = f&#34;&#34;&#34;
+    ========================================================
+                     SCOREBOARD
+    ========================================================
+
+    Player: {self.player1.username}
+    Score:  {score} / 100
+
+    Progress: [{progress_bar}]
+
+    ========================================================
+    &#34;&#34;&#34;
+    return scoreboard</code></pre>
+</details>
+<div class="desc"><p>Get the current scoreboard as a formatted string.</p>
+<p>Displays player name, current score, and progress toward the goal.
+Shows a visual representation of the player's progress using
+Unicode block characters.</p>
+<p>:return: formatted scoreboard string</p></div>
+</dd>
+<dt id="menu.menu.play_game"><code class="name flex">
+<span>def <span class="ident">play_game</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def play_game(self):
+    &#34;&#34;&#34;
+    Start and manage the main game flow.
+
+    Creates a new game instance, sets up participants, and runs
+    the game loop until completion. Displays the winner and final
+    scores when the game ends.
+    &#34;&#34;&#34;
+    # Placeholder for game logic - will be implemented with Game class
+    # This method will:
+    # 1. Create a Game instance
+    # 2. Add participants (player1 and possibly computer)
+    # 3. Run the game loop
+    # 4. Display winner
+    pass</code></pre>
+</details>
+<div class="desc"><p>Start and manage the main game flow.</p>
+<p>Creates a new game instance, sets up participants, and runs
+the game loop until completion. Displays the winner and final
+scores when the game ends.</p></div>
+</dd>
+<dt id="menu.menu.set_player"><code class="name flex">
+<span>def <span class="ident">set_player</span></span>(<span>self, player)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_player(self, player):
+    &#34;&#34;&#34;
+    Set the main player for the game.
+
+    :param player: Player object to set as player1
+    :return: True if successful, False if invalid input
+    &#34;&#34;&#34;
+    # Validate input - must be an object with username attribute
+    if player is None:
+        return False
+    if not hasattr(player, &#39;username&#39;):
+        return False
+
+    self.player1 = player
+    return True</code></pre>
+</details>
+<div class="desc"><p>Set the main player for the game.</p>
+<p>:param player: Player object to set as player1
+:return: True if successful, False if invalid input</p></div>
+</dd>
+<dt id="menu.menu.validate_menu_choice"><code class="name flex">
+<span>def <span class="ident">validate_menu_choice</span></span>(<span>self, choice)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_menu_choice(self, choice):
+    &#34;&#34;&#34;
+    Validate if the menu choice is valid.
+
+    :param choice: user input choice (string)
+    :return: True if choice is valid (1-5), False otherwise
+    :raises ValueError: if choice cannot be converted to int or is invalid
+    &#34;&#34;&#34;
+    try:
+        # Reject floats explicitly
+        if isinstance(choice, float):
+            raise ValueError(&#34;False: Invalid menu choice: must be an integer between 1 and 5&#34;)
+        choice_int = int(choice)
+        if not (1 &lt;= choice_int &lt;= 5):
+            raise ValueError(&#34;False: Invalid menu choice: must be an integer between 1 and 5&#34;)
+        return True
+    except (ValueError, TypeError):
+        raise ValueError(&#34;False: Invalid menu choice: must be an integer between 1 and 5&#34;)</code></pre>
+</details>
+<div class="desc"><p>Validate if the menu choice is valid.</p>
+<p>:param choice: user input choice (string)
+:return: True if choice is valid (1-5), False otherwise
+:raises ValueError: if choice cannot be converted to int or is invalid</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="menu.menu" href="#menu.menu">menu</a></code></h4>
+<ul class="">
+<li><code><a title="menu.menu.change_username" href="#menu.menu.change_username">change_username</a></code></li>
+<li><code><a title="menu.menu.display_error_message" href="#menu.menu.display_error_message">display_error_message</a></code></li>
+<li><code><a title="menu.menu.display_menu_options" href="#menu.menu.display_menu_options">display_menu_options</a></code></li>
+<li><code><a title="menu.menu.display_success_message" href="#menu.menu.display_success_message">display_success_message</a></code></li>
+<li><code><a title="menu.menu.display_welcome" href="#menu.menu.display_welcome">display_welcome</a></code></li>
+<li><code><a title="menu.menu.get_player" href="#menu.menu.get_player">get_player</a></code></li>
+<li><code><a title="menu.menu.get_rules" href="#menu.menu.get_rules">get_rules</a></code></li>
+<li><code><a title="menu.menu.get_scoreboard" href="#menu.menu.get_scoreboard">get_scoreboard</a></code></li>
+<li><code><a title="menu.menu.play_game" href="#menu.menu.play_game">play_game</a></code></li>
+<li><code><a title="menu.menu.set_player" href="#menu.menu.set_player">set_player</a></code></li>
+<li><code><a title="menu.menu.validate_menu_choice" href="#menu.menu.validate_menu_choice">validate_menu_choice</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>
