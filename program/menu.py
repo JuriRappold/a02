@@ -30,6 +30,7 @@ class Menu:
         """
         self.game_rules = self._initialize_rules()
         self.player1 = player1
+        self.score_board = ""
 
     def _initialize_rules(self):
         """
@@ -133,6 +134,7 @@ class Menu:
         bord = HighScore(self.player1, opponent)
         bord.sort_dict()
         print(bord.get_chart())
+        self.score_board = bord.get_chart()
 
     def set_player(self, player):
         """
@@ -263,7 +265,7 @@ class Menu:
                 case "2":  # get the game rules
                     print(self.get_rules())
                 case "3":  # score board
-                    pass
+                    print(self.score_board)
                 case "4":  # changing the __username
                     new_username = input("Enter your new __username: ")
                     self.change_username(self.player1.get_username(), new_username)
