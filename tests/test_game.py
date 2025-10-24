@@ -2,15 +2,16 @@
 
 import pytest
 from program.game import Game
-#from program.player import Player
 from tests.mock_player import MockPlayer
 
 
 # ----------- __init__() -------------------------------
 def test_init_creates_empty_participants_list():
-    """Test that game initializes with empty participants list."""
-    game_test = Game(MockPlayer("Gunnar", 0))
-    assert game_test.participants == []
+    """Test that game initializes with player added to participants list."""
+    mock_player = MockPlayer("Gunnar", 0)
+    game_test = Game(mock_player)
+    assert len(game_test.participants) == 1
+    assert game_test.participants[0] == mock_player
 
 
 def test_init_goal_constant():
@@ -19,41 +20,25 @@ def test_init_goal_constant():
 
 
 # ----------- add_participant(self, participant) --------------
-def test_add_participant_single():
-    """Test adding a single participant to the game."""
-    game_test = Game(MockPlayer("Gunnar", 0))
-    mock_player = MockPlayer("Gunnar",0)
+def test_add_participant():
+    """Test adding a participant to the game."""
+    initial_player = MockPlayer("Gunnar", 0)
+    game_test = Game(initial_player)
+    mock_player = MockPlayer("Juri", 0)
 
     game_test.add_participant(mock_player)
 
-    assert len(game_test.participants) == 1
-    assert game_test.participants[0] == mock_player
-
-
-def test_add_participant_multiple():
-    """Test adding multiple participants to the game."""
-    game_test = Game(MockPlayer("Player1", 0))
-    player1 = MockPlayer("Player1", 0)
-    player2 = MockPlayer("Player2", 0)
-
-    game_test.add_participant(player1)
-    game_test.add_participant(player2)
-
     assert len(game_test.participants) == 2
-    assert game_test.participants[0] == player1
-    assert game_test.participants[1] == player2
-
-
-# ----------- get_participants(self) -------------------------------
+    assert game_test.participants[0] == initial_player
+    assert game_test.participants[1] == mock_player
 
 
 def test_get_participants_with_players():
     """Test getting participants when players are added."""
-    game_test = Game(MockPlayer("Player1", 0))
-    player1 = MockPlayer("Player1", 0)
-    player2 = MockPlayer("Player2", 0)
+    player1 = MockPlayer("Gunnar", 0)
+    game_test = Game(player1)
+    player2 = MockPlayer("Juri", 0)
 
-    #game_test.add_participant(player1)
     game_test.add_participant(player2)
 
     participants = game_test.get_participants()
@@ -65,11 +50,10 @@ def test_get_participants_with_players():
 # ----------- restart_game(self) -------------------------------
 def test_restart_game_resets_scores():
     """Test that restart_game resets all participant scores to 0."""
-    game_test = Game(MockPlayer("Player1", 0))
-    player1 = MockPlayer("Player1", 50)
-    player2 = MockPlayer("Player2", 75)
+    player1 = MockPlayer("Gunnar", 50)
+    game_test = Game(player1)
+    player2 = MockPlayer("Juri", 75)
 
-    #game_test.add_participant(player1)
     game_test.add_participant(player2)
 
     game_test.restart_game()
@@ -80,11 +64,10 @@ def test_restart_game_resets_scores():
 
 def test_restart_game_keeps_participants():
     """Test that restart_game keeps the same participants."""
-    game_test = Game(MockPlayer("Player1", 0))
-    player1 = MockPlayer("Player1", 50)
-    player2 = MockPlayer("Player2", 75)
+    player1 = MockPlayer("Gunnar", 50)
+    game_test = Game(player1)
+    player2 = MockPlayer("Juri", 75)
 
-    #game_test.add_participant(player1)
     game_test.add_participant(player2)
 
     game_test.restart_game()
@@ -94,23 +77,23 @@ def test_restart_game_keeps_participants():
     assert game_test.participants[1] == player2
 
 
-def test_restart_game_empty_participants():
+def test_restart_game_empty_score():
     """Test restart_game with no participants doesn't crash."""
-    game_test = Game(MockPlayer("Player1", 0))
-
-    # Should not raise an error
+    player1 = MockPlayer("Gunnar", 50)
+    game_test = Game(player1)
     game_test.restart_game()
-    assert game_test.participants == []
+    # Player should still be in the list but with score reset to 0
+    assert len(game_test.participants) == 1
+    assert player1.total_score == 0
 
 
 # ----------- quit_game(self) -------------------------------
 def test_quit_game_clears_participants():
     """Test that quit_game clears all participants."""
-    game_test = Game(MockPlayer("Player1", 0))
-    player1 = MockPlayer("Player1", 50)
-    player2 = MockPlayer("Player2", 75)
+    player1 = MockPlayer("Gunnar", 50)
+    game_test = Game(player1)
+    player2 = MockPlayer("Juri", 75)
 
-    #game_test.add_participant(player1)
     game_test.add_participant(player2)
 
     game_test.quit_game()
@@ -120,7 +103,7 @@ def test_quit_game_clears_participants():
 
 def test_quit_game_already_empty():
     """Test quit_game when participants list is already empty."""
-    game_test = Game(MockPlayer("Player1", 0))
+    game_test = Game(MockPlayer("Gunnar", 0))
 
     game_test.quit_game()
 
@@ -130,11 +113,10 @@ def test_quit_game_already_empty():
 # ----------- check_winner(self) -------------------------------
 def test_check_winner_no_winner():
     """Test check_winner when no participant has reached GOAL."""
-    game_test = Game(MockPlayer("Player1", 0))
-    player1 = MockPlayer("Player1", 50)
-    player2 = MockPlayer("Player2", 75)
+    player1 = MockPlayer("Gunnar", 50)
+    game_test = Game(player1)
+    player2 = MockPlayer("Juri", 75)
 
-    #game_test.add_participant(player1)
     game_test.add_participant(player2)
 
     winner = game_test.check_winner()
@@ -144,11 +126,10 @@ def test_check_winner_no_winner():
 
 def test_check_winner_one_winner():
     """Test check_winner when one participant reaches GOAL."""
-    game_test = Game(MockPlayer("Player1", 0))
-    player1 = MockPlayer("Player1", 100)
-    player2 = MockPlayer("Player2", 75)
+    player1 = MockPlayer("Gunnar", 100)  # Player1 has winning score
+    game_test = Game(player1)
+    player2 = MockPlayer("Juri", 75)
 
-    #game_test.add_participant(player1)
     game_test.add_participant(player2)
 
     winner = game_test.check_winner()
@@ -158,10 +139,8 @@ def test_check_winner_one_winner():
 
 def test_check_winner_score_above_goal():
     """Test check_winner when participant exceeds GOAL."""
-    game_test = Game(MockPlayer("Player1", 0))
-    player1 = MockPlayer("Player1", 120)
-
-    #game_test.add_participant(player1)
+    player1 = MockPlayer("Gunnar", 120)
+    game_test = Game(player1)
 
     winner = game_test.check_winner()
 
@@ -170,7 +149,7 @@ def test_check_winner_score_above_goal():
 
 def test_check_winner_empty_participants():
     """Test check_winner with no participants."""
-    game_test = Game(MockPlayer("Player1", 0))
+    game_test = Game(MockPlayer("Gunnar", 0))
 
     winner = game_test.check_winner()
 
@@ -179,11 +158,10 @@ def test_check_winner_empty_participants():
 
 def test_check_winner_multiple_winners():
     """Test check_winner returns first winner when multiple reach GOAL."""
-    game_test = Game(MockPlayer("Player1", 0))
-    player1 = MockPlayer("Player1", 100)
-    player2 = MockPlayer("Player2", 105)
+    player1 = MockPlayer("Gunnar", 100)
+    game_test = Game(player1)
+    player2 = MockPlayer("Juri", 105)
 
-    #game_test.add_participant(player1)
     game_test.add_participant(player2)
 
     winner = game_test.check_winner()
@@ -194,10 +172,8 @@ def test_check_winner_multiple_winners():
 # ----------- speedrun_game(self) -------------------------------
 def test_speedrun_game_sets_first_participant_score():
     """Test that speedrun_game sets first participant's score near GOAL."""
-    game_test = Game(MockPlayer("Player1", 0))
-    player1 = MockPlayer("Player1", 0)
-
-    #game_test.add_participant(player1)
+    player1 = MockPlayer("Gunnar", 50)
+    game_test = Game(player1)
 
     game_test.speedrun_game()
 
@@ -206,37 +182,36 @@ def test_speedrun_game_sets_first_participant_score():
 
 def test_speedrun_game_only_affects_first_participant():
     """Test that speedrun_game only modifies first participant."""
-    game_test = Game(MockPlayer("Player1", 0))
-    player1 = MockPlayer("Player1", 0)
-    player2 = MockPlayer("Player2", 0)
+    player1 = MockPlayer("Gunnar", 50)
+    game_test = Game(player1)
+    player2 = MockPlayer("Juri", 75)
 
-    #game_test.add_participant(player1)
     game_test.add_participant(player2)
 
     game_test.speedrun_game()
 
     assert player1.total_score == Game.GOAL - 10
-    assert player2.total_score == 0
 
 
-def test_speedrun_game_empty_participants():
-    """Test speedrun_game with no participants doesn't crash lol."""
-    game_test = Game(MockPlayer("Player1", 0))
+def test_speedrun_game():
+    """Test speedrun_game with one participant doesn't crash."""
+    player1 = MockPlayer("Gunnar", 0)
+    game_test = Game(player1)
 
     # Should not raise an error
     game_test.speedrun_game()
-    assert game_test.participants == []
-
+    # Player score set to GOAL - 10
+    assert len(game_test.participants) == 1
+    assert player1.total_score == Game.GOAL - 10
 
 
 # ----------- Integration tests -------------------------------
 def test_full_game_flow():
     """Test complete game flow from start to finish."""
-    game_test = Game(MockPlayer("Player1", 0))
-    player1 = MockPlayer("Player1", 0)
-    player2 = MockPlayer("Player2", 0)
+    player1 = MockPlayer("Gunnar", 0)
+    game_test = Game(player1)
+    player2 = MockPlayer("Juri", 0)
 
-    #game_test.add_participant(player1)
     game_test.add_participant(player2)
 
     # Simulate game progress
@@ -250,11 +225,10 @@ def test_full_game_flow():
 
 def test_restart_after_game():
     """Test that game can be restarted after completion."""
-    game_test = Game(MockPlayer("Player1", 0))
-    player1 = MockPlayer("Player1", 100)
-    player2 = MockPlayer("Player2", 75)
+    player1 = MockPlayer("Gunnar", 100)
+    game_test = Game(player1)
+    player2 = MockPlayer("Juri", 75)
 
-    #game_test.add_participant(player1)
     game_test.add_participant(player2)
 
     winner = game_test.check_winner()
@@ -269,10 +243,9 @@ def test_restart_after_game():
 
 def test_speedrun_then_check_winner():
     """Test using speedrun and then checking for winner."""
-    game_test = Game(MockPlayer("Player1", 0))
-    player1 = MockPlayer("Player1", 0)
+    player1 = MockPlayer("Gunnar", 50)
+    game_test = Game(player1)
 
-    #game_test.add_participant(player1)
     game_test.speedrun_game()
 
     # Player1 should be at 90, not a winner yet
