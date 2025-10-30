@@ -190,7 +190,7 @@ ___
     The file that runs whole game is named `menu.py`
     If you're in folder `a02` you can run the file by writing in terminal:
     ```sh
-      python program/menu.py
+      python -m program.menu
       ```
 
 ### Makefile commands
